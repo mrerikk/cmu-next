@@ -46,7 +46,7 @@ Current MP3 entry files are generated from our own zero-PCM carrier and ID3 buil
 
 ## Authorship and rights
 
-`js/run.js` is generated from cmu-next JavaScript sources. Visual bundles also embed graphics and fonts with separate or unresolved rights; they are not wholly project-owned. See [provenance and distribution review](docs/provenance.md). No complete asset clearance is claimed. MP3 entry files intentionally use ID3/HTML rendering to load local code; use only on owner-authorized equipment.
+`js/run.js` is generated from cmu-next JavaScript sources. Theme graphics were drawn by the project owner; Connect 2 screenshots served as visual references, not copied graphic assets. The bundled Source Sans 3 font retains its separate SIL OFL license. See [provenance and distribution review](docs/provenance.md). MP3 entry files intentionally use ID3/HTML rendering to load local code; use only on owner-authorized equipment.
 
 ## Getting started
 

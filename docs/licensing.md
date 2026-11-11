@@ -6,6 +6,6 @@ Noncommercial personal research, experimentation and hobby modification are perm
 
 The exact license definitions, institutional permissions and statutory exceptions govern. This summary does not replace the license text. This project is source-available; it is not described as OSI-approved open source because commercial uses are restricted.
 
-The license applies only to material the project authors can license. The Source Sans font remains SIL OFL, musl and Zig retain upstream terms, and OEM-derived assets retain their respective rights. No third-party work is relicensed merely by being included in the same repository.
+The license applies only to material the project authors can license. The Source Sans font remains SIL OFL, musl and Zig retain upstream terms, and owner-authored theme graphics use the project license; any separately supplied OEM material retains its respective rights. No third-party work is relicensed merely by being included in the same repository.
 
 For commercial permission, contact the repository owner through the GitHub profile linked in the required notice. No public contact email or private vehicle information is included.
