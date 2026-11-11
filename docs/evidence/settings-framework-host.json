@@ -1,0 +1,35 @@
+{
+  "source_pins": {
+    "apps/syssettings/js/syssettingsApp.js": "a83dd588b54531475024b7cd048be1d0e11556abd68bbbcc334cc5ede7534cd1",
+    "apps/vehsettings/js/vehsettingsApp.js": "486b964268974320ce3db4f0526c86675dc93ed3c0ab02f08e846ca04f0e9e40",
+    "apps/audiosettings/js/audiosettingsApp.js": "857d980769b83a416df2af99ed0757d283ffdb58542c112988a861fda4ee9944",
+    "common/controls/Tabs/js/TabsCtrl.js": "ed3d8a48ed21fc5e963339227236dc9b70d5051d6204198f831fd8d5d418334d",
+    "common/js/Common.js": "376b30a46366a543122956d7feb1b44f147425015837a4d83fedf12a67943351",
+    "common/js/Multicontroller.js": "5f0b33754e346a645faeced4b99cf3c6ba4ec1ebc89add09b09b915a9fe8095d",
+    "framework/js/GuiFramework.js": "ca2889f7cb0361610e57b43004572fdd53c00d1d3003409bb92c744fcb253f70"
+  },
+  "adapter_sha256": "df6a859a1b2f796581bff4dcbae0fbbd6c0f91f4333097094d4d612e8b420240",
+  "native_selection_cases": 69,
+  "dynamic_selection_cases": 50,
+  "passed": [
+    "nine real category configurations across syssettings/vehsettings/audiosettings: seven/eight categories and J78A variant",
+    "all 69 native tab selections dispatch the original appData through actual TabsCtrl methods",
+    "configuration objects, callback appData and setting data preserved",
+    "disabled/unknown categories and default callback honored",
+    "stale clicks, array replacement and reorder guarded",
+    "native localization and language changes",
+    "category scroll proxy uses actual array count and selected row; same proxy survives all focus/window movements; 5000 idle ticks allocate no nodes",
+    "content navigation delegated to actual Common handler",
+    "Back from category content to root; root returns via actual OEM Home callback",
+    "nested screens and modal dialogs preserve native GoBack",
+    "actual Common voice-state updates, VUI help/examples and disabled common controls reveal factory UI and preserve original routing",
+    "remote projection focus and first-event behavior delegated",
+    "native diagnostic Home-button guard retained",
+    "actual GuiFramework input routing and Multicontroller capture lock retained; disabled input cannot select by controller or touch",
+    "not armed, expired request, invalid frame or missing localization leave factory UI",
+    "external wrappers and unknown classes preserved on disposal",
+    "return to Home cleans adapter state"
+  ],
+  "scope": "actual v74 TabsCtrl and Common prototype methods plus nine OEM configuration arrays with constructed state and DOM/service stubs; not full CMU initialization, real MMUI history or vehicle rendering",
+  "vehicle_verified": false
+}

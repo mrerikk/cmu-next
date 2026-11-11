@@ -50,3 +50,17 @@ The separate `docs/evidence/visual-module-copy-0.3.3.json` records a host run of
 - Incorrect connection token or reuse of a request key for another action cannot mutate the copy.
 
 The fixture explicitly replaces CMU mount/uptime observations, the USB write-preparation helper and the read-only vehicle preflight collector with host fixtures. The module and four original inputs are synthetic; no OEM content is shipped in the test. This verifies backend orchestration, not native USB mounts, actual CMU preflight, Opera rendering, vehicle controls, persistent storage or the browser UI. The distinction must be preserved when reporting results.
+
+## Settings / equipment compatibility regressions
+
+The public synthetic fixture `tests/test_settings_categories.cjs` runs through the Python suite when Node.js is available. Eight groups cover 1/5/12/32-category lists, native option-data identity, disabled items, input locks, replaced/reordered arrays and stale clicks, content/root Back behavior, voice/dialog fallback, localization and wrapper cleanup. It contains no OEM sources and does not substitute for tests using the actual native framework.
+
+For the pinned factory framework contract, supply a separately owned, trusted extracted 74.00.324A EU root filesystem and a new output filename:
+
+```sh
+node tools/test-settings-framework.cjs /path/to/rootfs build/settings-framework.json
+```
+
+This opt-in test checks SHA-256 pins for seven OEM JavaScript inputs before evaluating them with constructed DOM/state/service fixtures. The files are read locally and are not bundled or downloaded. The harness uses actual TabsCtrl, Common, GuiFramework and Multicontroller methods plus nine original settings configurations across system/vehicle/audio settings. It verifies 69 original selections and another 50 selections in 1/5/12/32-category variations through those same methods, while preserving native option data and callbacks. It checks that the module embeds the exact adapter source under test.
+
+The recorded run is [settings framework host evidence](evidence/settings-framework-host.json). It covers these constructed control states, not full firmware initialization, real MMUI context/history responses, actual hardware equipment, camera/projection integration or Opera rendering. It therefore does not establish compatibility with other Connect 1 vehicles. Device testing remains limited to the owner's Roadster ND 2016 Japan, and this latest native test pass is still pending on that vehicle.

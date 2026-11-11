@@ -1,0 +1,12 @@
+{
+  "firmware": "74.00.324A EU",
+  "source_sha256": {
+    "apps/syssettings/js/syssettingsApp.js": "a83dd588b54531475024b7cd048be1d0e11556abd68bbbcc334cc5ede7534cd1",
+    "apps/vehsettings/js/vehsettingsApp.js": "486b964268974320ce3db4f0526c86675dc93ed3c0ab02f08e846ca04f0e9e40",
+    "apps/audiosettings/js/audiosettingsApp.js": "857d980769b83a416df2af99ed0757d283ffdb58542c112988a861fda4ee9944",
+    "common/controls/Tabs/js/TabsCtrl.js": "ed3d8a48ed21fc5e963339227236dc9b70d5051d6204198f831fd8d5d418334d",
+    "common/js/Common.js": "376b30a46366a543122956d7feb1b44f147425015837a4d83fedf12a67943351",
+    "common/js/Multicontroller.js": "5f0b33754e346a645faeced4b99cf3c6ba4ec1ebc89add09b09b915a9fe8095d",
+    "framework/js/GuiFramework.js": "ca2889f7cb0361610e57b43004572fdd53c00d1d3003409bb92c744fcb253f70"
+  }
+}
