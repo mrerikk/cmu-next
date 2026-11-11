@@ -26,6 +26,10 @@ The separate retrofit overlay must be checked for home layout, selected-row beha
 
 Repository checks validate source syntax, publication boundaries and module hashes. They do not emulate firmware or prove real Opera rendering, equipment behavior, persistent writes or power-loss recovery.
 
+## Testing over Wi-Fi / SSH
+
+An existing, owner-authorized SSH connection can carry native checks and access the loopback service through a local tunnel. See [connection preparation and limits](ssh-testing.md). No live CMU SSH run has yet been verified; no server settings or keys are changed by these preparation tools.
+
 ## Portable host regression suite
 
 ```sh

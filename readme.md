@@ -67,6 +67,7 @@ Current MP3 entry files are generated from our own zero-PCM carrier and ID3 buil
 
 - [Build and package sources](docs/build.md)
 - [Vehicle test procedure](docs/testing.md)
+- [Wi-Fi / SSH test connection](docs/ssh-testing.md)
 - [Architecture and state boundaries](docs/architecture.md)
 - [Known issues](docs/known-issues.md)
 - [Roadmap](docs/roadmap.md)

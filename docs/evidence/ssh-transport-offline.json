@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-11",
+  "test_module": "tests/test_ssh_transport.py",
+  "checks_passed": 8,
+  "network_connections_attempted": 0,
+  "ssh_config_parsed_with_installed_openssh": true,
+  "password_or_private_key_saved": false,
+  "server_configuration_modified": false,
+  "native_cmu_connection_verified": false,
+  "native_automation_suite_ready": false
+}
