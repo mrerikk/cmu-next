@@ -1,5 +1,7 @@
 # Testing on a CMU
 
+Vehicle testing is conducted only on the owner’s **Mazda Roadster ND, model year 2016, Japanese market (Japan)**. Other Mazda Connect 1 vehicles have not been tested; compatibility is unverified. The installed firmware under investigation is 74.00.324A EU; the car’s market and firmware region are distinct.
+
 Manager 0.3.1 and 0.3.2 had vehicle startup failures. Candidate 0.3.3 fixes a reproduced host launch failure but has not yet been verified on CMU. Read `known-issues.md` before attempting an engineering run. Public source snapshots are not a finished permanent installer.
 
 For an existing locally prepared manager USB package, the command for a package containing cmu-manager/start.sh is:

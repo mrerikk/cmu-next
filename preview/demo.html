@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>cmu-next — interactive interface preview</title><style>body{margin:0;padding:32px;background:#111;color:#ddd}main{max-width:1000px;margin:auto}a{color:#ccc}footer{font:14px Arial,sans-serif;line-height:1.6;margin-top:20px}</style></head><body><main>
+<div id="cmu-interactive-preview">
+  <div class="cmu-preview-top"><span>connect 2 → connect 1 · retrofit</span><span>Interactive preview · demo data</span></div>
+  <div class="cmu-screen-wrap"><div class="cmu-screen" role="group" aria-label="Предпросмотр интерфейса Mazda Connect">
+    <div class="cmu-backdrop"></div><div class="cmu-content"></div>
+  </div></div>
+  <div class="cmu-controls" aria-label="Кнопки управления магнитолой">
+    <button type="button" class="cursor-interaction" data-control="home">Главная</button>
+    <button type="button" class="cursor-interaction" data-control="back">Назад</button>
+    <button type="button" class="cursor-interaction" data-control="up" aria-label="Предыдущий пункт">↑</button>
+    <button type="button" class="cursor-interaction" data-control="down" aria-label="Следующий пункт">↓</button>
+    <button type="button" class="cursor-interaction cmu-select" data-control="select">Нажать шайбу</button>
+  </div>
+  <div class="cmu-preview-status" aria-live="polite"></div>
+</div>
+<style>
+#cmu-interactive-preview{width:100%;font-family:Arial,sans-serif;color:#d4d4d4;--cmu-focus-image:url('../history/retrofit/assets/dd20e7ee576cffa8d3cda3e2ca38d29866dca26b9e24c3a746f3d650ad99a455.png');--cmu-press-image:url('../history/retrofit/assets/f650ca4795da516c4b79a0d613c13d500a0ab2571d4f90c68931b8469a44e71d.png');--cmu-selected-text:34px;--cmu-selected-icon:60px}
+#cmu-interactive-preview *{box-sizing:border-box}
+#cmu-interactive-preview .cmu-preview-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:12px 16px;background:#171717;font-size:13px;color:#c9c9c9}
+#cmu-interactive-preview .cmu-screen-wrap{position:relative;width:100%;overflow:hidden;background:#090909}
+#cmu-interactive-preview .cmu-screen{width:800px;height:480px;position:absolute;top:0;left:0;transform-origin:top left;background:#090909;color:#eee}
+#cmu-interactive-preview .cmu-backdrop{position:absolute;inset:0;background-image:url('../history/retrofit/assets/e7a441cda6a9a35bfafd01373a771c0bb19102f353321b6f36eb7bf1bccd62fd.png');background-size:100% 100%;opacity:1;pointer-events:none}
+#cmu-interactive-preview .cmu-content{position:absolute;inset:0}
+#cmu-interactive-preview .cmu-screen button{font-family:Arial,sans-serif;color:inherit;font-weight:400}
+#cmu-interactive-preview .cmu-home-row{position:absolute;height:62px;width:440px;background:none;border:0;padding:0;text-align:left;display:flex;align-items:center;color:#bbb}
+#cmu-interactive-preview .cmu-home-row img{width:34px;height:34px;margin-left:18px;flex:none;opacity:.75}
+#cmu-interactive-preview .cmu-home-row span{position:absolute;left:74px;font-size:28px;color:#bbb;white-space:nowrap}
+#cmu-interactive-preview .cmu-home-row.is-current img{width:var(--cmu-selected-icon);height:var(--cmu-selected-icon);margin-left:5px;opacity:1}
+#cmu-interactive-preview .cmu-home-row.is-current span{font-size:var(--cmu-selected-text);color:#fff}
+#cmu-interactive-preview .cmu-clock{position:absolute;left:528px;top:160px;width:160px;height:160px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(210,218,232,.15),rgba(210,218,232,.04) 42%,transparent 70%)}
+#cmu-interactive-preview .cmu-backdrop{-webkit-mask-image:linear-gradient(to right,#000 0%,#000 54%,transparent 70%);mask-image:linear-gradient(to right,#000 0%,#000 54%,transparent 70%)}
+#cmu-interactive-preview .cmu-home-arc{position:absolute;left:676px;top:62px;width:108px;height:356px;border-right:1px solid rgba(241,244,250,.78);border-radius:50%;filter:drop-shadow(2px 0 3px rgba(223,231,247,.38));-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.2) 16%,#000 43%,#000 57%,rgba(0,0,0,.2) 84%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.2) 16%,#000 43%,#000 57%,rgba(0,0,0,.2) 84%,transparent 100%);pointer-events:none}
+#cmu-interactive-preview .cmu-heading{position:absolute;left:68px;top:16px;margin:0;font-size:30px;font-weight:400;max-width:580px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cmu-interactive-preview .cmu-time{position:absolute;right:22px;top:20px;font-size:26px;color:#ccc;font-variant-numeric:tabular-nums}
+#cmu-interactive-preview .cmu-list-row{position:absolute;left:68px;width:724px;height:64px;padding:0 42px 0 66px;border:0;background:none;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:30px;color:#ddd}
+#cmu-interactive-preview .cmu-list-row.is-current{background-image:url("../history/retrofit/assets/2ad7f7482f4b22d485e89a10a7fb7332410be7bcac9107f28ef0dfbf2c91a9a5.png");background-size:100% 100%;background-repeat:no-repeat;color:#fff}
+#cmu-interactive-preview .cmu-list-row.is-current:active{background-image:url("../history/retrofit/assets/2ad7f7482f4b22d485e89a10a7fb7332410be7bcac9107f28ef0dfbf2c91a9a5.png")}
+#cmu-interactive-preview .cmu-row-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+#cmu-interactive-preview .cmu-value{font-size:25px;white-space:nowrap;flex:none;color:#ddd}
+#cmu-interactive-preview .cmu-check{width:25px;height:25px;border:1px solid #c7c7c7;display:inline-flex;align-items:center;justify-content:center;font-size:23px}
+#cmu-interactive-preview .cmu-check.checked{background:#ddd;color:#111}
+#cmu-interactive-preview .cmu-tabs{position:absolute;top:64px;left:68px;right:16px;display:flex;height:42px;border-bottom:1px solid #555}
+#cmu-interactive-preview .cmu-tab{flex:1;min-width:0;background:#151515;border:0;padding:0 8px;font-size:21px;color:#aaa}
+#cmu-interactive-preview .cmu-tab.is-current{background:#333;color:#fff;border-bottom:2px solid #eee}
+#cmu-interactive-preview .cmu-player-title{position:absolute;left:100px;right:40px;top:120px;font-size:35px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cmu-interactive-preview .cmu-player-sub{position:absolute;left:102px;top:176px;color:#aaa;font-size:24px}
+#cmu-interactive-preview .cmu-player-progress{position:absolute;left:102px;right:70px;top:254px;height:2px;background:#444}
+#cmu-interactive-preview .cmu-player-progress span{display:block;width:38%;height:2px;background:#eee}
+#cmu-interactive-preview .cmu-player-time{position:absolute;left:102px;top:276px;font-size:21px;color:#bbb}
+#cmu-interactive-preview .cmu-player-actions{position:absolute;left:100px;right:65px;top:335px;display:flex;gap:16px}
+#cmu-interactive-preview .cmu-product-button{min-height:58px;border:1px solid #666;background:#161616;padding:10px 22px;font-size:23px;color:#eee}
+#cmu-interactive-preview .cmu-product-button.is-current{background-image:var(--cmu-focus-image);background-size:100% 100%}
+#cmu-interactive-preview .cmu-overlay{position:absolute;inset:0;background:#090909;display:flex;align-items:center;justify-content:center;padding:48px}
+#cmu-interactive-preview .cmu-dialog{width:100%;max-width:650px;background:#171717;border:1px solid #777;padding:28px}
+#cmu-interactive-preview .cmu-dialog-title{font-size:30px;font-weight:400;margin:0 0 22px}
+#cmu-interactive-preview .cmu-dialog-text{font-size:24px;line-height:1.45;margin:0 0 28px;color:#ccc}
+#cmu-interactive-preview .cmu-dialog-actions{display:flex;gap:12px}
+#cmu-interactive-preview .cmu-dialog-actions button{flex:1}
+#cmu-interactive-preview .cmu-adjust{position:absolute;left:112px;right:80px;top:158px}
+#cmu-interactive-preview .cmu-adjust-output{font-size:60px;margin-bottom:36px;display:block;text-align:center;color:#eee;font-variant-numeric:tabular-nums}
+#cmu-interactive-preview .cmu-range{display:block;width:100%;accent-color:#ddd;height:44px}
+#cmu-interactive-preview .cmu-range-limits{display:flex;justify-content:space-between;font-size:25px;color:#aaa}
+#cmu-interactive-preview .cmu-controls{display:flex;gap:8px;flex-wrap:wrap;background:#171717;padding:12px 16px}
+#cmu-interactive-preview .cmu-controls button{background:#262626;color:#eee;border:1px solid #555;border-radius:5px;min-height:44px;padding:8px 15px;font:14px Arial,sans-serif}
+#cmu-interactive-preview .cmu-controls .cmu-select{margin-left:auto;background:#dedede;color:#111}
+#cmu-interactive-preview .cmu-preview-status{font:13px Arial,sans-serif;color:#c9c9c9;background:#171717;padding:0 16px 12px;min-height:29px}
+#cmu-interactive-preview .cmu-screen.compact{width:520px;height:640px}
+#cmu-interactive-preview .compact .cmu-home-row{height:80px}
+#cmu-interactive-preview .compact .cmu-home-row span{font-size:31px}
+#cmu-interactive-preview .compact .cmu-home-row.is-current span{font-size:var(--cmu-selected-text)}
+#cmu-interactive-preview .compact .cmu-clock{left:380px;top:275px;width:110px;height:110px}
+#cmu-interactive-preview .compact .cmu-heading{left:26px;font-size:29px;max-width:370px;top:24px}
+#cmu-interactive-preview .compact .cmu-time{font-size:23px;right:18px;top:28px}
+#cmu-interactive-preview .compact .cmu-list-row{left:20px;width:490px;height:86px;padding:0 22px;font-size:28px}
+#cmu-interactive-preview .compact .cmu-value{font-size:22px;max-width:180px;overflow:hidden;text-overflow:ellipsis}
+#cmu-interactive-preview .compact .cmu-tabs{left:20px;right:12px;top:76px;height:46px}
+#cmu-interactive-preview .compact .cmu-tab{font-size:20px;padding:0 4px}
+#cmu-interactive-preview .compact .cmu-player-title{left:36px;top:150px;right:25px;font-size:31px}
+#cmu-interactive-preview .compact .cmu-player-sub{left:36px;top:202px}
+#cmu-interactive-preview .compact .cmu-player-progress{left:36px;right:36px;top:296px}
+#cmu-interactive-preview .compact .cmu-player-time{left:36px;top:320px}
+#cmu-interactive-preview .compact .cmu-player-actions{left:36px;right:36px;top:412px;flex-wrap:wrap}
+#cmu-interactive-preview .compact .cmu-product-button{font-size:24px;min-height:68px}
+#cmu-interactive-preview .compact .cmu-overlay{padding:24px}
+#cmu-interactive-preview .compact .cmu-dialog{padding:26px}
+#cmu-interactive-preview .compact .cmu-dialog-text{font-size:27px}
+#cmu-interactive-preview .compact .cmu-dialog-actions{flex-direction:column}
+#cmu-interactive-preview .compact .cmu-adjust{left:40px;right:40px;top:200px}
+/* Connect 2 composition cropped after the arc, fitted to the native 800 × 480 canvas. */
+#cmu-interactive-preview .cmu-clock{left:564px;top:162px;width:156px;height:156px}
+#cmu-interactive-preview .cmu-heading{left:48px;top:28px;max-width:620px;font-size:29px;height:44px;line-height:44px;border-bottom:1px solid rgba(230,234,243,.32);width:680px}
+#cmu-interactive-preview .cmu-time{right:48px;top:36px;font-size:23px}
+#cmu-interactive-preview .cmu-list-row{left:40px;width:700px;height:60px;padding:0 22px 0 20px;font-size:28px}
+#cmu-interactive-preview .cmu-list-row .cmu-value{max-width:220px;overflow:hidden;text-overflow:ellipsis;font-size:24px}
+#cmu-interactive-preview .cmu-list-row span{position:relative;z-index:1}
+#cmu-interactive-preview .cmu-product-button{position:relative;border:0;background:none;box-shadow:none}
+#cmu-interactive-preview .cmu-product-button.is-current{background-image:linear-gradient(to bottom,rgba(255,255,255,.9),rgba(255,255,255,.35) 5px,transparent 42%,transparent 58%,rgba(255,255,255,.35) calc(100% - 5px),rgba(255,255,255,.9))}
+#cmu-interactive-preview .cmu-dialog{background:#101114;border:0;border-top:1px solid rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.45);padding:30px}
+#cmu-interactive-preview .cmu-player-title{left:60px;right:80px;top:124px}
+#cmu-interactive-preview .cmu-player-sub{left:62px;top:181px}
+#cmu-interactive-preview .cmu-player-progress{left:62px;right:80px}
+#cmu-interactive-preview .cmu-player-time{left:62px}
+#cmu-interactive-preview .cmu-player-actions{left:52px;right:70px}
+#cmu-interactive-preview .cmu-adjust{left:60px;right:80px}
+@media(prefers-reduced-motion:reduce){#cmu-interactive-preview *{scroll-behavior:auto}}
+@font-face{font-family:"CmuRetrofit";src:url("../history/retrofit/assets/4644c81b86ec9caaa76b634889968ed3c4f4f52f054855933acc7c2b21e53b0f.ttf") format("truetype");font-style:normal;font-weight:400;}
+
+#cmu-interactive-preview .cmu-screen,#cmu-interactive-preview .cmu-screen button{font-family:"CmuRetrofit",Arial,sans-serif}
+#cmu-interactive-preview .cmu-list-entry{position:absolute;left:40px;width:700px;height:60px}
+#cmu-interactive-preview .cmu-list-entry>.cmu-list-row{left:0;top:0;width:100%}
+#cmu-interactive-preview .cmu-list-entry.has-range .cmu-row-label{max-width:390px}
+#cmu-interactive-preview .cmu-inline-slider{position:absolute;right:24px;top:5px;width:238px;height:50px;z-index:2;display:flex;flex-direction:column}
+#cmu-interactive-preview .cmu-inline-limits{display:flex;justify-content:space-between;font-size:15px;color:#ddd;height:20px}
+#cmu-interactive-preview .cmu-inline-slider input{width:100%;height:28px;margin:0;accent-color:#eee}
+#cmu-interactive-preview .cmu-clock-digital{position:absolute;left:550px;top:204px;width:185px;height:72px;line-height:72px;text-align:center;font-size:54px;letter-spacing:-2px;color:#eee;font-variant-numeric:tabular-nums}
+
+/* Feather has room on both ends; lower left remains 20 native pixels shorter. */
+#cmu-interactive-preview .cmu-list-row{overflow:visible}
+#cmu-interactive-preview .cmu-arc-thumb{position:absolute;left:0;top:0;width:108px;height:356px;pointer-events:none}
+#cmu-interactive-preview .cmu-media-rail,#cmu-interactive-preview .cmu-radio-rail{position:absolute;left:44px;top:94px;width:68px;display:flex;flex-direction:column;gap:4px}
+#cmu-interactive-preview .cmu-media-control{position:relative;min-height:52px;background:none;border:0;color:#ddd;padding:6px 10px;font-size:17px;line-height:1.1;text-align:center;white-space:normal}
+#cmu-interactive-preview .cmu-media-rail .cmu-media-control,#cmu-interactive-preview .cmu-radio-rail .cmu-media-control{height:56px;padding:6px;font-size:14px}
+#cmu-interactive-preview .cmu-media-control.is-current,#cmu-interactive-preview .cmu-dial-key.is-current{background:linear-gradient(to bottom,rgba(255,255,255,.8),rgba(255,255,255,.12) 12%,transparent 40%,transparent 60%,rgba(255,255,255,.12) 88%,rgba(255,255,255,.8));color:#fff}
+#cmu-interactive-preview .cmu-factory-symbol{display:block;width:30px;height:30px;object-fit:contain;filter:invert(1);margin:auto}
+#cmu-interactive-preview .cmu-now-title{position:absolute;left:146px;top:119px;width:370px;font-size:34px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cmu-interactive-preview .cmu-now-artist{position:absolute;left:147px;top:174px;width:365px;font-size:23px;color:#bbb}
+#cmu-interactive-preview .cmu-now-album{position:absolute;left:147px;top:211px;font-size:23px;color:#999}
+#cmu-interactive-preview .cmu-album-art{position:absolute;left:554px;top:120px;width:150px;height:150px;background:#151619;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;box-shadow:0 15px 26px -20px rgba(255,255,255,.28);color:#888;font-size:16px}
+#cmu-interactive-preview .cmu-album-art img{width:50px;height:50px;opacity:.5}
+#cmu-interactive-preview .cmu-timeline{position:absolute;left:145px;right:96px;top:296px}
+#cmu-interactive-preview .cmu-timeline-labels{display:flex;justify-content:space-between;font-size:19px;color:#ccc;font-variant-numeric:tabular-nums}
+#cmu-interactive-preview .cmu-timeline input{width:100%;height:32px;accent-color:#eee;margin:0}
+#cmu-interactive-preview .cmu-media-bottom{position:absolute;left:140px;right:92px;top:397px;display:flex;justify-content:space-between;gap:10px}
+#cmu-interactive-preview .cmu-media-bottom .cmu-media-control{flex:1}
+#cmu-interactive-preview .cmu-radio-frequency{position:absolute;left:155px;top:118px;font-size:76px;font-variant-numeric:tabular-nums;letter-spacing:-2px;color:#eee}
+#cmu-interactive-preview .cmu-radio-unit{position:absolute;left:159px;top:212px;font-size:23px;color:#aaa}
+#cmu-interactive-preview .cmu-radio-name{position:absolute;left:155px;top:269px;font-size:28px;color:#ddd}
+#cmu-interactive-preview .cmu-radio-rds{position:absolute;left:157px;top:318px;font-size:21px;color:#999}
+#cmu-interactive-preview .cmu-dial-number{position:absolute;left:140px;top:90px;width:540px;height:58px;font-size:35px;line-height:58px;text-align:center;color:#eee;font-variant-numeric:tabular-nums}
+#cmu-interactive-preview .cmu-dial-grid{position:absolute;left:158px;top:162px;width:336px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px 16px}
+#cmu-interactive-preview .cmu-dial-key{height:60px;border:0;border-bottom:1px solid #303030;background:none;color:#ddd;font-size:30px}
+#cmu-interactive-preview .cmu-dial-actions{position:absolute;left:540px;top:230px;display:flex;flex-direction:column;gap:32px;width:150px}
+#cmu-interactive-preview .cmu-call-name{position:absolute;left:80px;top:153px;right:80px;font-size:42px;text-align:center}
+#cmu-interactive-preview .cmu-call-status{position:absolute;left:80px;top:224px;right:80px;font-size:22px;color:#999;text-align:center}
+#cmu-interactive-preview .cmu-call-actions{position:absolute;left:130px;right:130px;top:342px;display:flex;justify-content:center;gap:26px}
+#cmu-interactive-preview .cmu-call-actions .cmu-media-control{min-width:180px}
+#cmu-interactive-preview .cmu-message-sender{position:absolute;left:62px;top:111px;font-size:30px;color:#eee}
+#cmu-interactive-preview .cmu-message-body{position:absolute;left:62px;right:90px;top:177px;font-size:28px;line-height:1.5;color:#ccc}
+#cmu-interactive-preview .cmu-fuel-value{position:absolute;left:67px;top:95px;font-size:68px;font-variant-numeric:tabular-nums}
+#cmu-interactive-preview .cmu-fuel-unit{position:absolute;left:198px;top:126px;font-size:22px;color:#aaa}
+#cmu-interactive-preview .cmu-fuel-chart{position:absolute;left:67px;right:90px;bottom:42px;height:210px;display:flex;gap:24px;align-items:flex-end}
+#cmu-interactive-preview .cmu-fuel-column{display:flex;flex:1;flex-direction:column;align-items:center;gap:9px;font-size:19px;color:#bbb}
+#cmu-interactive-preview .cmu-fuel-bar{width:100%;background:linear-gradient(to top,rgba(255,255,255,.08),rgba(255,255,255,.65))}
+</style>
+<script>
+(function(){
+ const root=document.getElementById('cmu-interactive-preview');
+ const wrap=root.querySelector('.cmu-screen-wrap'),screen=root.querySelector('.cmu-screen'),content=root.querySelector('.cmu-content'),status=root.querySelector('.cmu-preview-status');
+ const assets={app:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCI+PGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMTciIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2VlZWVlZSIgc3Ryb2tlLXdpZHRoPSIyLjIiLz48cGF0aCBkPSJNMjAgMThoN2wtNCAxNWgzbC0uNiAyaC04bDQuMS0xNUgxOXoiIGZpbGw9IiNlZWVlZWUiIHN0cm9rZT0ibm9uZSIvPjxlbGxpcHNlIGN4PSIyNSIgY3k9IjExLjUiIHJ4PSIyLjMiIHJ5PSIyLjMiIGZpbGw9IiNlZWVlZWUiIHN0cm9rZT0ibm9uZSIvPjwvc3ZnPg==',ent:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCI+PGVsbGlwc2UgY3g9IjE0IiBjeT0iMzQiIHJ4PSI5IiByeT0iNiIgdHJhbnNmb3JtPSJyb3RhdGUoLTE4IDE0IDM0KSIgZmlsbD0iI2VlZWVlZSIgc3Ryb2tlPSJub25lIi8+PHBhdGggZD0iTTIxIDdoM3YyNmgtM3ogTTI0IDdjMiA0IDEzIDcgMTIgMTctMy00LTktNy0xMi04eiIgZmlsbD0iI2VlZWVlZSIgc3Ryb2tlPSJub25lIi8+PC9zdmc+',com:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NCA0NCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjQ0Ij4KICA8cGF0aCBmaWxsPSIjZWVlZWVlIiBkPSJNNSA3aDM0djI2SDE4TDkgNDB2LTdINXoiLz4KICA8cGF0aCBmaWxsPSIjMTExMTExIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzIDEpIHNjYWxlKC44KSIgZD0iTTEzIDEybDQtMnExLTEgMiAxbDMgNXExIDEtMSAzbC0yIDFxMyA1IDggN2wyLTNxMS0xIDIgMGw0IDNxMSAxIDAgMmwtMyA0cS0xIDEtNCAwQzIwIDMwIDEzIDIzIDEwIDE2cS0xLTMgMy00eiIvPgo8L3N2Zz4K',nav:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCI+PHBhdGggZD0iTTM5IDVMMjggNDAgMjEgMjMgNCAxN3oiIGZpbGw9IiNlZWVlZWUiIHN0cm9rZT0ibm9uZSIvPjwvc3ZnPg==',set:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCI+PHBhdGggZD0iTTIwLjkyMSA1LjUzNUwyMy4zNDEgMS41NDRMMjUuOTk5IDEuODk0TDI3LjMwNCA2LjM3NkwyOS4yOTggNy4yMDJMMzMuMzg5IDQuOTU1TDM1LjUxNyA2LjU4N0wzNC40MDUgMTEuMTIxTDM1LjcxOSAxMi44MzNMNDAuMzg2IDEyLjkzM0w0MS40MTIgMTUuNDEwTDM4LjE4MyAxOC43ODFMMzguNDY1IDIwLjkyMUw0Mi40NTYgMjMuMzQxTDQyLjEwNiAyNS45OTlMMzcuNjI0IDI3LjMwNEwzNi43OTggMjkuMjk4TDM5LjA0NSAzMy4zODlMMzcuNDEzIDM1LjUxN0wzMi44NzkgMzQuNDA1TDMxLjE2NyAzNS43MTlMMzEuMDY3IDQwLjM4NkwyOC41OTAgNDEuNDEyTDI1LjIxOSAzOC4xODNMMjMuMDc5IDM4LjQ2NUwyMC42NTkgNDIuNDU2TDE4LjAwMSA0Mi4xMDZMMTYuNjk2IDM3LjYyNEwxNC43MDIgMzYuNzk4TDEwLjYxMSAzOS4wNDVMOC40ODMgMzcuNDEzTDkuNTk1IDMyLjg3OUw4LjI4MSAzMS4xNjdMMy42MTQgMzEuMDY3TDIuNTg4IDI4LjU5MEw1LjgxNyAyNS4yMTlMNS41MzUgMjMuMDc5TDEuNTQ0IDIwLjY1OUwxLjg5NCAxOC4wMDFMNi4zNzYgMTYuNjk2TDcuMjAyIDE0LjcwMkw0Ljk1NSAxMC42MTFMNi41ODcgOC40ODNMMTEuMTIxIDkuNTk1TDEyLjgzMyA4LjI4MUwxMi45MzMgMy42MTRMMTUuNDEwIDIuNTg4TDE4Ljc4MSA1LjgxN1ogTTMzIDIyIEExMSAxMSAwIDEgMCAxMSAyMiBBMTEgMTEgMCAxIDAgMzMgMjJaIiBmaWxsPSIjZWVlZWVlIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZT0ibm9uZSIvPjxjaXJjbGUgY3g9IjIyIiBjeT0iMjIiIHI9IjciIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2VlZWVlZSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48L3N2Zz4='};
+ const mediaIcons={"play": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAoCAYAAAC8cqlMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATpJREFUeNrcmdENgjAQhpvIALz65giMwAiO4AiOwAboBOAEukHZQDeQDfTRNzwUTNNEpNjS+3vJlxgTEz/r/ekdC/GunFgSNfEQwCWJhrgRBbFCF1Fp39uEINIop5ShnNKQiMqRSEMQ6bkSWyJGF1FpwyEJQaTnzCEcbIio4ZD7CgebIno4rEMQUcMhmyMcXIvo4ZCGIKKHQ4wu4iQcfIpYvd9xEdHDYYUuMjkcOIuop/QzHBBEGm34S9BF9HB4/e0i4PG8JA5EhShSd1++7F5/CkWkUgTgUstoo8PxRC7EnjgR97Efirg2r2lFTJp3Z/Lrc+oRZ5OjFGDXdR8is25XXIh42XfZEvG+gZQWmpfFTlhObF52W3oTEdbPTaT4Y5hBEBk1XnIWKQTzBzpDd62vQwtSJQK8ngIMABj7zsI5jmDGAAAAAElFTkSuQmCC", "pause": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAqCAYAAACpxZteAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFNJREFUeNpiZGBgSADieAbCoBCILyDx9xOh5wILkFAAYgciFAug8YnRw8DEQGMwasGoBaMWjFowasGoBaMWjFowasGoBaMWjFowasGoBUMIAAQYAFCnBJMWB2yVAAAAAElFTkSuQmCC", "next": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAAiCAYAAADroA+yAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAZxJREFUeNrsmOFNwzAQhSMrA2SEskFHCBMAG6QTQCeATkCZoNmAMkE6Ahs0G9AN4AyvkqkCBMfveql60lPyo/U5n9/ZJ2fZOb7FVFQo5Cmtg3gQveHJBNKIthaB5MG7B3AvuhU9iZaiHSHnBEA2ogWeLJc/9vjdXPQaOuL9QN4hFcERh3kakkPKjlxd+sztfhnIO2QFK1fkfaMhAukVrqeVNYGskNMciC4g18Q5VcihCsRF/MdP7lnByqpA3AhqOwRSWARxLCCUXsclHCsEwrLyvtdJDsQRJlsq1HZyIE6ptjWA3FkFobnZFWino3sdDRAhkCk5R9jrXFkFoRmT/5bKqYIwXRpnEEeKjVUQLcSOtegi+7r0MQXCf/wMk2vJDrgU3cTkyYkT22FVlgolMPjKLycBYN55JgXAAKEFwNt+jr0gWeQjA+AdUDMGHwqixuqMFsDQU6PGKTAjQghPGyqEGEfUWB3mMahValEg1iiBkwPQF0TSI8oigL9AaADI8PGLYwL4CYQWAI29JgpEiz6dDeAFJ4EZAPv4EGAAXJCJZOAVeIwAAAAASUVORK5CYII=", "previous": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAiCAYAAADvVd+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAXpJREFUeNrsmeENgjAQhQ/DAI6gGzgCIziCG+gG1gkcATfRDRyBERxBS1IMIdH22ntXUC654C+u76Pttc+CiHY2V+QPQz8aV5vPgNSIyo0HCXvp3v8YE4BqMA4UgHa2N0NNOQFUH+obsPDsANo9p/5Sy4CFZwPgEy4FYOsRrg4gVHgqgIqhRwVAu+OeGQOKBcAV/tZUAlvNwebe/UZ2j6N7RkU5UeErN7O2qS8qJyj86HZ3kZAAsHNfY1LCu1gI9NgaKL7rHg1CfGwX8B0uJPLcO68j67AAaAjXTtYeUP/iVXhBfx4zgBlAeKxtXmZLLP7iwb0MaXSdpNsgEoQZnDseYwSABGG+GJmjA9AH0YAAoEBADBGJteszRKRAQB2hFBChjlCs46TqCcaA4FpiXM8xiyvMmbKxpigXhLotHrp2U23xUBDqAEJBGKE6vhadDYAPhBGu8wkEFTY3gZbWTdHzOxHmD9KhjV6M7V7SrV0DrtMCuNMcRC8BBgCCzOOYMargSQAAAABJRU5ErkJggg==", "repeat": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAqCAYAAAAOGC2lAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAldJREFUeNrsWstxgzAQFU4D6iCUQG65WenAJVAC6YBUoHTgdEAJ2BXgDuwO8NE3R2SER4Ol1QKSUTBv5l0ckNin1X6kEDItqGBMAsTLxPO/C1aCkeBB8EIW/IEJXiVrwXSR5F6YlqX8fRHGwG2o8UeHRDCXq3oEjHLFWs5He4qq80IuuHGdOfIHCWHiUWMUGzGWSWw0Mrlq10BYSq8dI4zqjZshXlIEJIhqTOZIGDWWUawoVYCidIMxczh2hREnNFFM6Zs5nqdQB486k3HFVSHsBPeyWj2PzHLc8Ldm3E/BH8CzE+Qca2Q8aeb71g3Q15191TGjs4YGsfx+Wwy7s6+wvOCjGmUad/Zd1G0smXbbVRMSJfH0kUwJfo9sA5jFXqrWK6YHM48fmHgeHwIHbL41syVQJc4VFLOdTA/wmTexBVAigMrNvf03hpCVJbAeZi6M0b6V5cUzeVKsyIJFGJfCJDO3n0LC7J5YmLXh91PrMaeeL84Fpo77hGkg45mKwjBtUIo9wHkQUs/tCCXw4X6iPlhP1Eh2V1Ht23wBOpepug/nxNGh8cAV1H2sa8RAw3zXWWO9pu22M8dxJwfmdXm8YTu9uzWPDSJNlMbGlPa8d48w3JQRuEXknaPtiUFjyxuQoa1bqi91q1eS8K5nUJdv3IMw1PG4Li/x0r4ps3YoTIiXeNXQ6j5GBi3sVgrlLrwGYl9vgTgZ9h8Puuw31ZYq5U6wlh3RwNSXSLFeEan7w+KNUNb4crCoZ5lBx96aTtLIHT3XMf8aukJvgaE1WGAoAifDrwADAJG1SE2aCmgaAAAAAElFTkSuQmCC", "shuffle": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAoCAYAAACrUDmFAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAkRJREFUeNrcWd1twjAQDpQBMkI2IBvUfetjOgF0g3QDdwLoBLBBRkg3MBvABslj36hTHZKV2vjsnJ2Qkz4hocTc+e67P5Jk5vI0Ub1KiVeJk8TPHC+eS1wlzhLFkIOWEzc0k6gkaol8jgbehEkIiYNE6vLiCl7A3s73yIZuIWS/IIzRt3N1QAU/FIOD93AG3e/KAh6qPZToMtw7fLpwqvu9tSVqMgA2qjo9LlQe7APjzRw8fw2InYmfjODwYmC4UaHRXTgjOlgXUoeIxqkQqjcZ4aGq7EYy7l/NZISHq6n7HNkwbdezcKiDG2RCeYHMlmu8GkJa17poK7QYPqaIBCMgnHTAev/gUE7QgkkclfJ87VGgOYJnLFRIpMgbLpXnG8W7GDrwOzzbRgj7PyUxIXQzpnBoCkwGctdGm2IoxWS2VDHSpxetQvAMKxUyEfg02yIkz1z42BD1q/1snSUTEUyj0DgqzMfiXV8JTL0ztXJYDjaxMqcqhabeCeRI45tFo3Ey6/GuNHxvAvM0MFpWFRp+9eudjY82bnGCM0jbNHX+ijkDWjubBbgbQ+KNJTT2Eh9gqPce01O66eXTtPWjnAczpZVrkvjDrnZvyggPdx2tQu1lOPVm+wThqcoR1nljdFcJ5U7GNgIVEdcX2hLCBmaxHHmrZUBDjUP0kM32HjJX6zFLZpaLeUY2BC3osKf6b0KAJ0J3+pjedjdmIx7SwNrlgpcPZPRF4g3WkhfsS6sHMGzQ3nPqBh6hvrbJzIRR9bK/AgwAqmflzCGxGOEAAAAASUVORK5CYII="};
+ const home=[['Информация','apps','app'],['Развлечения','sources','ent'],['Связь','phone','com'],['Навигация','navigation','nav'],['Настройки','settings','set']];
+ const categories=['Дисплей','Безопасность','Звук','Часы','Автомобиль','Устройства','Система'];
+ const config={carplay:true,android:true,navigation:true,bose:false};
+ const appearance={selectedText:34,selectedIcon:60};
+ const settings={displayMode:'Авто',brightness:0,contrast:0,bass:0,treble:0,fade:0,balance:0,volume:4,autopilot:false,centerpoint:false,clockStyle:'Аналоговые',hour24:true,syncClock:true,blindSpot:true,locking:true,hints:true,temperature:'°C',distance:'км',language:'Русский',bluetooth:true};
+ const initial=()=>({route:'home',focus:2,category:0,stack:[],source:'USB 1 · демо',track:0,playing:false,connected:false,fm:879,am:999,radioMuted:false,shuffle:false,repeat:0,elapsed:134,dial:'',contactName:'Тестовый контакт',callMuted:false,modal:null,adjust:null,choice:null});
+ let state=initial(),items=[],compact=false;
+ const tracks=['Ночной маршрут','Побережье','Обратная дорога'];
+ function node(tag,cls,text,parent){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;if(parent)parent.appendChild(e);return e;}
+ function button(cls,text,parent,fn){const e=node('button',cls+' cursor-interaction',text,parent);e.type='button';e.addEventListener('click',fn);return e;}
+ function remember(){}
+ function hydrate(value){
+  const p=value&&value.privateContent;if(!p)return;
+  for(const k of Object.keys(settings))if(p.settings&&typeof p.settings[k]===typeof settings[k])settings[k]=p.settings[k];
+  for(const k of Object.keys(config))if(p.config&&typeof p.config[k]==='boolean')config[k]=p.config[k];
+  if(['home','apps','sources','phone','settings','navigation','player','devices','vehicle','contacts','fuel','settings-category','radio','player-menu','library','track-list','stations','favorites','dialpad','call','messages','message','maintenance'].includes(p.route))state.route=p.route;
+  if(Number.isInteger(p.focus))state.focus=Math.max(0,Math.min(20,p.focus));
+  if(p.media){const m=p.media;if(['FM','AM','Bluetooth','USB 1 · демо','USB 2','AUX'].includes(m.source))state.source=m.source;for(const [k,min,max] of [['track',0,2],['repeat',0,2],['elapsed',0,338],['fm',875,1080],['am',531,1602]])if(Number.isInteger(m[k]))state[k]=Math.max(min,Math.min(max,m[k]));for(const k of ['playing','shuffle','radioMuted'])if(typeof m[k]==='boolean')state[k]=m[k];}
+  if(p.appearance){if(p.appearance.selectedText>=30&&p.appearance.selectedText<=40)appearance.selectedText=p.appearance.selectedText;if(p.appearance.selectedIcon>=44&&p.appearance.selectedIcon<=72)appearance.selectedIcon=p.appearance.selectedIcon;}
+  if(Number.isInteger(p.category))state.category=Math.max(0,Math.min(categories.length-1,p.category));
+ }
+ function go(route){state.stack.push({route:state.route,focus:state.focus,category:state.category});state.route=route;state.focus=route==='player'?1:0;state.adjust=null;state.choice=null;render();remember();}
+ function back(){
+  if(state.modal){state.modal=null;render();remember();return;}
+  if(state.adjust||state.choice){if(state.choice)state.focus=state.choice.returnFocus;state.adjust=null;state.choice=null;render();remember();return;}
+  const previous=state.stack.pop();if(previous)Object.assign(state,previous);else{state.route='home';state.focus=2;}
+  render();remember();
+ }
+ function main(){state=initial();render();remember();}
+ function dialog(title,text,actions){state.modal={title,text,focus:0,actions:actions||[{label:'Понятно',run(){state.modal=null;render();}}]};render();remember();}
+ function toggle(label,key){return {label,value:()=>settings[key]?'✓':'',check:true,run(){settings[key]=!settings[key];render();remember();}};}
+ function adjust(label,key,min,max){return {label,range:{key,min,max},value:()=>String(settings[key]),run(){state.adjust={label,key,min,max};render();remember();}};}
+ function choose(label,key,options){return {label,value:()=>settings[key],run(){state.choice={label,key,options,returnFocus:state.focus};state.focus=Math.max(0,options.indexOf(settings[key]));render();remember();}};}
+ function projection(name){dialog(name,'Подключение телефона проверяется на автомобиле. Здесь можно оценить оформление окна.');}
+ function settingItems(){
+  switch(state.category){
+   case 0:return [{label:'Выключить дисплей',run(){dialog('Дисплей выключен','Нажми «Включить», чтобы вернуться.',[{label:'Включить',run(){state.modal=null;render();}}]);}},choose('Режим','displayMode',['Авто','День','Ночь']),adjust('Яркость','brightness',-5,5),adjust('Контрастность','contrast',-5,5),choose('Часы на главном экране','clockStyle',['Аналоговые','Цифровые']),{label:'Сброс настроек дисплея',run(){dialog('Сброс настроек','Вернуть исходные значения в этом макете?',[{label:'Отмена',run(){state.modal=null;render();}},{label:'Сбросить',run(){settings.brightness=0;settings.contrast=0;settings.displayMode='Авто';state.modal=null;render();remember();}}]);}}];
+   case 1:return [toggle('Контроль слепых зон','blindSpot'),{label:'Настройки предупреждений',run(){dialog('Предупреждения','Изменения в предпросмотре не передаются автомобилю.');}}];
+   case 2:{const a=[adjust('Низкие частоты','bass',-6,6),adjust('Высокие частоты','treble',-6,6),adjust('Баланс: вперёд / назад','fade',-9,9),adjust('Баланс: влево / вправо','balance',-9,9),adjust('Авторегулировка громкости','volume',0,7)];if(config.bose)a.push(toggle('Bose AudioPilot','autopilot'),toggle('Bose Centerpoint','centerpoint'));return a;}
+   case 3:return [toggle('24-часовой формат','hour24'),toggle('Синхронизация времени','syncClock'),{label:'Установка времени',value:()=> '21:54',run(){dialog('Установка времени','Часы в предпросмотре показывают пример времени: 21:54.');}}];
+   case 4:return [toggle('Автоматическая блокировка дверей','locking'),{label:'Освещение',run(){dialog('Освещение','Это пример окна настроек. Состав реального меню определяет комплектация CMU.');}}];
+   case 5:{const a=[{label:'Bluetooth',value:()=>state.connected?'Подключено':'Нет подключения',run(){go('devices');}}];if(config.carplay)a.push({label:'Apple CarPlay',run(){projection('Apple CarPlay');}});if(config.android)a.push({label:'Android Auto',run(){projection('Android Auto');}});return a;}
+   default:return [toggle('Всплывающие подсказки','hints'),choose('Язык','language',['Русский','English']),choose('Температура','temperature',['°C','°F']),choose('Расстояние','distance',['км','мили']),{label:'О системе',value:()=> '74.00.324A EU',run(){dialog('О системе','Основа проекта: Mazda Connect 1, 74.00.324A EU. Это интерактивный макет ретрофита дизайна Connect 2 под экран Connect 1.');}}];
+  }
+ }
+ function getItems(){
+  if(state.choice)return state.choice.options.map(option=>({label:option,check:true,value:()=>settings[state.choice.key]===option?'✓':'',run(){settings[state.choice.key]=option;state.focus=state.choice.returnFocus;state.choice=null;render();remember();}}));
+  switch(state.route){
+   case 'apps':{const a=[{label:'i-DM',run(){dialog('i-DM','Просмотр оценок вождения будет доступен на CMU.');}},{label:'Экономия топлива',run(){go('fuel');}},{label:'Выбор водителя',run(){dialog('Выбор водителя','Профиль 1 · пример выбранного профиля.');}},{label:'Монитор состояния автомобиля',run(){go('vehicle');}}];if(config.carplay)a.push({label:'Apple CarPlay',run(){projection('Apple CarPlay');}});if(config.android)a.push({label:'Android Auto',run(){projection('Android Auto');}});return a;}
+   case 'player':return [{label:'Предыдущий',run(){state.track=(state.track+2)%3;state.elapsed=0;render();remember();}},{label:state.playing?'Пауза':'Играть',run(){state.playing=!state.playing;render();remember();}},{label:'Следующий',run(){state.track=(state.track+1)%3;state.elapsed=0;render();remember();}},{label:state.shuffle?'Случайно: вкл':'Случайно',run(){state.shuffle=!state.shuffle;render();remember();}},{label:state.repeat===0?'Повтор':state.repeat===1?'Повтор трека':'Повтор всех',run(){state.repeat=(state.repeat+1)%3;render();remember();}},{label:'Меню',run(){go('player-menu');}},{label:'Треки',run(){go('track-list');}}];
+   case 'player-menu':return [{label:'Источники',run(){go('sources');}},{label:'Папки',run(){go('track-list');}},{label:'Медиатека',run(){go('library');}},{label:'Управление воспроизведением',run(){go('player');}},{label:'Настройки звука',run:mediaSettings}];
+   case 'library':return ['Плейлисты','Исполнители','Альбомы','Песни','Жанры','Композиторы'].map(label=>({label,run(){go('track-list');}}));
+   case 'track-list':return tracks.map((label,i)=>({label,value:()=>i===state.track?'♪':'',run(){chooseTrack(i);}}));
+   case 'radio':return [{label:'Поиск ниже',run(){seekRadio(-1);}},{label:state.radioMuted?'Включить звук':'Выключить звук',run(){state.radioMuted=!state.radioMuted;render();remember();}},{label:'Поиск выше',run(){seekRadio(1);}},{label:'Станции',run(){go('stations');}},{label:'Избранное',run(){go('favorites');}},{label:'Источники',run(){go('sources');}},{label:'Звук',run:mediaSettings}];
+   case 'stations':case 'favorites':{const am=state.source==='AM';return (am?[531,693,999,1233,1539]:[879,945,1012,1034,1068]).map((frequency,i)=>({label:'Станция '+(i+1)+' · демо',value:()=>am?frequency+' кГц':(frequency/10).toFixed(1)+' МГц',run(){state[am?'am':'fm']=frequency;go('radio');}}));}
+   case 'dialpad':return ['1','2','3','4','5','6','7','8','9','*','0','#'].map(label=>({label,run(){state.dial=(state.dial+label).slice(0,20);render();remember();}})).concat([{label:'Удалить',run(){state.dial=state.dial.slice(0,-1);render();remember();}},{label:'Позвонить',run(){if(!state.dial){dialog('Номер не введён','Введи номер для проверки оформления.');return;}state.contactName=state.dial;go('call');}}]);
+   case 'call':return [{label:state.callMuted?'Микрофон: выкл':'Микрофон',run(){state.callMuted=!state.callMuted;render();remember();}},{label:'Завершить',run:back}];
+   case 'messages':return [{label:'Тестовый контакт',value:()=> 'Демо',run(){go('message');}}];
+   case 'message':return [{label:'Прочитать',run(){dialog('Чтение сообщения','Здесь проверяется оформление. Озвучивание работает на CMU.');}},{label:'Назад',run:back}];
+   case 'maintenance':return [{label:'Плановое ТО',value:()=> '8 000 км · демо',run(){dialog('Плановое ТО','Демонстрационное значение. Параметры автомобиля не меняются.');}},{label:'Замена масла',value:()=> 'Демо',run(){dialog('Замена масла','Настройки реального интервала остаются в CMU.');}},{label:'Перестановка шин',value:()=> 'Демо',run(){dialog('Шины','Пример штатного раздела обслуживания.');}}];
+   case 'sources':return ['FM','AM','Bluetooth','USB 1 · демо','USB 2','AUX'].map(source=>({label:source,value:()=>state.source===source?'♪':'',run(){state.source=source;if(source==='Bluetooth'&&!state.connected){dialog('Bluetooth','Подключить тестовый телефон?',[{label:'Отмена',run(){state.modal=null;render();}},{label:'Подключить',run(){state.connected=true;state.modal=null;go('player');}}]);}else go(source==='FM'||source==='AM'?'radio':'player');}}));
+   case 'phone':return [{label:'Контакты',run(){if(state.connected)go('contacts');else dialog('Телефон не подключён','Подключить тестовый телефон?',[{label:'Нет',run(){state.modal=null;render();}},{label:'Подключить',run(){state.connected=true;state.modal=null;render();remember();}}]);}},{label:'Журнал вызовов',run(){dialog('Журнал вызовов','Список вызовов в этом макете пуст.');}},{label:'Сообщения',run(){go('messages');}},{label:'Устройства Bluetooth',value:()=>state.connected?'Подключено':'Не подключено',run(){go('devices');}},{label:'Набрать номер',run(){go('dialpad');}}];
+   case 'contacts':return ['Алексей · пример','Мария · пример'].map(label=>({label,run(){state.contactName=label;go('call');}}));
+   case 'devices':return [toggle('Bluetooth','bluetooth'),{label:'Тестовый Android',value:()=>state.connected?'Подключён':'Не подключён',run(){state.connected=!state.connected;render();remember();}}];
+   case 'vehicle':return [{label:'Предупреждения автомобиля',value:()=> 'Нет',run(){dialog('Предупреждения','В примере нет активных предупреждений.');}},{label:'Следующее ТО',value:()=> '8 000 км',run(){dialog('Следующее ТО','8 000 км · демонстрационное значение.');}},{label:'Настройки технического обслуживания',run(){go('maintenance');}}];
+   case 'settings':return categories.map((label,index)=>({label,run(){state.category=index;go('settings-category');}}));
+   case 'settings-category':return settingItems();
+   default:return [];
+  }
+ }
+ function selectIndex(index){state.focus=index;paintSelection();remember();}
+ function paintSelection(){root.querySelectorAll('[data-index]').forEach(el=>{const current=Number(el.dataset.index)===state.focus;el.classList.toggle('is-current',current);el.setAttribute('aria-current',current?'true':'false');});const thumb=content.querySelector('.cmu-arc-thumb');if(thumb&&state.route!=='home')drawArcScroll(Number(thumb.dataset.first),items.length,Number(thumb.dataset.visible));status.textContent=state.route==='home'?'Главная · '+home[state.focus]?.[0]:(state.choice?.label||state.adjust?.label||title())+' · '+(items[state.focus]?.label||'');}
+ function move(direction){if(state.modal){state.modal.focus=(state.modal.focus+direction+state.modal.actions.length)%state.modal.actions.length;render();return;}if(state.adjust){settings[state.adjust.key]=Math.max(state.adjust.min,Math.min(state.adjust.max,settings[state.adjust.key]+direction));render();remember();return;}const count=state.route==='home'?home.length:items.length;if(!count)return;state.focus=(state.focus+direction+count)%count;render();remember();}
+ function activate(){if(state.modal){state.modal.actions[state.modal.focus].run();remember();return;}if(state.adjust){back();return;}if(state.route==='home'){const destination=home[state.focus][1];if(destination==='navigation'&&!config.navigation){dialog('Навигация','В выбранном примере комплектации навигации нет.');return;}go(destination);return;}items[state.focus]?.run();}
+ function title(){const mediaTitles={radio:state.source,'player-menu':'Меню','library':'Медиатека','track-list':'Треки',stations:'Станции',favorites:'Избранное',dialpad:'Набор номера',call:'Вызов',messages:'Сообщения',message:'Сообщение',maintenance:'Техническое обслуживание'};if(mediaTitles[state.route])return mediaTitles[state.route];if(state.route==='settings-category')return categories[state.category];return ({apps:'Информация',sources:'Развлечения',phone:'Связь',navigation:'Навигация',settings:'Настройки',player:state.source,devices:'Bluetooth',contacts:'Контакты',vehicle:'Состояние автомобиля',fuel:'Экономия топлива'})[state.route]||'';}
+ function drawArcScroll(first,total,count){
+  if(total<=0)return;
+  const arc=content.querySelector('.cmu-home-arc');if(!arc)return;
+  const canvas=arc.querySelector('.cmu-arc-thumb')||node('canvas','cmu-arc-thumb',undefined,arc),dpr=Math.min(window.devicePixelRatio||1,4);
+  canvas.width=108*dpr;canvas.height=356*dpr;
+  canvas.dataset.first=String(first);canvas.dataset.total=String(total);canvas.dataset.visible=String(Math.min(count,total));
+  canvas.setAttribute('aria-hidden','true');
+  const ctx=canvas.getContext('2d');if(!ctx)return;ctx.scale(dpr,dpr);
+  // Exact same half ellipse as the home arc's right border: center (54,178), radii (54,178).
+  const length=.86*Math.max(.10,Math.min(.4,2/total));
+  const progress=total>1?Math.max(0,Math.min(1,state.focus/(total-1))):.5,start=.07+progress*(.86-length),end=start+length;
+  canvas.dataset.focus=String(state.focus);canvas.dataset.progress=String(progress);
+  canvas.dataset.start=String(start);canvas.dataset.end=String(end);
+  const point=u=>{const a=-Math.PI/2+Math.PI*(start+(end-start)*u);return [54+54*Math.cos(a),178+178*Math.sin(a)];};
+  const fade=u=>{const v=Math.max(0,Math.min(1,Math.min(u,1-u)/.26));return v*v*(3-2*v);};
+  canvas.dataset.glow='smoothstep';ctx.lineCap='round';
+  // Both opacity and thickness merge gradually into the unchanged thin base arc.
+  for(let pass=0;pass<2;pass++)for(let i=0;i<100;i++){
+   const u=(i+.5)/100,f=fade(u),a=point(i/100),b=point((i+1)/100);
+   ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);
+   ctx.lineWidth=pass===0?10:1+4*f;
+   ctx.strokeStyle='rgba(243,246,252,'+(pass===0?.025*f:.88*f)+')';
+   ctx.shadowColor='rgba(240,244,255,'+(pass===0?.12*f:0)+')';ctx.shadowBlur=pass===0?7:0;ctx.stroke();
+  }
+ }
+ function drawClock(canvas){const dpr=Math.min(window.devicePixelRatio||1,4);canvas.width=640*dpr/2;canvas.height=640*dpr/2;const ctx=canvas.getContext('2d');if(!ctx)return;const scale=canvas.width/160;ctx.scale(scale,scale);ctx.strokeStyle='#bbb';ctx.lineWidth=1.2;for(let i=0;i<12;i++){const a=i*Math.PI/6,r=i%3===0?64:67;ctx.beginPath();ctx.moveTo(80+r*Math.sin(a),80-r*Math.cos(a));ctx.lineTo(80+73*Math.sin(a),80-73*Math.cos(a));ctx.stroke();}ctx.strokeStyle='#eee';ctx.lineWidth=1.8;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(80+39*Math.sin(9.9*Math.PI/6),80-39*Math.cos(9.9*Math.PI/6));ctx.lineTo(80,80);ctx.lineTo(80+62*Math.sin(54*Math.PI/30),80-62*Math.cos(54*Math.PI/30));ctx.stroke();ctx.fillStyle='#eee';ctx.beginPath();ctx.arc(80,80,2.1,0,Math.PI*2);ctx.fill();}
+ function mediaSettings(){state.category=2;go('settings-category');}
+ function seekRadio(delta){const key=state.source==='AM'?'am':'fm',min=key==='am'?531:875,max=key==='am'?1602:1080,step=key==='am'?9:1;state[key]+=delta*step;if(state[key]>max)state[key]=min;if(state[key]<min)state[key]=max;render();remember();}
+ function chooseTrack(index){state.track=index;state.elapsed=0;go('player');state.focus=1;render();remember();}
+ function controlButton(item,index,parent){const b=button('cmu-media-control','',parent,item.run);b.dataset.index=index;b.setAttribute('aria-label',item.label);b.setAttribute('data-tooltip',item.label);const icon=({Предыдущий:'previous',Следующий:'next',Играть:'play',Пауза:'pause','Поиск ниже':'previous','Поиск выше':'next'}[item.label])||(item.label.indexOf('Случайно')===0?'shuffle':item.label.indexOf('Повтор')===0?'repeat':null);if(icon){const image=node('img','cmu-factory-symbol',undefined,b);image.src=mediaIcons[icon];image.alt='';}else{node('span','',item.label,b);}b.addEventListener('focus',()=>selectIndex(index));return b;}
+
+ function renderPlayer(){
+  const rail=node('div','cmu-media-rail',undefined,content);items.slice(0,5).forEach((item,i)=>controlButton(item,i,rail));
+  node('div','cmu-now-title',tracks[state.track],content);node('div','cmu-now-artist','cmu next · демонстрационный трек',content);node('div','cmu-now-album','Ночные поездки',content);
+  const art=node('div','cmu-album-art',undefined,content);const glyph=node('img','',undefined,art);glyph.src=assets.ent;glyph.alt='';node('span','','Нет обложки',art);
+  const timeline=node('div','cmu-timeline',undefined,content),label=node('div','cmu-timeline-labels',undefined,timeline),now=node('output','',formatTime(state.elapsed),label);node('span','','05:38',label);const range=node('input','',undefined,timeline);range.type='range';range.min=0;range.max=338;range.value=state.elapsed;range.setAttribute('aria-label','Позиция воспроизведения');range.addEventListener('input',()=>{state.elapsed=Number(range.value);now.textContent=formatTime(state.elapsed);remember();});
+  const menu=node('div','cmu-media-bottom',undefined,content);items.slice(5).forEach((item,j)=>controlButton(item,j+5,menu));
+ }
+ function formatTime(seconds){return Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0');}
+ function renderRadio(){
+  const rail=node('div','cmu-radio-rail',undefined,content);items.slice(0,3).forEach((item,i)=>controlButton(item,i,rail));
+  const frequency=state.source==='AM'?String(state.am):(state.fm/10).toFixed(1);node('div','cmu-radio-frequency',frequency,content);node('div','cmu-radio-unit',state.source==='AM'?'кГц · AM':'МГц · FM',content);node('div','cmu-radio-name',state.radioMuted?'Звук выключен':'Демонстрационный эфир',content);node('div','cmu-radio-rds','RDS · Название станции и радиотекст',content);
+  const menu=node('div','cmu-media-bottom',undefined,content);items.slice(3).forEach((item,j)=>controlButton(item,j+3,menu));
+ }
+ function renderDialpad(){
+  node('output','cmu-dial-number',state.dial||'Введите номер',content);const grid=node('div','cmu-dial-grid',undefined,content);items.slice(0,12).forEach((item,i)=>{const b=button('cmu-dial-key',item.label,grid,item.run);b.dataset.index=i;b.addEventListener('focus',()=>selectIndex(i));});const actions=node('div','cmu-dial-actions',undefined,content);items.slice(12).forEach((item,i)=>controlButton(item,i+12,actions));
+ }
+ function renderCall(){node('div','cmu-call-name',state.contactName||'Тестовый контакт',content);node('div','cmu-call-status','Демонстрация звонка · вызов не совершается',content);const actions=node('div','cmu-call-actions',undefined,content);items.forEach((item,i)=>controlButton(item,i,actions));}
+ function renderMessage(){node('div','cmu-message-sender','Тестовый контакт',content);node('div','cmu-message-body','Буду через десять минут. Это пример сообщения для проверки оформления.',content);const actions=node('div','cmu-call-actions',undefined,content);items.forEach((item,i)=>controlButton(item,i,actions));}
+ function renderFuel(){const values=[6.8,7.4,7.1,7.8,6.9,7.3,7.2];node('div','cmu-fuel-value','7,2',content);node('div','cmu-fuel-unit','л/100 км · демонстрационные данные',content);const chart=node('div','cmu-fuel-chart',undefined,content);chart.setAttribute('role','img');chart.setAttribute('aria-label','Пример расхода за семь поездок: '+values.join(', ')+' литров на сто километров');values.forEach((value,i)=>{const column=node('div','cmu-fuel-column',undefined,chart);node('span','',String(value).replace('.',','),column);const bar=node('div','cmu-fuel-bar',undefined,column);bar.style.height=(value*15)+'px';node('span','',String(i+1),column);});}
+
+ function render(){
+  content.replaceChildren();items=getItems();if(state.route==='home')state.focus=Math.min(4,state.focus);else if(items.length)state.focus=Math.min(items.length-1,state.focus);
+  root.style.setProperty('--cmu-selected-text',appearance.selectedText+'px');root.style.setProperty('--cmu-selected-icon',appearance.selectedIcon+'px');
+  if(state.route==='home'){
+   node('div','cmu-home-arc',undefined,content).setAttribute('aria-hidden','true');
+   home.forEach((item,i)=>{const b=button('cmu-home-row','',content,()=>{state.focus=i;activate();});b.dataset.index=i;b.style.left='119px';b.style.top=(46+80*i)+'px';const image=node('img','',undefined,b);image.src=assets[item[2]];image.alt='';node('span','',item[0],b);b.addEventListener('focus',()=>selectIndex(i));});
+   if(settings.clockStyle==='Цифровые'){node('div','cmu-clock-digital','21:54',content);}else{const canvas=node('canvas','cmu-clock',undefined,content);canvas.setAttribute('role','img');canvas.setAttribute('aria-label','Пример аналоговых часов: 21:54');drawClock(canvas);}
+  }else{
+   node('div','cmu-home-arc',undefined,content).setAttribute('aria-hidden','true');
+   node('h2','cmu-heading',state.choice?.label||title(),content);node('span','cmu-time','21:54',content);
+   if(state.route==='player'){renderPlayer();
+   }else if(state.route==='radio'){renderRadio();
+   }else if(state.route==='dialpad'){renderDialpad();
+   }else if(state.route==='call'){renderCall();
+   }else if(state.route==='message'){renderMessage();
+   }else if(state.route==='fuel'){renderFuel();
+   }else if(state.route==='navigation'){
+    const box=node('div','cmu-adjust',undefined,content);node('div','cmu-dialog-title',state.route==='fuel'?'Средний расход · 7,2 л/100 км':'Навигация Mazda',box);node('p','cmu-dialog-text',state.route==='fuel'?'Демонстрационные данные. Телеметрия автомобиля здесь не считывается.':'Карта и построение маршрута работают на CMU. В макете доступен просмотр оформления.',box);
+   }else{
+    const hasTabs=false,count=6,first=Math.max(0,Math.min(items.length-count,state.focus-count+1)),step=60,top=92;
+    items.slice(first,first+count).forEach((item,j)=>{const index=first+j,entry=node('div','cmu-list-entry'+(item.range?' has-range':''),undefined,content);entry.style.top=(top+j*step)+'px';const b=button('cmu-list-row','',entry,()=>{state.focus=index;item.run();});b.dataset.index=index;node('span','cmu-row-label',item.label,b);b.setAttribute('data-tooltip',item.label);if(item.value&&!item.range){const value=item.value();if(item.check){node('span','cmu-check'+(value?' checked':''),value,b);b.setAttribute('aria-pressed',String(!!value));}else node('span','cmu-value',value,b);}else if(!item.range)node('span','cmu-value','›',b);b.addEventListener('focus',()=>selectIndex(index));if(item.range){const r=item.range,box=node('div','cmu-inline-slider',undefined,entry),limits=node('div','cmu-inline-limits',undefined,box);node('span','',String(r.min),limits);const val=node('output','',String(settings[r.key]),limits);node('span','',String(r.max),limits);const slider=node('input','',undefined,box);slider.type='range';slider.min=r.min;slider.max=r.max;slider.step=1;slider.value=settings[r.key];slider.setAttribute('aria-label',item.label);slider.addEventListener('focus',()=>selectIndex(index));slider.addEventListener('input',()=>{settings[r.key]=Number(slider.value);val.textContent=slider.value;remember();});}});
+    drawArcScroll(first,items.length,count);
+   }
+  }
+  paintSelection();
+  if(state.modal){const overlay=node('div','cmu-overlay',undefined,content),box=node('div','cmu-dialog',undefined,overlay);box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');box.setAttribute('aria-label',state.modal.title);node('h3','cmu-dialog-title',state.modal.title,box);node('p','cmu-dialog-text',state.modal.text,box);const actions=node('div','cmu-dialog-actions',undefined,box);state.modal.actions.forEach((a,i)=>{const b=button('cmu-product-button'+(i===state.modal.focus?' is-current':''),a.label,actions,a.run);b.addEventListener('focus',()=>{if(state.modal){state.modal.focus=i;actions.querySelectorAll('button').forEach((el,j)=>el.classList.toggle('is-current',i===j));}});});Array.from(content.children).filter(e=>e!==overlay).forEach(e=>e.inert=true);status.textContent=state.modal.title;}
+ }
+ function resize(){const width=wrap.getBoundingClientRect().width||736;const next=false;const changed=next!==compact;compact=next;screen.classList.toggle('compact',compact);const logical=compact?520:800;screen.style.transform='scale('+(width/logical)+')';wrap.style.height=((compact?640:480)*width/logical)+'px';if(changed)render();}
+ root.querySelectorAll('[data-control]').forEach(b=>b.addEventListener('click',()=>{const a=b.dataset.control;if(a==='home')main();else if(a==='back')back();else if(a==='up')move(-1);else if(a==='down')move(1);else activate();}));
+ document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){event.preventDefault();back();return;}
+  if(event.target&&event.target.matches('input,textarea,select'))return;
+  if(event.key==='ArrowDown'){event.preventDefault();move(1);}else if(event.key==='ArrowUp'){event.preventDefault();move(-1);}else if(event.key==='Escape'||event.key==='Backspace'){event.preventDefault();back();}else if(event.key==='Enter'&&!event.target?.closest('button')){event.preventDefault();activate();}else if(event.key==='ArrowLeft'){event.preventDefault();back();}else if(event.key==='ArrowRight'){event.preventDefault();activate();}
+ });
+
+ render();resize();if(typeof ResizeObserver!=='undefined')new ResizeObserver(resize).observe(wrap);
+ if(globalThis.Tweak){const visual=new Tweak({container:root,onChange:render});visual.addSlider(appearance,'selectedIcon',{label:'Выбранная иконка',min:44,max:72,step:2,unit:'px'});visual.addSlider(appearance,'selectedText',{label:'Выбранный текст',min:30,max:40,step:1,unit:'px'});const equipment=new Tweak({container:screen,onChange:()=>{state.focus=0;render();}});equipment.addToggle(config,'carplay',{label:'Apple CarPlay · пример'});equipment.addToggle(config,'android',{label:'Android Auto · пример'});equipment.addToggle(config,'navigation',{label:'Навигация · пример'});equipment.addToggle(config,'bose',{label:'Дополнительные пункты Bose · пример'});}
+ root.__cmuPreviewTest={get state(){return state;},get settings(){return settings;},get config(){return config;},move,activate,back,main,render,go};
+})();
+</script>
+
+<footer>Browser design preview with simulated data; this does not run CMU firmware or install anything. Use the on-screen controls or arrow keys and Enter. <a href="../readme.md">Project</a> · <a href="../license.md">Project license</a> · <a href="../src/visual/module/licenses/source-sans-3.txt">Font license</a></footer></main></body></html>

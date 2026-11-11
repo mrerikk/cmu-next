@@ -1,5 +1,7 @@
 # Current status — 2026-11-11
 
+Test vehicle: **Mazda Roadster ND, model year 2016, Japanese market (Japan)**. No other Connect 1 vehicles have been tested; compatibility with them is unverified. Component-specific pending tests below still apply on the test car.
+
 | Area | Evidence | Remaining work |
 | --- | --- | --- |
 | Own MP3 loader 1.0.0 | Project-authored zero-PCM carrier, ID3 generator, host structural checks and independent decoding. | Test the new loader bytes on the CMU. |

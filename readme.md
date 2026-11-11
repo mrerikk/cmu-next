@@ -4,7 +4,20 @@ A Mazda Connect 2-inspired interface retrofit and modular tooling project for **
 
 **Development snapshot — not a production-ready permanent installer.** The current manager line has an unresolved startup problem on the test CMU. Host tests do not establish hardware compatibility. Start with [current status](docs/status.md) and [version history](docs/versions.md).
 
-![Connect 2-inspired commander background](design/background.svg)
+## Interface preview
+
+![cmu-next home screen — browser design preview](design/preview-home.png)
+
+<details>
+<summary>Settings screen</summary>
+
+![cmu-next settings screen — browser design preview](design/preview-settings.png)
+
+</details>
+
+[Interactive HTML preview](preview/demo.html) · [Preview instructions](preview/readme.md)
+
+Browser design preview with simulated data, adapted from the interactive 0.7 design study. It does not run CMU firmware and is not proof of vehicle compatibility. To interact locally, download or clone the repository and open `preview/demo.html` in a browser. GitHub displays HTML source rather than running it inside this README.
 
 ## Goal
 
@@ -32,7 +45,9 @@ The agreed sequence is:
 
 ## Compatibility and status
 
-The firmware under investigation is **74.00.324A EU**, on a Connect 1 CMU running Linux 3.0.35 / ARMv7. Other firmware versions and equipment combinations require their own verification.
+**Test vehicle: Mazda Roadster ND, model year 2016, Japanese market (Japan).** Vehicle testing is conducted on this car only. **Other Mazda Connect 1 vehicles have not been tested; compatibility with them is unverified.**
+
+The firmware under investigation on the test CMU is **74.00.324A EU**, running Linux 3.0.35 / ARMv7. The vehicle market and the installed firmware region are separate facts. Other firmware versions and equipment combinations also require their own verification.
 
 Engine Check 0.2 produced a consistent vehicle report for operations on a **RAM file copy**. This does not prove permanent storage, boot recovery, actual Opera rendering, camera/CarPlay/Android Auto behavior, or physical power-loss recovery.
 
