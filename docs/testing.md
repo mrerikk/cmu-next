@@ -2,7 +2,7 @@
 
 Vehicle testing is conducted only on the owner’s **Mazda Roadster ND, model year 2016, Japanese market (Japan)**. Other Mazda Connect 1 vehicles have not been tested; compatibility is unverified. The installed firmware under investigation is 74.00.324A EU; the car’s market and firmware region are distinct.
 
-Manager 0.3.1 and 0.3.2 had vehicle startup failures. Candidate 0.3.3 fixes a reproduced host launch failure but has not yet been verified on CMU. Read `known-issues.md` before attempting an engineering run. Public source snapshots are not a finished permanent installer.
+Manager 0.3.1 and 0.3.2 had vehicle startup failures. Candidates 0.3.3 and 0.3.4 fix reproduced host failures but have not yet been verified on CMU. Read `known-issues.md` before attempting an engineering run. Public source snapshots are not a finished permanent installer.
 
 For an existing locally prepared manager USB package, the command for a package containing cmu-manager/start.sh is:
 
@@ -12,7 +12,7 @@ sh /tmp/mnt/sda1/cmu-manager/start.sh
 
 Use the actual partition letter for the MP3 loader that worked on the vehicle. A USB keyboard is still required to bootstrap the temporary service. `start.sh` and `check.sh` are shell scripts; they do not establish an SSH connection.
 
-For a failed initial startup, candidate 0.3.3 includes the independent diagnostic script inside cmu-manager. Run:
+For a failed initial startup, candidates 0.3.3 and 0.3.4 include the independent diagnostic script inside cmu-manager. Run:
 
 ```sh
 sh /tmp/mnt/sda1/cmu-manager/diagnose.sh
@@ -64,3 +64,9 @@ node tools/test-settings-framework.cjs /path/to/rootfs build/settings-framework.
 This opt-in test checks SHA-256 pins for seven OEM JavaScript inputs before evaluating them with constructed DOM/state/service fixtures. The files are read locally and are not bundled or downloaded. The harness uses actual TabsCtrl, Common, GuiFramework and Multicontroller methods plus nine original settings configurations across system/vehicle/audio settings. It verifies 69 original selections and another 50 selections in 1/5/12/32-category variations through those same methods, while preserving native option data and callbacks. It checks that the module embeds the exact adapter source under test.
 
 The recorded run is [settings framework host evidence](evidence/settings-framework-host.json). It covers these constructed control states, not full firmware initialization, real MMUI context/history responses, actual hardware equipment, camera/projection integration or Opera rendering. It therefore does not establish compatibility with other Connect 1 vehicles. Device testing remains limited to the owner's Roadster ND 2016 Japan, and this latest native test pass is still pending on that vehicle.
+
+## Early preparation crash regression (0.3.4)
+
+The coordinator now stages its complete prepared journal outside the active `tNNNNNN` namespace and publishes it before destination writes. Host tests terminate the coordinator at `preparing`, `staged-payload:1`, `staged-payload:2` and `staged-prepared`. Each leaves the rootfs copy unchanged and no active transaction. Retained staging is not deleted automatically. A new install gets a fresh ID, succeeds, and restores exactly. The real HTTP/journal workflow also verifies recovery after an early failed install followed by a successful new install. Previously that recovery job failed with code 2.
+
+This is process-crash testing on the host, not CMU power-loss qualification. Existing incomplete legacy transactions are not automatically migrated. Candidate 0.3.4 uses separate RAM version markers and requires a fresh CMU boot before replacing another candidate. Report format `cmu-manager-report=0.3.1` remains compatible; the separate `manager-version=0.3.4` field identifies the new candidate.

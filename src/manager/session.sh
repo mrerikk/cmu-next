@@ -8,7 +8,7 @@ export PATH
 work=$1;base=$2;control=$3
 io=$work/cmu-io
 "$io" lock-check "$work/bootstrap.lock" >/dev/null
-[ "$(cat "$work/bootstrap-version")" = cmu-manager-bootstrap-033 ] || exit 2
+[ "$(cat "$work/bootstrap-version")" = cmu-manager-bootstrap-034 ] || exit 2
 [ "$(cat "$work/package-path")" = "$base" ] || exit 2
 if "$io" lock-run "$work/service.lock" /bin/sh -c ':' >/dev/null 2>&1; then
  # Prevent the HTTP process and its journal descendants from retaining the bootstrap lock.
@@ -40,10 +40,10 @@ else
 fi
 if [ ! -e "$control" ] && [ ! -L "$control" ];then
  mkdir "$control";chown "$(id -u):$(id -g)" "$control";chmod 700 "$control"
- printf 'cmu-manager-control-033\n' > "$control/marker"
+ printf 'cmu-manager-control-034\n' > "$control/marker"
  printf '%s\n' "$work" > "$control/work-path.txt"
 else
- [ ! -L "$control" ] && [ -d "$control" ] && [ "$(cat "$control/marker")" = cmu-manager-control-033 ] && [ "$(cat "$control/work-path.txt")" = "$work" ] || exit 2
+ [ ! -L "$control" ] && [ -d "$control" ] && [ "$(cat "$control/marker")" = cmu-manager-control-034 ] && [ "$(cat "$control/work-path.txt")" = "$work" ] || exit 2
 fi
 [ ! -L "$control/client.next" ] && [ ! -L "$control/client.js" ] || exit 2
 [ ! -e "$control/client.next" ] || { echo 'stop: uncommitted control staging retained';exit 2; }

@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-12",
+  "candidate": "0.3.4",
+  "baseline": "0.3.3 coordinator plus a test-only preparing fault point",
+  "baseline_result": {
+    "install_job": "failed by deliberate SIGKILL",
+    "rootfs_unchanged": true,
+    "recovery_job": "failed",
+    "recovery_exit_code": 2
+  },
+  "fix": "prepare and sync journal in .staging-tNNNNNN; atomic publication into active transaction namespace before destination mutation",
+  "early_fault_points": [
+    "preparing",
+    "staged-payload:1",
+    "staged-payload:2",
+    "staged-prepared"
+  ],
+  "source_files_and_rootfs_unchanged_after_early_faults": true,
+  "retained_staging_count_checked": 4,
+  "retry_transaction": "t000005",
+  "retry_install_and_exact_rollback": "passed",
+  "manager_http_recovery_and_retry": "passed",
+  "host_test_suite_passed": 35,
+  "native_cmu_verified": false,
+  "physical_power_loss_verified": false,
+  "legacy_workspace_migration": false
+}

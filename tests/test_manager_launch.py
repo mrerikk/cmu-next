@@ -57,7 +57,7 @@ class ManagerLaunchTests(unittest.TestCase):
  def test_session_bootstrap_publishes_child_and_can_resume(self):
   shutil.copy2(ROOT/'build/host/cmu-io',self.work/'cmu-io')
   shutil.copy2(ROOT/'build/host/cmu-manager',self.work/'cmu-manager')
-  (self.work/'bootstrap-version').write_text('cmu-manager-bootstrap-033\n')
+  (self.work/'bootstrap-version').write_text('cmu-manager-bootstrap-034\n')
   (self.work/'package-path').write_text(str(self.work)+'\n')
   control=self.work/'control'
   session=self.work/'session.sh'

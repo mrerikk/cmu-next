@@ -237,8 +237,16 @@ check_originals
 space_check
 if [ "$action" = plan ]; then echo "install $module_id $count"; exit 0; fi
 n=1
-while :; do tx=$(printf 't%06d' "$n"); [ "$n" -le 999999 ] || error 'transaction limit'; if mkdir "$state/transactions/$tx" 2>/dev/null; then break; fi; n=$((n+1)); done
-folder=$state/transactions/$tx
+# Preparation is not an active transaction. Retain interrupted staging for inspection,
+# but never enumerate it as a transaction that can block journal recovery.
+while :; do
+ tx=$(printf 't%06d' "$n"); [ "$n" -le 999999 ] || error 'transaction limit'
+ destination=$state/transactions/$tx
+ folder=$state/transactions/.staging-$tx
+ if [ ! -e "$destination" ] && [ ! -L "$destination" ] && mkdir "$folder" 2>/dev/null;then break;fi
+ n=$((n+1))
+done
+fault preparing
 cp "$work/files" "$folder/files"; hash "$folder/files" > "$folder/files.sha256"
 printf '%s\n' "$manifest_hash" > "$folder/module.sha256"
 printf '%s\n' "$module_id" > "$folder/module-id"
@@ -255,10 +263,17 @@ while read -r path before after payload mode; do
   syncfile "$folder/backup-$i"; syncfile "$folder/before-$i"
  fi
  "$io" stage "$module/$payload" "$folder/payload-$i" "$after" >/dev/null
+ fault "staged-payload:$i"
  done < "$folder/files"
 for name in files files.sha256 module.sha256 module-id firmware.sha256 created-dirs; do syncfile "$folder/$name"; done
 syncdir "$folder"; syncdir "$state/transactions"
-phase "$folder" prepared; fault prepared
+phase "$folder" prepared
+fault staged-prepared
+# Publish the complete, synced journal directory before any destination mutation.
+[ ! -e "$destination" ] && [ ! -L "$destination" ] || error 'transaction destination appeared'
+mv "$folder" "$destination"; syncdir "$state/transactions"
+folder=$destination
+fault prepared
 check_originals
 i=0
 while read -r path before after payload mode; do

@@ -18,7 +18,7 @@ plain(){ [ ! -L "$1" ] && [ -f "$1" ] && [ "$(stat -c '%h' "$1")" = 1 ]; }
 if [ -e "$control" ] || [ -L "$control" ]; then
  [ ! -L "$control" ] && [ -d "$control" ] || error 'control path type'
  [ "$(stat -c '%a %u %g' "$control")" = "700 $(id -u) $(id -g)" ] || error 'control permissions'
- plain "$control/marker" && [ "$(cat "$control/marker")" = cmu-manager-control-033 ] || error 'different session version; reboot CMU to clear RAM'
+ plain "$control/marker" && [ "$(cat "$control/marker")" = cmu-manager-control-034 ] || error 'different session version; reboot CMU to clear RAM'
  for name in work-path.txt client.js client.next;do
   if [ -e "$control/$name" ] || [ -L "$control/$name" ];then plain "$control/$name" || error 'control file type';fi
  done
@@ -38,14 +38,14 @@ else
  work=$(CDPATH= cd -P "$work" && pwd)
  chown "$(id -u):$(id -g)" "$work";chmod 700 "$work"
  printf 'cmu-manager-ram-01\n' > "$work/marker"
- printf 'cmu-manager-bootstrap-033\n' > "$work/bootstrap-version"
+ printf 'cmu-manager-bootstrap-034\n' > "$work/bootstrap-version"
  printf '%s\n' "$base" > "$work/package-path"
  fresh=yes
 fi
 echo "manager workspace: $work"
 [ "$(stat -c '%a %u %g' "$work")" = "700 $(id -u) $(id -g)" ] || error 'private workspace permissions'
 plain "$work/marker" && [ "$(cat "$work/marker")" = cmu-manager-ram-01 ] || error 'workspace marker'
-plain "$work/bootstrap-version" && [ "$(cat "$work/bootstrap-version")" = cmu-manager-bootstrap-033 ] || error 'workspace version'
+plain "$work/bootstrap-version" && [ "$(cat "$work/bootstrap-version")" = cmu-manager-bootstrap-034 ] || error 'workspace version'
 plain "$work/package-path" && [ "$(cat "$work/package-path")" = "$base" ] || error 'workspace belongs to different USB path'
 for name in bootstrap.lock service.lock service.pid service.log auth client.js client.next;do
  if [ -e "$work/$name" ] || [ -L "$work/$name" ];then plain "$work/$name" || error 'workspace writable file type';fi
@@ -82,6 +82,6 @@ copy_input jci/gui/index.html '@@index-sha@@'
 copy_input jci/gui/common/images/background.png '@@background-sha@@'
 copy_input jci/gui/common/css/common.css '@@css-sha@@'
 if [ "$fresh" = yes ];then
- { echo 'startup-copy-inputs=verified';echo 'bootstrap-version=0.3.3';echo 'temporary-backing-filesystem=tmpfs-or-ramfs';uname -a;cat /proc/self/mountinfo; } > "$work/startup.txt"
+ { echo 'startup-copy-inputs=verified';echo 'bootstrap-version=0.3.4';echo 'temporary-backing-filesystem=tmpfs-or-ramfs';uname -a;cat /proc/self/mountinfo; } > "$work/startup.txt"
 fi
 exec "$io" lock-run "$work/bootstrap.lock" /bin/sh "$work/session.sh" "$work" "$base" "$control"

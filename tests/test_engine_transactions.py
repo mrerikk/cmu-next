@@ -53,6 +53,18 @@ class EngineTransactions(unittest.TestCase):
     transactions=sorted((self.lab/'native-state/transactions').glob('t*'));tx=transactions[-1].name
     blocked=self.run_engine('apply');self.assertNotEqual(blocked.returncode,0);self.assertIn('recovery required',blocked.stderr)
     self.ok('recover',tx);self.assertEqual(snapshot(self.lab/'rootfs'),self.baseline)
+ def test_interrupted_preparation_is_unpublished_and_retryable(self):
+  for fault in ['preparing','staged-payload:1','staged-payload:2','staged-prepared']:
+   with self.subTest(fault=fault):
+    self.assertNotEqual(self.run_engine('apply',fault=fault).returncode,0)
+    self.assertEqual(snapshot(self.lab/'rootfs'),self.baseline)
+    self.assertEqual(self.ok('status').stdout.strip(),'')
+    self.assertFalse(list((self.lab/'native-state/transactions').glob('t*')))
+  staging=list((self.lab/'native-state/transactions').glob('.staging-*'))
+  self.assertEqual(len(staging),4)
+  installed=self.ok('apply');self.assertIn('installed t000005',installed.stdout)
+  self.ok('restore','t000005');self.assertEqual(snapshot(self.lab/'rootfs'),self.baseline)
+  self.assertEqual(len(list((self.lab/'native-state/transactions').glob('.staging-*'))),4)
  def test_interrupted_rollback_is_resumable(self):
   for fault in ['after-restore:2','before-restore:1','after-restore:1']:
    with self.subTest(fault=fault):

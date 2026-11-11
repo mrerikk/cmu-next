@@ -1,9 +1,12 @@
-"""Build native tools; optionally assemble the 0.3.3 USB candidate."""
+"""Build native tools; optionally assemble the 0.3.4 USB candidate."""
 from pathlib import Path
 import argparse,subprocess,hashlib,json,shutil,importlib.util
 root=Path(__file__).resolve().parents[1];source=root/'src/manager';engine=root/'src/engine'
-parser=argparse.ArgumentParser(description=__doc__);target=parser.add_mutually_exclusive_group(required=True);target.add_argument('--host',action='store_true');target.add_argument('--arm',action='store_true');parser.add_argument('--zig');parser.add_argument('--firmware-index');args=parser.parse_args()
-out=root/'build'/('arm' if args.arm else 'host');out.mkdir(parents=True,exist_ok=True)
+parser=argparse.ArgumentParser(description=__doc__);target=parser.add_mutually_exclusive_group(required=True);target.add_argument('--host',action='store_true');target.add_argument('--arm',action='store_true');parser.add_argument('--zig');parser.add_argument('--firmware-index');parser.add_argument('--out');args=parser.parse_args()
+out=Path(args.out) if args.out else root/'build'/('arm' if args.arm else 'host')
+if args.out and out.exists():raise ValueError('explicit output directory must not already exist')
+if args.firmware_index and (out/'usb').exists():raise ValueError('USB output exists; choose a new --out directory')
+out.mkdir(parents=True,exist_ok=True)
 if args.arm and not args.zig:parser.error('--arm requires --zig pointing to Zig 0.15.2')
 if args.arm and subprocess.check_output([args.zig,'version'],text=True).strip()!='0.15.2':parser.error('Zig 0.15.2 is required for the recorded target')
 compiler=([args.zig,'cc','-target','arm-linux.3.0.35-musleabi','-mcpu=arm1176jz_s','-D_FILE_OFFSET_BITS=64','-static'] if args.arm else ['cc'])
@@ -33,5 +36,5 @@ if args.firmware_index:
  (usb/'js').mkdir();shutil.copyfile(out/'run.js',usb/'js/run.js');(usb/'mp3').mkdir();[shutil.copyfile(p,usb/'mp3'/p.name) for p in sorted((root/'src/loaders').glob('*.mp3'))]
  shutil.copyfile(root/'src/diagnostics/diagnose.sh',package/'diagnose.sh')
  (out/'build-pins.json').write_text(json.dumps(pins,indent=2)+'\n')
- print('Built manager 0.3.3 candidate; native CMU validation pending:',usb)
+ print('Built manager 0.3.4 candidate; native CMU validation pending:',usb)
 else:print('Built tools and UI at',out,'; no firmware or vehicle state accessed')

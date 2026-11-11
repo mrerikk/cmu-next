@@ -58,7 +58,7 @@ python3 tools/cmu-ssh.py disconnect
 ## Native automation sequence
 
 1. Verify the SSH host identity, account, firmware observation and RAM/USB layout.
-2. Confirm manager 0.3.3 startup over SSH using the same prepared package and existing script. Confirm authenticated service health and UI connection on CMU.
+2. Confirm the selected manager candidate startup over SSH using the same prepared package and existing script. Confirm authenticated service health and UI connection on CMU.
 3. Adapt the existing copy-only backend workflow to the verified native session: checkpoint, install on the marked RAM copy, duplicate-request handling, rollback, recovery and report collection.
 4. Keep report files local and verify them before publishing sanitized summaries.
 5. Separately verify controller input, native menus, camera, CarPlay/Android Auto and graphics on the vehicle. SSH process checks do not prove those behaviors.

@@ -51,7 +51,7 @@ The firmware under investigation on the test CMU is **74.00.324A EU**, running L
 
 Engine Check 0.2 produced a consistent vehicle report for operations on a **RAM file copy**. This does not prove permanent storage, boot recovery, actual Opera rendering, camera/CarPlay/Android Auto behavior, or physical power-loss recovery.
 
-Manager 0.3.1 reported `manager ready` on the vehicle, but its UI stayed offline and the expected listener was not observed. Manager 0.3.2 then failed initial startup. A terminal process-group failure was reproduced on the host, including a group-leader case that 0.3.2 does not handle. The exact vehicle failure is still awaiting diagnostics. Candidate 0.3.3 now implements a fork-before-setsid launcher and actual service PID publication; five real-process host regressions pass, but it still needs a CMU run. **Neither version should be advertised as stable.**
+Manager 0.3.1 reported `manager ready` on the vehicle, but its UI stayed offline and the expected listener was not observed. Manager 0.3.2 then failed initial startup. A terminal process-group failure was reproduced on the host, including a group-leader case that 0.3.2 does not handle. The exact vehicle failure is still awaiting diagnostics. Candidate 0.3.3 introduced a fork-before-setsid launcher and actual service PID publication. Current candidate 0.3.4 additionally publishes complete prepared transaction journals atomically; host regressions pass, but it still needs a fresh-session CMU run. **Neither version should be advertised as stable.**
 
 The temporary visual overlay lasts 10 minutes. The manager accepts new actions for 15 minutes and allows an accepted job to finish. Their `js/run.js` loaders are separate alternatives and must not be merged.
 

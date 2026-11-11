@@ -112,7 +112,7 @@ case "$action" in
   "$io" check "$destination/preflight.txt.part" "$preflight_sha" >/dev/null
   mv "$destination/preflight.txt.part" "$destination/preflight.txt"
   {
-   echo 'cmu-manager-report=0.3.1';echo 'mode=ram-lab';echo 'live-installation=disabled'
+   echo 'cmu-manager-report=0.3.1';echo 'manager-version=0.3.4';echo 'mode=ram-lab';echo 'live-installation=disabled'
    echo 'preflight-attachment=preflight.txt'
    echo "preflight-report-sha256=$preflight_sha"
    echo "preflight-worker-exit=$preflight_result"

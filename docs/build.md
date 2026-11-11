@@ -29,12 +29,12 @@ python3 tools/materialize-module.py --firmware-index /path/to/index.html --out b
 
 The script requires the recorded original digest, inserts only the project bootstrap, verifies the resulting digest and all 82 module payloads, and writes into a new directory. It never edits the input. Its output includes an OEM-derived file and remains ignored by Git.
 
-## Manager startup candidate 0.3.3
+## Manager candidate 0.3.4
 
-Current sources build candidate 0.3.3 with a fork-before-setsid launcher. It addresses a reproduced 0.3.2 host failure but remains unverified on CMU. Historical 0.3.2 sources remain in history. To reconstruct the complete USB candidate locally:
+Current sources build candidate 0.3.4 with the fork-before-setsid launcher and staged publication of complete transaction journals. It addresses a reproduced 0.3.2 host failure but remains unverified on CMU. Historical 0.3.2 sources remain in history. To reconstruct the complete USB candidate locally:
 
 ```sh
-python3 tools/build-manager.py --arm --zig /path/to/zig --firmware-index /path/to/index.html
+python3 tools/build-manager.py --arm --out build/manager-0.3.4 --zig /path/to/zig --firmware-index /path/to/index.html
 ```
 
 This builds three ARM tools, regenerates their pins, reconstructs the module from the supplied OEM index, and creates `build/arm/usb`. The output directory must not already exist. Retain required musl/Zig notices if distributing linked binaries. The build does not prove the candidate works on the CMU.

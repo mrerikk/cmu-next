@@ -6,10 +6,10 @@ export PATH
 stop(){ echo "check: $*";exit 2; }
 plain(){ [ ! -L "$1" ] && [ -f "$1" ] && [ "$(stat -c '%h' "$1")" = 1 ]; }
 control=/tmp/cmu-next-control
-echo 'manager check 0.3.3'
+echo 'manager check 0.3.4'
 [ ! -L "$control" ] && [ -d "$control" ] || stop 'control directory unavailable'
 [ "$(stat -c '%a %u %g' "$control")" = "700 $(id -u) $(id -g)" ] || stop 'control identity refused'
-plain "$control/marker" && [ "$(cat "$control/marker")" = cmu-manager-control-033 ] || stop 'different session; finish work and reboot CMU before changing versions'
+plain "$control/marker" && [ "$(cat "$control/marker")" = cmu-manager-control-034 ] || stop 'different session; finish work and reboot CMU before changing versions'
 plain "$control/work-path.txt" || stop 'work pointer unavailable'
 work=$(cat "$control/work-path.txt")
 case "$work" in *[!a-zA-Z0-9_./-]*) stop 'work pointer refused';; esac

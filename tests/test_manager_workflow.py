@@ -80,7 +80,7 @@ class ManagerWorkflow(unittest.TestCase):
   self.success('rollback','t000001');self.assertEqual(files(self.root),self.original)
   self.success('restore');self.assertEqual(files(self.root),self.original)
   self.success('report');dest=self.pack.parent/'cmu-manager-report-1';self.assertTrue((dest/'report.txt').exists());self.assertTrue((dest/'preflight.txt').exists())
-  report=(dest/'report.txt').read_text();self.assertIn('report-collected=yes',report);self.assertIn('execution-context=synthetic-host-fixture',report)
+  report=(dest/'report.txt').read_text();self.assertIn('report-collected=yes',report);self.assertIn('manager-version=0.3.4',report);self.assertIn('execution-context=synthetic-host-fixture',report)
   self.assertNotIn(self.token,report);self.assertIn(sha(dest/'preflight.txt'),report)
  def test_failed_install_requires_recovery_then_restores_originals(self):
   (self.work/'fault').write_text('after-publish:1')
@@ -91,6 +91,13 @@ class ManagerWorkflow(unittest.TestCase):
   nonce=self.rpc('nonce')['data']['key'];self.assertFalse(self.rpc('backup',key=nonce)['ok'])
   (self.work/'fault').unlink();self.success('recover')
   self.assertFalse(self.rpc('status')['data']['recovery_required']);self.assertEqual(files(self.root),self.original)
+ def test_interrupted_preparation_recovers_without_incomplete_transaction(self):
+  (self.work/'fault').write_text('preparing')
+  job,key,_=self.submit('install','synthetic-theme');self.assertEqual(self.wait_job(job)['phase'],'failed')
+  self.assertEqual(files(self.root),self.original)
+  (self.work/'fault').unlink();self.success('recover')
+  self.assertFalse(self.rpc('status')['data']['recovery_required'])
+  self.success('install','synthetic-theme')
  def test_service_restart_preserves_request_identity_and_transaction(self):
   job,key,_=self.success('install','synthetic-theme');oldpid=self.pid;token=self.token
   os.kill(oldpid,signal.SIGTERM)
