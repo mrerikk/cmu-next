@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-12",
+  "component": "application-lifecycle-core",
+  "version": "0.1",
+  "test": "tests/test_app_runtime.cjs",
+  "synthetic_groups_passed": 8,
+  "scope": "constructed host and DOM fixtures",
+  "native_framework_bridge": false,
+  "installed_on_vehicle": false,
+  "real_vehicle_speed_source": false,
+  "speedometer_implemented": false,
+  "usb_candidate_changed": false
+}

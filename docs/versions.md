@@ -8,6 +8,7 @@ This repository imports real source milestones rather than inventing a historica
 | Manager | 0.1, engineering 0.2 / 0.2.1, 0.3, 0.3.1, 0.3.2 | Historical candidates. 0.3.1 and 0.3.2 have reported hardware startup failures. |
 | SSH test transport | 0.1 / 0.1.1 | Connection preparation, read-only observations and loopback forwarding; offline checks pass, native connection pending. |
 | Manager candidates | 0.3.3 / 0.3.4 | 0.3.3 fixes forked launch; 0.3.4 adds staged transaction publication and versioned reports. Both require native validation; use fresh versioned RAM sessions. |
+| Application lifecycle core | 0.1 | Local component only: registration/teardown, input and speed-data validity; no native bridge or working speedometer. |
 | Retrofit | 0.6.2, 0.7, 0.7.1, 0.8 | Significant visual milestones. 0.6.2 preserves the accepted selection treatment; 0.8 adds equipment-driven categories. |
 | Engine check | 0.2 | A consistent vehicle report exists for RAM-copy engine operations; raw report is private. |
 | Preflight | 0.2 | Integrated into manager 0.3.1 onward; actual native preflight success remains pending. |

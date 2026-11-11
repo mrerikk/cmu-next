@@ -30,6 +30,7 @@ The agreed sequence is:
 3. First visual module on the vehicle, then other groups.
 4. A custom application runtime and a new speedometer.
 5. Separate redesign of complex multimedia modules.
+6. Publish significant versions and maintain English documentation and validation evidence on GitHub.
 
 ## Components
 
@@ -41,6 +42,7 @@ The agreed sequence is:
 | Read-only preflight | `src/preflight` | Observes expected files, mounts and storage; does not authorize permanent installation. |
 | Startup diagnostics | `src/diagnostics` | Reads marked temporary workspaces even if initial service startup failed. |
 | Storage / boot research | `src/storage-probe`, `src/boot-hook` | Engineering candidates, not a production boot integration. |
+| Application lifecycle core 0.1 | `src/apps` | Host-only lifecycle foundation; no native bridge, vehicle telemetry source or working speedometer yet. |
 | Historical milestones | `history` | Selected source versions, with status and limitations documented. |
 
 ## Compatibility and status
@@ -66,6 +68,7 @@ Current MP3 entry files are generated from our own zero-PCM carrier and ID3 buil
 ## Getting started
 
 - [Build and package sources](docs/build.md)
+- [Next native run — manager 0.3.4](docs/next-native-run.md)
 - [Vehicle test procedure](docs/testing.md)
 - [Wi-Fi / SSH test connection](docs/ssh-testing.md)
 - [Architecture and state boundaries](docs/architecture.md)
