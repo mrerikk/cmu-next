@@ -7,3 +7,7 @@
 - **Reference material:** Mazda Connect 2 official owner's manual and user-provided visual references informed the retrofit. Reference screenshots themselves are excluded from the source import.
 
 The owner selected PolyForm Noncommercial 1.0.0 for project-authored code and documentation. Commercial use requires separate permission. The license text is preserved unchanged from the official PolyForm 1.0.0 source; the required copyright notice is in `notice.md`. This does not relicense the font, OEM-derived graphics, trademarks, or other third-party material. Review the respective asset terms before distributing a combined binary package.
+
+## Generated scripts and unresolved rights
+
+`js/run.js` is generated from project-developed JavaScript, but a visual bundle can embed separately licensed fonts and OEM-derived or incompletely traced PNGs. The filename does not make all embedded content project-owned. See [authorship and distribution review](provenance.md). Permission for every graphic has not been established; attribution alone does not clear redistribution.
