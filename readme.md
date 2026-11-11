@@ -2,6 +2,6 @@
 
 Experimental Mazda Connect 2-inspired retrofit for Mazda Connect 1.
 
-Project sources, version history, English documentation, and verified status information are being imported. This project is under active development; no production-ready permanent installer is available.
+**Source-available under PolyForm Noncommercial 1.0.0. Commercial use requires separate permission from the owner.** See [license](license.md) and [required notice](notice.md). Third-party materials retain their respective terms.
 
-Target firmware under investigation: 74.00.324A EU.
+Project sources, version history and English documentation are being imported. No production-ready permanent installer is available. Target firmware under investigation: 74.00.324A EU.
