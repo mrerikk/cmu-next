@@ -1,0 +1,21 @@
+# Local firmware and vehicle data
+firmware/
+rootfs/
+private/
+reports/
+backups/
+*.up
+*.img
+*.log
+*.pid
+auth
+client.js
+work-path.txt
+# Generated output and toolchains
+build/
+dist/
+zig-cache/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store

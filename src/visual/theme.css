@@ -1,0 +1,261 @@
+/* Temporary OEM skin 0.3. Visual properties only; stock layout and states remain authoritative. */
+body.cmu-skin-05 .CommonBgImg{background-image:url("common/images/cmu-next-layout/asset-7573352a258bc0ed8115.png") !important;background-color:#090909 !important;}
+body.cmu-skin-05 .StatusBarCtrl{background-image:none !important;background-color:#111111 !important;color:#f7f7f7 !important;box-shadow:inset 0 -1px #333333 !important;}
+body.cmu-skin-05 .MainMenuCtrlEllipse{background-image:none !important;}
+body.cmu-skin-05 .MainMenuCtrlIconName{color:#f8f8f8 !important;text-shadow:none !important;}
+body.cmu-skin-05 .MainMenuCtrlAppNormal{background-image:url("common/images/cmu-next-layout/asset-568e3f039621d57ceb32.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlAppFocus{background-image:url("common/images/cmu-next-layout/asset-8420e5a787c6c21fddf7.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlAppHighlight{background-image:none !important;}
+body.cmu-skin-05 .MainMenuCtrlEntNormal{background-image:url("common/images/cmu-next-layout/asset-d2d6c5347ea0495d0391.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlEntFocus{background-image:url("common/images/cmu-next-layout/asset-67e6ff61b0085d53ddc5.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlEntHighlight{background-image:none !important;}
+body.cmu-skin-05 .MainMenuCtrlComNormal{background-image:url("common/images/cmu-next-layout/asset-70fb322f1f0006a6ba27.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlComFocus{background-image:url("common/images/cmu-next-layout/asset-d3d5d7edb92fff924b19.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlComHighlight{background-image:none !important;}
+body.cmu-skin-05 .MainMenuCtrlNavNormal{background-image:url("common/images/cmu-next-layout/asset-dc6bd90aad008fd62b1d.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlNavFocus{background-image:url("common/images/cmu-next-layout/asset-57d4485f38158ea5151d.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlNavHighlight{background-image:none !important;}
+body.cmu-skin-05 .MainMenuCtrlSetNormal{background-image:url("common/images/cmu-next-layout/asset-7ed160821e8cecb3933a.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlSetFocus{background-image:url("common/images/cmu-next-layout/asset-1cb5ae6b9991277fc525.png") !important;background-repeat:no-repeat !important;background-position:0 0 !important;}
+body.cmu-skin-05 .MainMenuCtrlSetHighlight{background-image:none !important;}
+body.cmu-skin-05 .List2Ctrl{background-image:none !important;background-color:#101010 !important;border-radius:14px;}
+body.cmu-skin-05 .List2CtrlActiveArea{background-image:none !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem{background-image:none !important;background-color:#141414 !important;box-shadow:inset 0 -1px #303030 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.focus{background-color:#282828 !important;box-shadow:inset 3px 0 #eeeeee,inset 0 -1px #5b5b5b !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.hit,body.cmu-skin-05 .List2Ctrl .ListItem.hit.focus{background-color:#393939 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.disabled{background-color:#111111 !important;box-shadow:inset 0 -1px #2b2b2b !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.disabled.focus{background-color:#292929 !important;}
+body.cmu-skin-05 .ButtonCtrl{background-color:#242424 !important;color:#f0f0f0 !important;border-color:#555555 !important;border-radius:12px;}
+body.cmu-skin-05 .ButtonCtrlFocused{background-color:#2e2e2e !important;border-color:#eeeeee !important;}
+body.cmu-skin-05 .ButtonCtrlDown,body.cmu-skin-05 .ButtonCtrlHeld{background-color:#3b3b3b !important;}
+body.cmu-skin-05 .ButtonCtrlDisabled{background-color:#191919 !important;color:#949494 !important;border-color:#353535 !important;}
+body.cmu-skin-05 .TabsCtrlStyle2ButtonEnabled{background-image:none !important;background-color:#191919 !important;color:#bcbcbc !important;box-shadow:inset 0 -1px #414141 !important;}
+body.cmu-skin-05 .TabsCtrlStyle2ButtonEnabledCurrent{background-image:none !important;background-color:#282828 !important;color:#ffffff !important;box-shadow:inset 0 -3px #eeeeee !important;}
+body.cmu-skin-05 .TabsCtrlStyle2ButtonDown,body.cmu-skin-05 .TabsCtrlStyle2ButtonDownCurrent{background-image:none !important;background-color:#2b2b2b !important;}
+body.cmu-skin-05 .TabsCtrlStyle2ButtonDisabled{color:#777777 !important;background-color:#141414 !important;}
+body.cmu-skin-05 .TabsCtrlStyle3ButtonEnabled{background-image:none !important;background-color:#191919 !important;color:#bcbcbc !important;box-shadow:inset 0 -1px #414141 !important;}
+body.cmu-skin-05 .TabsCtrlStyle3ButtonEnabledCurrent{background-image:none !important;background-color:#282828 !important;color:#ffffff !important;box-shadow:inset 0 -3px #eeeeee !important;}
+body.cmu-skin-05 .TabsCtrlStyle3ButtonDown,body.cmu-skin-05 .TabsCtrlStyle3ButtonDownCurrent{background-image:none !important;background-color:#2b2b2b !important;}
+body.cmu-skin-05 .TabsCtrlStyle3ButtonDisabled{color:#777777 !important;background-color:#141414 !important;}
+body.cmu-skin-05 .TabsCtrlStyle4ButtonEnabled{background-image:none !important;background-color:#191919 !important;color:#bcbcbc !important;box-shadow:inset 0 -1px #414141 !important;}
+body.cmu-skin-05 .TabsCtrlStyle4ButtonEnabledCurrent{background-image:none !important;background-color:#282828 !important;color:#ffffff !important;box-shadow:inset 0 -3px #eeeeee !important;}
+body.cmu-skin-05 .TabsCtrlStyle4ButtonDown,body.cmu-skin-05 .TabsCtrlStyle4ButtonDownCurrent{background-image:none !important;background-color:#2b2b2b !important;}
+body.cmu-skin-05 .TabsCtrlStyle4ButtonDisabled{color:#777777 !important;background-color:#141414 !important;}
+body.cmu-skin-05 .TabsCtrlStyle4PrevBtn,body.cmu-skin-05 .TabsCtrlStyle4NextBtn,body.cmu-skin-05 .TabsCtrlStyle4PrevNextBtnHit{background-image:none !important;background-color:#191919 !important;}
+body.cmu-skin-05 .TabsCtrlBottomMask{background-image:none !important;background-color:#101010 !important;}
+body.cmu-skin-05 .ButtonCtrlIcon[style*="Tab_ArrowLeft.png"]{background-image:url("common/images/cmu-next-layout/asset-fe93fda9a396a90d2933.png") !important;}
+body.cmu-skin-05 .ButtonCtrlIcon[style*="Tab_ArrowLeft_Ds.png"]{background-image:url("common/images/cmu-next-layout/asset-2927eb0dd5eac4a5e07b.png") !important;}
+body.cmu-skin-05 .ButtonCtrlIcon[style*="Tab_ArrowRight.png"]{background-image:url("common/images/cmu-next-layout/asset-c9a9bc64fda5b2618aa1.png") !important;}
+body.cmu-skin-05 .ButtonCtrlIcon[style*="Tab_ArrowRight_Ds.png"]{background-image:url("common/images/cmu-next-layout/asset-48613672b7e9e0252e15.png") !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style10 .button{background-image:none !important;background-color:#252525 !important;color:#d4d4d4 !important;box-shadow:inset 0 -1px #555555 !important;text-shadow:none !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style10 .button.active{background-color:#2f2f2f !important;color:#ffffff !important;box-shadow:inset 0 -3px #eeeeee !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style10 .button.hit,body.cmu-skin-05 .List2Ctrl .ListItem.style10 .button.active.hit{background-color:#414141 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style10.disabled .button{background-color:#1b1b1b !important;color:#777777 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style10.disabled .button.active{box-shadow:inset 0 -2px #686868 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style11 .button{background-image:none !important;background-color:#252525 !important;color:#d4d4d4 !important;box-shadow:inset 0 -1px #555555 !important;text-shadow:none !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style11 .button.active{background-color:#2f2f2f !important;color:#ffffff !important;box-shadow:inset 0 -3px #eeeeee !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style11 .button.hit,body.cmu-skin-05 .List2Ctrl .ListItem.style11 .button.active.hit{background-color:#414141 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style11.disabled .button{background-color:#1b1b1b !important;color:#777777 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.style11.disabled .button.active{box-shadow:inset 0 -2px #686868 !important;}
+body.cmu-skin-05 .CommonRightChrome,body.cmu-skin-05 .LeftBtnCtrl_ChromeArc{background-image:none !important;background-color:#121212 !important;}
+body.cmu-skin-05 .LeftBtnCtrlBackBtn{background-image:url("common/images/cmu-next-layout/asset-ce26f8aa84e7bef327bc.png") !important;}
+body.cmu-skin-05 .LeftBtnCtrlBackBtnDisabled{background-image:url("common/images/cmu-next-layout/asset-a2f53f90275f54dc0ac9.png") !important;}
+body.cmu-skin-05 .LeftBtnCtrlBackBtnFocused{background-image:url("common/images/cmu-next-layout/asset-f7b37c851ea9431137a6.png") !important;}
+body.cmu-skin-05 .LeftBtnCtrlBackBtnDown{background-image:url("common/images/cmu-next-layout/asset-f7b37c851ea9431137a6.png") !important;}
+body.cmu-skin-05 .List2CtrlScrollIndicator{background-image:url("common/images/cmu-next-layout/asset-9701c4b3d3495b690f43.png") !important;background-repeat:repeat-y !important;background-position:0 0 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_En{background-image:none !important;background-color:#242424 !important;color:#eeeeee !important;box-shadow:inset 0 0 0 1px #555555 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_focused{background-image:none !important;background-color:#2e2e2e !important;color:#ffffff !important;box-shadow:inset 0 0 0 2px #eeeeee !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_down,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_held{background-image:none !important;background-color:#3b3b3b !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_Ds{background-image:none !important;background-color:#1b1b1b !important;color:#777777 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_En{background-image:none !important;background-color:#242424 !important;color:#eeeeee !important;box-shadow:inset 0 0 0 1px #555555 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_focused{background-image:none !important;background-color:#2e2e2e !important;color:#ffffff !important;box-shadow:inset 0 0 0 2px #eeeeee !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_down,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_held{background-image:none !important;background-color:#3b3b3b !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_Ds{background-image:none !important;background-color:#1b1b1b !important;color:#777777 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle03_En{background-image:none !important;background-color:#242424 !important;color:#eeeeee !important;box-shadow:inset 0 0 0 1px #555555 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle03_focused{background-image:none !important;background-color:#2e2e2e !important;color:#ffffff !important;box-shadow:inset 0 0 0 2px #eeeeee !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle03_down,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle03_held{background-image:none !important;background-color:#3b3b3b !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle03_Ds{background-image:none !important;background-color:#1b1b1b !important;color:#777777 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle04_En{background-image:none !important;background-color:#242424 !important;color:#eeeeee !important;box-shadow:inset 0 0 0 1px #555555 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle04_focused{background-image:none !important;background-color:#2e2e2e !important;color:#ffffff !important;box-shadow:inset 0 0 0 2px #eeeeee !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle04_down,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle04_held{background-image:none !important;background-color:#3b3b3b !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle04_Ds{background-image:none !important;background-color:#1b1b1b !important;color:#777777 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_BG_Style01{background-image:none !important;background-color:#171717 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_BG_Style02{background-image:none !important;background-color:#171717 !important;}
+body.cmu-skin-05 .Dialog3Ctrl,body.cmu-skin-05 .Dialog3CtrlFs{background-image:none !important;background-color:#171717 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlIconName{opacity:0 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinFocus{-o-transform:none !important;transform:none !important;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinAExplode,body.cmu-layout-home-05 .MainMenuCtrlCoinBExplode,body.cmu-layout-home-05 .MainMenuCtrlHighlightExplode{animation-name:none !important;}
+body.cmu-layout-home-05 .MainMenuCtrl{background-image:url("common/images/cmu-next-layout/asset-b85c98e96dc1351976d0.png") !important;}
+body.cmu-layout-home-05 .StatusBarCtrl{background-color:#090909 !important;box-shadow:none !important;}
+body.cmu-layout-home-05 .cmu-layout-label{position:absolute;left:74px;top:0;height:62px;line-height:62px;font-size:28px;color:#bbbbbb;white-space:nowrap;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinFocus .cmu-layout-label{font-size:30px;color:#ffffff;}
+body.cmu-layout-home-05 .MainMenuCtrlAppDiv{left:130px !important;top:32px !important;width:440px !important;height:62px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlAppNormal{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-97887f1bfa5c779890e6.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlAppFocus{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-6ef0c2bc16473be755c3.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlAppFocus{opacity:0 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinFocus .MainMenuCtrlAppFocus{opacity:1 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntDiv{left:100px !important;top:100px !important;width:440px !important;height:62px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntNormal{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-a41f387b427c302db147.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntFocus{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-53e992913221243ad3f2.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntFocus{opacity:0 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinFocus .MainMenuCtrlEntFocus{opacity:1 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComDiv{left:90px !important;top:168px !important;width:440px !important;height:62px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComNormal{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-25b2b6a4cf9f5b276e0b.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComFocus{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-842c7a53dd666ed56f78.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComFocus{opacity:0 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinFocus .MainMenuCtrlComFocus{opacity:1 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavDiv{left:100px !important;top:236px !important;width:440px !important;height:62px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavNormal{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-76a2fdd220be34dac233.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavFocus{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-e552e4541155e8d1b5f2.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavFocus{opacity:0 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinFocus .MainMenuCtrlNavFocus{opacity:1 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetDiv{left:130px !important;top:304px !important;width:440px !important;height:62px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetNormal{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-f17454c76270bde66b26.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetFocus{width:440px !important;height:62px !important;background-image:url("common/images/cmu-next-layout/asset-f1d5b434d55176485e15.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetFocus{opacity:0 !important;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinFocus .MainMenuCtrlSetFocus{opacity:1 !important;}
+body.cmu-layout-home-05 .cmu-layout-clock{position:absolute;left:586px;top:125px;width:160px;height:160px;}
+body.cmu-layout-home-05 .cmu-layout-clock-canvas{width:160px;height:160px;}
+body.cmu-layout-list-05 .StatusBarCtrl{background-color:#090909 !important;box-shadow:none !important;}
+body.cmu-layout-list-05 .StatusBarCtrlAppName{font-size:30px !important;}
+body.cmu-layout-list-05 .List2Ctrl,body.cmu-layout-list-05 .List2Ctrl .ListItem{background-color:#090909 !important;box-shadow:none !important;border-radius:0 !important;}
+body.cmu-layout-list-05 .List2Ctrl .ListItem.focus{background-color:#191919 !important;box-shadow:inset 0 1px #aaaaaa,inset 0 -1px #888888 !important;}
+body.cmu-layout-list-05 .List2Ctrl .ListItem.hit,body.cmu-layout-list-05 .List2Ctrl .ListItem.hit.focus{background-color:#292929 !important;}
+body.cmu-layout-list-05 .List2Ctrl .ListItem.disabled{background-color:#090909 !important;}
+body.cmu-layout-list-05 .List2Ctrl .ListItem.disabled.focus{background-color:#181818 !important;box-shadow:inset 0 1px #666666,inset 0 -1px #444444 !important;}
+body.cmu-layout-list-05 .List2Ctrl .ListItem .line1{font-size:30px !important;}
+body.cmu-skin-05 .StatusBarCtrlAppName,body.cmu-skin-05 .StatusBarCtrlClock,body.cmu-skin-05 .List2Ctrl .line1,body.cmu-skin-05 .List2Ctrl .line2,body.cmu-skin-05 .List2Ctrl .label1,body.cmu-skin-05 .List2Ctrl .label2{text-shadow:none !important;}
+body.cmu-skin-05 .ButtonCtrl{border-radius:3px !important;}
+body.cmu-skin-05 .CommonBgImg{background-image:url("common/images/cmu-next-layout/asset-a39e62035485d7ee75c6.png") !important;background-color:#080808 !important;}
+body.cmu-skin-05 .LeftBtnCtrlBackBtn,body.cmu-skin-05 .LeftBtnCtrlBackBtnDisabled,body.cmu-skin-05 .LeftBtnCtrlBackBtnFocused,body.cmu-skin-05 .LeftBtnCtrlBackBtnDown{display:none !important;}
+body.cmu-skin-05 .LeftBtnCtrl_ChromeArc,body.cmu-skin-05 .CommonRightChrome{display:none !important;}
+body.cmu-skin-05 .List2CtrlScrollIndicatorWrapper{background-image:none !important;background-color:#171717 !important;}
+body.cmu-skin-05 .List2CtrlScrollIndicator{background-image:url("common/images/cmu-next-layout/asset-a7544b054766811ed717.png") !important;background-repeat:repeat-y !important;background-position:0 0 !important;}
+body.cmu-skin-05 .List2Ctrl,body.cmu-skin-05 .List2Ctrl .ListItem{border-radius:0 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.focus{background-color:#202020 !important;box-shadow:inset 0 1px #bbbbbb,inset 0 -1px #bbbbbb !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.hit,body.cmu-skin-05 .List2Ctrl .ListItem.hit.focus{background-color:#333333 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.disabled.focus{background-color:#171717 !important;box-shadow:inset 0 1px #666666,inset 0 -1px #666666 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_Red_En,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_Green_En{background-image:none !important;background-color:#242424 !important;color:#eeeeee !important;box-shadow:inset 0 0 0 1px #777777 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_Red_En,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_Green_En{background-image:none !important;background-color:#242424 !important;color:#eeeeee !important;box-shadow:inset 0 0 0 1px #777777 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle03_Red_En,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle03_Green_En{background-image:none !important;background-color:#242424 !important;color:#eeeeee !important;box-shadow:inset 0 0 0 1px #777777 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle04_Red_En,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle04_Green_En{background-image:none !important;background-color:#242424 !important;color:#eeeeee !important;box-shadow:inset 0 0 0 1px #777777 !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.checkbox .image1{background-image:url("common/images/cmu-next-layout/asset-5c9004c25de2ba857127.png") !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.checkbox.disabled .image1{background-image:url("common/images/cmu-next-layout/asset-9fc00b8502693f8058ba.png") !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.checkbox.checked .image1{background-image:url("common/images/cmu-next-layout/asset-bbc9da2e6e1df159c18d.png") !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.checkbox.checked.disabled .image1{background-image:url("common/images/cmu-next-layout/asset-673108182ed4299da24c.png") !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.radio .image1{background-image:url("common/images/cmu-next-layout/asset-298bb807871a444435c4.png") !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.radio.disabled .image1{background-image:url("common/images/cmu-next-layout/asset-94432e647a90330b3811.png") !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.radio.checked .image1{background-image:url("common/images/cmu-next-layout/asset-9b44ad6186ed4d1197c1.png") !important;}
+body.cmu-skin-05 .List2Ctrl .ListItem.radio.checked.disabled .image1{background-image:url("common/images/cmu-next-layout/asset-599ffe20e87754d93bb6.png") !important;}
+body.cmu-skin-05 .List2CtrlSliderCtrl{background-image:url("common/images/cmu-next-layout/asset-739f0a3902a8209fafb8.png") !important;background-repeat:repeat-x !important;}
+body.cmu-skin-05 .List2CtrlSliderCtrlFill,body.cmu-skin-05 .List2CtrlSliderCtrlFocusedFill{background-image:url("common/images/cmu-next-layout/asset-53280f84d6a49e0ec098.png") !important;background-repeat:repeat-x !important;}
+body.cmu-skin-05 .List2CtrlSliderCtrlHandle{background-image:url("common/images/cmu-next-layout/asset-2d409f7b46041623b69d.png") !important;}
+body.cmu-skin-05 .List2CtrlSliderCtrlFocusedHandle{background-image:url("common/images/cmu-next-layout/asset-26bd5d5f6dbee7499e81.png") !important;}
+
+/* 0.5.2: genuine OEM row assets, only color channels changed. */
+body.cmu-skin-05 .List2Ctrl .ListItem.focus,body.cmu-skin-05 .List2Ctrl .ListItem.hit,body.cmu-skin-05 .List2Ctrl .ListItem.longpress,body.cmu-skin-05 .List2Ctrl .ListItem.secondaryFocus,body.cmu-skin-05 .List2Ctrl .ListItem.bgGrey,body.cmu-skin-05 .List2Ctrl .ListItem.bgLightGrey{box-shadow:none !important;background-color:transparent !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.bgGrey{background-image: url("common/images/cmu-next-layout/asset-038bfe8f7706a477d8b9.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.bgLightGrey{background-image: url("common/images/cmu-next-layout/asset-cc77d3ef21e3a9f6a34a.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.hit{background-image: url("common/images/cmu-next-layout/asset-f650ca4795da516c4b79.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.focus{background-image: url("common/images/cmu-next-layout/asset-bebbfa27468b36b6a587.png"), url("common/images/cmu-next-layout/asset-dd20e7ee576cffa8d3cd.png") !important;background-position: 0 100%, 0 100% !important;background-repeat: no-repeat, repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.bgGrey.disabled{background-image: url("common/images/cmu-next-layout/asset-038bfe8f7706a477d8b9.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.bgLightGrey.disabled{background-image: url("common/images/cmu-next-layout/asset-cc77d3ef21e3a9f6a34a.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.disabled.focus{background-image: url("common/images/cmu-next-layout/asset-dd20e7ee576cffa8d3cd.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.longpress.longpress.longpress{background-image: url("common/images/cmu-next-layout/asset-038bfe8f7706a477d8b9.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.hit.focus{background-image: url("common/images/cmu-next-layout/asset-f650ca4795da516c4b79.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.secondaryFocus.secondaryFocus.secondaryFocus{background-image: url("common/images/cmu-next-layout/asset-bebbfa27468b36b6a587.png") !important;background-position: 0 100% !important;background-repeat: no-repeat !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.bgGrey{background-image: url("common/images/cmu-next-layout/asset-36e8c962880bb10b4244.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.bgLightGrey{background-image: url("common/images/cmu-next-layout/asset-37fd6e0713af9e5c44c8.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.hit{background-image: url("common/images/cmu-next-layout/asset-09c234ae83e36431d967.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.focus{background-image: url("common/images/cmu-next-layout/asset-bebbfa27468b36b6a587.png"), url("common/images/cmu-next-layout/asset-9968b8dec590ae18869f.png") !important;background-position: 0 100%, 0 100% !important;background-repeat: no-repeat, repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.bgGrey.disabled{background-image: url("common/images/cmu-next-layout/asset-36e8c962880bb10b4244.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.bgLightGrey.disabled{background-image: url("common/images/cmu-next-layout/asset-37fd6e0713af9e5c44c8.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.disabled.focus{background-image: url("common/images/cmu-next-layout/asset-9968b8dec590ae18869f.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.longpress.longpress.longpress{background-image: url("common/images/cmu-next-layout/asset-36e8c962880bb10b4244.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.hit.focus{background-image: url("common/images/cmu-next-layout/asset-09c234ae83e36431d967.png") !important;background-position: 0 100% !important;background-repeat: repeat-y !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.secondaryFocus.secondaryFocus.secondaryFocus{background-image: url("common/images/cmu-next-layout/asset-bebbfa27468b36b6a587.png") !important;background-position: 0 100% !important;background-repeat: no-repeat !important;}
+body.cmu-layout-home-05 .MainMenuCtrlAppFocus{background-image:url("common/images/cmu-next-layout/asset-55388b370c8f802864fa.png"),url("common/images/cmu-next-layout/asset-23c87b53e87ec4201567.png") !important;background-position:0 0,0 0 !important;background-repeat:no-repeat,no-repeat !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntFocus{background-image:url("common/images/cmu-next-layout/asset-3e4b66b019d351efeb85.png"),url("common/images/cmu-next-layout/asset-23c87b53e87ec4201567.png") !important;background-position:0 0,0 0 !important;background-repeat:no-repeat,no-repeat !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComFocus{background-image:url("common/images/cmu-next-layout/asset-d64ea7c703c5d1b000e4.png"),url("common/images/cmu-next-layout/asset-23c87b53e87ec4201567.png") !important;background-position:0 0,0 0 !important;background-repeat:no-repeat,no-repeat !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavFocus{background-image:url("common/images/cmu-next-layout/asset-f3ff07099a7c5656f14c.png"),url("common/images/cmu-next-layout/asset-23c87b53e87ec4201567.png") !important;background-position:0 0,0 0 !important;background-repeat:no-repeat,no-repeat !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetFocus{background-image:url("common/images/cmu-next-layout/asset-dbacd6ccd9d137450c23.png"),url("common/images/cmu-next-layout/asset-23c87b53e87ec4201567.png") !important;background-position:0 0,0 0 !important;background-repeat:no-repeat,no-repeat !important;}
+
+/* 0.5.3: commander background; home selection by size only. OEM list selection retained. */
+body.cmu-skin-05 .CommonBgImg{background-image:url("common/images/cmu-next-layout/asset-e7a441cda6a9a35bfafd.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrl{background-image:none !important;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinFocus .cmu-layout-label{font-size:34px !important;color:#ffffff !important;}
+body.cmu-skin-05 .List2Ctrl,body.cmu-skin-05 .List2Ctrl .ListItem{background-color:transparent !important;}
+body.cmu-layout-home-05 .MainMenuCtrlAppFocus{background-image:url("common/images/cmu-next-layout/asset-61386105214eb6d9f9ba.png") !important;background-position:0 0 !important;background-repeat:no-repeat !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntFocus{background-image:url("common/images/cmu-next-layout/asset-57b68bd91ace60898dd4.png") !important;background-position:0 0 !important;background-repeat:no-repeat !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComFocus{background-image:url("common/images/cmu-next-layout/asset-a61c922f6a0b4a40d26a.png") !important;background-position:0 0 !important;background-repeat:no-repeat !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavFocus{background-image:url("common/images/cmu-next-layout/asset-98f53b58916056551e4e.png") !important;background-position:0 0 !important;background-repeat:no-repeat !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetFocus{background-image:url("common/images/cmu-next-layout/asset-2f65f8316012f79925ab.png") !important;background-position:0 0 !important;background-repeat:no-repeat !important;}
+
+/* 0.6: Connect 2 reference adaptation, scoped to eligible native web apps. */
+@font-face{font-family:"CmuRetrofit";src:url("common/fonts/cmu-next-layout/source-sans-3.ttf") format("truetype");font-style:normal;font-weight:400;}
+body.cmu-skin-05 .List2Ctrl,body.cmu-skin-05 .ButtonCtrl,body.cmu-skin-05 .ButtonCtrlCheckBoxLabel,body.cmu-skin-05 .StatusBarCtrl,body.cmu-skin-05 .Dialog3Ctrl,body.cmu-skin-05 .Dialog3CtrlFs,body.cmu-skin-05 .KeyboardCtrl,body.cmu-skin-05 .NowPlaying4Ctrl,body.cmu-skin-05 .Tuner4Ctrl,body.cmu-skin-05 .cmu-layout-label{font-family:"CmuRetrofit","Tipperary",Arial,sans-serif !important;font-weight:normal !important;}
+body.cmu-skin-05 .CommonBgImg{background-image:url("common/images/cmu-next-layout/asset-2ee8dcb3d7ff44ee9184.png") !important;background-color:#090909 !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem{background-color:transparent !important;box-shadow:none !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.focus.focus.focus.focus,body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.hit.hit.hit.hit,body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.hit.focus.hit.focus.hit.focus.hit.focus,body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.secondaryFocus.secondaryFocus.secondaryFocus.secondaryFocus,body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.longpress.longpress.longpress.longpress{background-image:url("common/images/cmu-next-layout/asset-2ad7f7482f4b22d485e8.png") !important;background-size:100% 100% !important;background-repeat:no-repeat !important;background-color:transparent !important;animation:none !important;-o-animation:none !important;}
+body.cmu-skin-05 .List2Ctrl.normalItems .ListItem.disabled.focus{opacity:.55 !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem{background-color:transparent !important;box-shadow:none !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.focus.focus.focus.focus,body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.hit.hit.hit.hit,body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.hit.focus.hit.focus.hit.focus.hit.focus,body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.secondaryFocus.secondaryFocus.secondaryFocus.secondaryFocus,body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.longpress.longpress.longpress.longpress{background-image:url("common/images/cmu-next-layout/asset-9e3fc3ab3de13e0103f0.png") !important;background-size:100% 100% !important;background-repeat:no-repeat !important;background-color:transparent !important;animation:none !important;-o-animation:none !important;}
+body.cmu-skin-05 .List2Ctrl.thickItems .ListItem.disabled.focus{opacity:.55 !important;}
+body.cmu-skin-05 .List2Ctrl .line1{font-size:30px !important;text-shadow:none !important;}
+body.cmu-skin-05 .List2Ctrl .line2,body.cmu-skin-05 .List2Ctrl .label1,body.cmu-skin-05 .List2Ctrl .label2{text-shadow:none !important;}
+body.cmu-skin-05 .List2CtrlTitle .line1{font-size:30px !important;text-shadow:none !important;}
+body.cmu-skin-05 .List2CtrlScrollIndicatorWrapper{background-color:transparent !important;}
+body.cmu-skin-05 .List2CtrlScrollIndicator{background-image:none !important;background-color:#eeeeee !important;}
+body.cmu-skin-05 .List2CtrlSliderCtrlFill,body.cmu-skin-05 .List2CtrlSliderCtrlFocusedFill{background-image:none !important;background-color:#eeeeee !important;}
+body.cmu-skin-05 .KeyboardCtrl{background-image:none !important;background-color:#101010 !important;}
+body.cmu-skin-05 .KeyboardCtrl .btnWrapper .btn{background-image:none !important;background-color:#181818 !important;box-shadow:inset 0 -1px #555555 !important;}
+body.cmu-skin-05 .KeyboardCtrl .btnWrapper .btn.focused,body.cmu-skin-05 .KeyboardCtrl .btnWrapper .btn.activeState{background-image:url("common/images/cmu-next-layout/asset-2ad7f7482f4b22d485e8.png") !important;background-size:100% 100% !important;color:#ffffff !important;}
+body.cmu-skin-05 .KeyboardCtrl .btnWrapper .btn.disabled{color:#777777 !important;}
+body.cmu-skin-05 .Dialog3Ctrl,body.cmu-skin-05 .Dialog3CtrlFs{background-image:none !important;background-color:#101010 !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_focused,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_down,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle01_held{background-image:url("common/images/cmu-next-layout/asset-2ad7f7482f4b22d485e8.png") !important;background-size:100% 100% !important;background-color:#101010 !important;box-shadow:none !important;}
+body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_focused,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_down,body.cmu-skin-05 .Dialog3Ctrl_ButtonStyle02_held{background-image:url("common/images/cmu-next-layout/asset-2ad7f7482f4b22d485e8.png") !important;background-size:100% 100% !important;background-color:#101010 !important;box-shadow:none !important;}
+body.cmu-skin-05 .StatusBarCtrl{background-image:none !important;background-color:transparent !important;box-shadow:inset 0 -1px #555555 !important;}
+body.cmu-skin-05 .StatusBarCtrlAppName{font-size:30px !important;text-shadow:none !important;}
+body.cmu-skin-05 .StatusBarCtrlClock{font-size:25px !important;text-shadow:none !important;}
+body.cmu-layout-home-05 .MainMenuCtrlAppDiv{left:100px !important;top:11px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntDiv{left:80px !important;top:79px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComDiv{left:70px !important;top:147px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavDiv{left:80px !important;top:215px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetDiv{left:100px !important;top:283px !important;}
+body.cmu-layout-home-05 .cmu-layout-clock{left:564px;top:98px;width:156px;height:156px;}
+body.cmu-layout-home-05 .cmu-layout-clock-canvas{width:156px;height:156px;}
+
+body.cmu-layout-home-05 .MainMenuCtrlAppNormal{background-image:url("common/images/cmu-next-layout/asset-0aa44c276b294eaea43f.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlAppFocus{background-image:url("common/images/cmu-next-layout/asset-aa303dd0d455e38756e1.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntNormal{background-image:url("common/images/cmu-next-layout/asset-d0af0101031daf417d4c.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntFocus{background-image:url("common/images/cmu-next-layout/asset-863e8e9c30ceaa34523f.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComNormal{background-image:url("common/images/cmu-next-layout/asset-0dfb6d04747121917387.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComFocus{background-image:url("common/images/cmu-next-layout/asset-2c642ddec61fc134e12a.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavNormal{background-image:url("common/images/cmu-next-layout/asset-e7df212e0ef7f83b74aa.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavFocus{background-image:url("common/images/cmu-next-layout/asset-8fdb213fe19450cfb7ed.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetNormal{background-image:url("common/images/cmu-next-layout/asset-43dc38e3ebc5bac25d6a.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetFocus{background-image:url("common/images/cmu-next-layout/asset-4c52b70d2d81532822b3.png") !important;}
+body.cmu-layout-home-05 .MainMenuCtrl{top:-64px !important;height:480px !important;background-image:none !important;}
+body.cmu-layout-home-05 .MainMenuCtrlAppDiv{left:119px !important;top:46px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlEntDiv{left:119px !important;top:126px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlComDiv{left:119px !important;top:206px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlNavDiv{left:119px !important;top:286px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlSetDiv{left:119px !important;top:366px !important;}
+body.cmu-layout-home-05 .MainMenuCtrlCoinFocus .cmu-layout-label{font-size:34px !important;}
+body.cmu-layout-home-05 .cmu-layout-clock{left:564px;top:162px;width:156px;height:156px;}
+body.cmu-layout-home-05 .StatusBarCtrl{pointer-events:none;background-color:transparent !important;}
+body.cmu-layout-home-05 .StatusBarCtrlClockBtn,body.cmu-layout-home-05 .StatusBarCtrlRemoteUIBtn_En,body.cmu-layout-home-05 .StatusBarCtrlHomeBtn{pointer-events:auto;}
+body.cmu-layout-home-05 .StatusBarCtrlAppName,body.cmu-layout-home-05 .StatusBarCtrlDomainIcon,body.cmu-layout-home-05 .StatusBarCtrlDivider{visibility:hidden !important;}
+body.cmu-skin-05 .CommonBgImg{background-image:url("common/images/cmu-next-layout/asset-fa8539d23f18c6c3b53c.png") !important;}
+.cmu-next-arc-scroll{position:absolute;left:676px;top:62px;width:108px;height:356px;pointer-events:none;z-index:8;}
+body.cmu-skin-05 .cmu-next-arc-scroll-owned{visibility:hidden !important;}
+/* 0.8: native, equipment-driven settings categories. */
+body.cmu-settings-adapted .StatusBarCtrlAppName{visibility:hidden !important;}
+.cmu-settings-native-tabs,.cmu-settings-covered{visibility:hidden !important;}
+.cmu-settings-categories{position:absolute;left:40px;top:72px;width:700px;height:390px;z-index:12;font-family:"CmuRetrofit","Tipperary",Arial,sans-serif;}
+.cmu-settings-categories-heading{position:absolute;left:0;top:0;width:700px;height:48px;line-height:44px;font-size:30px;color:#eeeeee;border-bottom:1px solid #777777;}
+.cmu-settings-category-row{position:absolute;left:0;width:700px;height:54px;line-height:54px;padding:0 18px;text-align:left;white-space:nowrap;border:0;border-radius:0;background:transparent;color:#eeeeee;font-family:"CmuRetrofit","Tipperary",Arial,sans-serif;font-size:30px;box-sizing:border-box;}
+.cmu-settings-category-row:disabled{color:#777777;}
+.cmu-settings-category-current{background-image:url("common/images/cmu-next-layout/asset-2ad7f7482f4b22d485e8.png");background-repeat:no-repeat;background-size:100% 100%;}
+.cmu-settings-content-heading{position:absolute;left:0;top:10px;width:700px;height:44px;line-height:44px;font-size:30px;color:#eeeeee;font-family:"CmuRetrofit","Tipperary",Arial,sans-serif;}
+.cmu-settings-category-scroll-marker{position:absolute;width:0;height:0;}

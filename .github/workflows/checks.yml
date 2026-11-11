@@ -1,0 +1,21 @@
+name: Source checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check sources and publication boundaries
+        run: python3 tools/check-repository.py
+      - name: Compile host tools
+        run: python3 tools/build-manager.py --host
+      - name: Reconstruct preserved visual runtimes
+        run: |
+          python3 tools/build-retrofit.py --version 0.6.2 --out dist/retrofit-0.6.2
+          python3 tools/build-retrofit.py --version 0.7 --out dist/retrofit-0.7
+          python3 tools/build-retrofit.py --version 0.7.1 --out dist/retrofit-0.7.1
+          python3 tools/build-retrofit.py --version 0.8 --out dist/retrofit-0.8

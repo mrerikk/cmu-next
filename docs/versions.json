@@ -1,0 +1,70 @@
+{
+  "import_date": "2026-11-11",
+  "snapshots": [
+    {
+      "component": "manager",
+      "version": "0.1",
+      "source": "history/manager/0.1",
+      "status": "historical-engineering-candidate"
+    },
+    {
+      "component": "manager",
+      "version": "0.2",
+      "source": "history/manager/0.2",
+      "status": "historical-engineering-candidate"
+    },
+    {
+      "component": "manager",
+      "version": "0.2.1",
+      "source": "history/manager/0.2.1",
+      "status": "historical-engineering-candidate"
+    },
+    {
+      "component": "manager",
+      "version": "0.3",
+      "source": "history/manager/0.3",
+      "status": "historical-engineering-candidate"
+    },
+    {
+      "component": "manager",
+      "version": "0.3.1",
+      "source": "history/manager/0.3.1",
+      "status": "known-hardware-startup-failure"
+    },
+    {
+      "component": "manager",
+      "version": "0.3.2",
+      "source": "history/manager/0.3.2",
+      "status": "known-hardware-startup-failure"
+    },
+    {
+      "component": "retrofit",
+      "version": "0.6.2",
+      "source": "history/retrofit/0.6.2",
+      "status": "temporary-visual-candidate",
+      "duration_seconds": 600
+    },
+    {
+      "component": "retrofit",
+      "version": "0.7",
+      "source": "history/retrofit/0.7",
+      "status": "temporary-visual-candidate",
+      "duration_seconds": 600
+    },
+    {
+      "component": "retrofit",
+      "version": "0.7.1",
+      "source": "history/retrofit/0.7.1",
+      "status": "temporary-visual-candidate",
+      "duration_seconds": 600
+    },
+    {
+      "component": "retrofit",
+      "version": "0.8",
+      "source": "history/retrofit/0.8",
+      "status": "temporary-visual-candidate",
+      "duration_seconds": 600
+    }
+  ],
+  "history_policy": "Curated source milestones. Original local ZIP files remain untouched and are not advertised as public production releases."
+}

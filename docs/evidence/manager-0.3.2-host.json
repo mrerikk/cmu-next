@@ -1,0 +1,30 @@
+{
+  "release": "cmu-manager-0.3.2",
+  "date": "2026-10-28",
+  "host_checks": {
+    "terminal-tests.json": 11,
+    "start-tests.json": 24,
+    "boot-e2e-tests.json": 17,
+    "report-tests.json": 22,
+    "lifetime-tests.json": 9
+  },
+  "total_host_checks": 83,
+  "full_usb_package": true,
+  "usb_file_count": 101,
+  "detached_service_survives_terminal_group_termination_host_verified": true,
+  "ready_requires_authenticated_http_status": true,
+  "diagnostics_read_only_and_no_token_output_host_verified": true,
+  "native_cmu_cause_proven": false,
+  "native_cmu_032_success_verified": false,
+  "real_opera_rendering_verified": false,
+  "persistent_startup_installed": false,
+  "live_installation_ready": false,
+  "earlier_integration_reset_note": "test-run-notes.json",
+  "unchanged_from_031": [
+    "jobs",
+    "engine",
+    "module",
+    "preflight",
+    "ui"
+  ]
+}

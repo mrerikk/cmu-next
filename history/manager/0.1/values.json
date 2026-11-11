@@ -1,0 +1,28 @@
+{
+  "io-md5": "fa48afeebb0c7765f42235bcf85858d7",
+  "io-sha": "0a8f84c774eaae6572f99df49252a10a9ca64910162ef6d4fae414a17e486086",
+  "engine-sha": "41d1c3a3c73b6cd08f661c1ab5354d01a3d460c981844228fe4eb157083fb88d",
+  "probe-sha": "d8361fcfd4b78675d145d19f685a63c29d0e18c0a013a2324c90daa2a2bd87ff",
+  "manifest-sha": "6da2ac66abd5b51aa7bc76e53e007b051f74b5c35cde15d69026eb11533fa94b",
+  "index-after": "2912d866db80fbd4f9546f811b27b0acc78935ff38519849c35f6b386efc8ae5",
+  "version-sha": "7613d9b53aaf53bbc54a996737d38efe72bdf589f5839bb0d29622d6668dc340",
+  "index-sha": "b0e116b941f29078ced19b864a1b888cf76d8bc3e4974af081efca4693e5c420",
+  "background-sha": "807b79209e0540fa4d0b8fe76a32b87f9e229089ecc722f874476001f85353b6",
+  "css-sha": "807d2215bf76c94978ce1e8aeb0f268665b14a6d326e89836ef641c79a8cc4d1",
+  "worker-md5": "87966e1001847bb921f55ced40a184a6",
+  "prepare-md5": "772f96e91178307b1c1e58777a6ccccb",
+  "module_version": "0.8",
+  "module_files": 82,
+  "input_files": {
+    "jci/version.ini": "7613d9b53aaf53bbc54a996737d38efe72bdf589f5839bb0d29622d6668dc340",
+    "jci/gui/index.html": "b0e116b941f29078ced19b864a1b888cf76d8bc3e4974af081efca4693e5c420",
+    "jci/gui/common/images/background.png": "807b79209e0540fa4d0b8fe76a32b87f9e229089ecc722f874476001f85353b6",
+    "jci/gui/common/css/common.css": "807d2215bf76c94978ce1e8aeb0f268665b14a6d326e89836ef641c79a8cc4d1"
+  },
+  "engine_version": "0.2",
+  "source_firmware": "74.00.324A EU",
+  "device_execution": "pending",
+  "prepare-sha": "3b3022028f583fafc059bd9d8791a7dae1486f6bf825877cfb585ec96dfbf22c",
+  "server-sha": "08a2f7a70ad08f540071a20f23afd48112a7d733afcf273ce593a50ecf53e29a",
+  "dispatch-sha": "3f03bb8c2466151ffcbf4b7514910fdec2a1da445b4349c39a9bfd448f6b2148"
+}

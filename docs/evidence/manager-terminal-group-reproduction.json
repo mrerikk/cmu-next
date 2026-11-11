@@ -1,0 +1,10 @@
+{
+  "baseline": "0.3.1",
+  "ready_message_printed": true,
+  "http_status_before_terminal_group_exit": true,
+  "server_in_terminal_process_group": true,
+  "simulated_exit_signal": "SIGTERM to isolated launcher process group",
+  "listener_alive_after_exit": false,
+  "native_cmu_cause_proven": false,
+  "scope": "reproduced process-lifetime defect on host; actual CMU exit signal/log still unknown"
+}

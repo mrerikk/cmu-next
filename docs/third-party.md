@@ -1,0 +1,8 @@
+# Third-party material
+
+- **Source Sans 3:** Adobe, unmodified regular TTF, SIL OFL 1.1. The included license accompanies the font and all historical embedded copies. It is an alternative font, not a verified original Connect 2 font.
+- **Mazda / Johnson Controls:** the project interoperates with existing Connect 1 APIs. It does not include a complete firmware image, extracted root filesystem, the original or modified OEM index.html, navigation data, vehicle backups, or downloaded manual screenshots. Some theme assets were adapted from the existing visual language; their respective rights are retained. Project licensing does not override the licenses of those third-party materials.
+- **musl / Zig:** C sources may be compiled with Zig 0.15.2 and musl for the inspected ARM/Linux target. Toolchains and prebuilt runtime libraries are not vendored in this repository. Upstream musl and Zig notice texts are preserved under `notices`. If distributing linked executables, include the appropriate upstream notices.
+- **Reference material:** Mazda Connect 2 official owner's manual and user-provided visual references informed the retrofit. Reference screenshots themselves are excluded from the source import.
+
+The owner selected PolyForm Noncommercial 1.0.0 for project-authored code and documentation. Commercial use requires separate permission. The license text is preserved unchanged from the official PolyForm 1.0.0 source; the required copyright notice is in `notice.md`. This does not relicense the font, OEM-derived graphics, trademarks, or other third-party material. Review the respective asset terms before distributing a combined binary package.

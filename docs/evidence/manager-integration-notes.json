@@ -1,0 +1,5 @@
+{
+  "initial_boot_e2e_run": "ECONNRESET during direct host status inspection after 9 cases while report/start suites also running; no failure capture existed yet",
+  "followup": "added diagnostic capture on integration failure; sequential integration rerun passed all 17 cases",
+  "limitation": "exact initial reset cause not established; accelerated host poll and timeout fixture is not native Opera evidence"
+}

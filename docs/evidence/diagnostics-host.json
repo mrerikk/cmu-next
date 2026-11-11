@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "case": "no-workspace-produces-explicit-message",
+      "passed": true
+    },
+    {
+      "case": "failed-startup-without-control-directory-exposes-fixed-detach-error",
+      "passed": true
+    },
+    {
+      "case": "listening-state-is-read-from-kernel-table",
+      "passed": true
+    },
+    {
+      "case": "empty-log-is-explicit-without-invented-cause",
+      "passed": true
+    },
+    {
+      "case": "symlinked-log-is-not-read",
+      "passed": true
+    },
+    {
+      "case": "diagnostic-command-does-not-change-any-input-file",
+      "passed": true
+    },
+    {
+      "case": "foreign-workspace-marker-refused",
+      "passed": true
+    }
+  ],
+  "scope": "host fixtures for read-only shell collector, no native execution claimed"
+}

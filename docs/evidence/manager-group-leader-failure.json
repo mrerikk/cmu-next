@@ -1,0 +1,7 @@
+{
+  "release": "0.3.2",
+  "scenario": "service is a process group leader but not a session leader",
+  "exit_code": 2,
+  "log": "manager detach: Operation not permitted",
+  "native_cmu_same_cause_confirmed": false
+}

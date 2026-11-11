@@ -1,0 +1,10 @@
+{
+  "family": "Source Sans 3",
+  "source": "https://github.com/adobe-fonts/source-sans",
+  "raw": "https://raw.githubusercontent.com/adobe-fonts/source-sans/release/TTF/SourceSans3-Regular.ttf",
+  "sha256": "4644c81b86ec9caaa76b634889968ed3c4f4f52f054855933acc7c2b21e53b0f",
+  "bytes": 431196,
+  "license": "SIL OFL 1.1; original unmodified font",
+  "exact_connect2_font": false,
+  "cmu_font_loading": "unverified; fallback Tipperary"
+}

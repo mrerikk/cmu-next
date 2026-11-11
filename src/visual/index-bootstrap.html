@@ -1,0 +1,22 @@
+        <!-- cmu-next layout: asynchronous optional visual module -->
+        <script type="text/javascript" id="cmu-next-layout-bootstrap">
+            (function(w,d){
+                'use strict';
+                if(w.__cmuNextLayoutBootstrap||!d.head){return;}
+                try{
+                    var config=w.__cmuNextLayoutConfig;
+                    if(!config||typeof config!=='object'){config={};}
+                    if(config.disabled===true){return;}
+                    config.persistent=true;
+                    w.__cmuNextLayoutConfig=config;
+                    w.__cmuNextLayoutBootstrap=true;
+                    w.__cmuNextLayoutLoadState='loading';
+                    var script=d.createElement('script');
+                    script.type='text/javascript';script.async=true;
+                    script.src='common/js/cmu-next-layout.js';
+                    script.onerror=function(){w.__cmuNextLayoutLoadState='failed';};
+                    script.onload=function(){w.__cmuNextLayoutLoadState=w.__cmuLayout05?'loaded':'inactive';};
+                    d.head.appendChild(script);
+                }catch(ignore){w.__cmuNextLayoutLoadState='failed';}
+            })(window,document);
+        </script>
