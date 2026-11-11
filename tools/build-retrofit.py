@@ -12,5 +12,5 @@ expected=(source/'runtime.sha256').read_text().strip()
 if hashlib.sha256(run.encode()).hexdigest()!=expected:raise ValueError('runtime reconstruction digest mismatch')
 out=Path(args.out)
 if out.exists():raise ValueError('output directory must not exist')
-(out/'usb/js').mkdir(parents=True);(out/'usb/js/run.js').write_text(run);shutil.copytree(root/'src/loaders',out/'usb/mp3')
+(out/'usb/js').mkdir(parents=True);(out/'usb/js/run.js').write_text(run);(out/'usb/mp3').mkdir();[shutil.copyfile(p,out/'usb/mp3'/p.name) for p in sorted((root/'src/loaders').glob('*.mp3'))]
 print('Reconstructed temporary retrofit',args.version,'at',out)

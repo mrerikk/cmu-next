@@ -40,6 +40,10 @@ Manager 0.3.1 reported `manager ready` on the vehicle, but its UI stayed offline
 
 The temporary visual overlay lasts 10 minutes. The manager accepts new actions for 15 minutes and allows an accepted job to finish. Their `js/run.js` loaders are separate alternatives and must not be merged.
 
+## Project-authored loader 1.0.0
+
+Current MP3 entry files are generated from our own zero-PCM carrier and ID3 builder. They replace the legacy silence recording used by the first public snapshot. [Loader provenance and limitations](src/loaders/readme.md) are documented; these new bytes still require a CMU run.
+
 ## Getting started
 
 - [Build and package sources](docs/build.md)

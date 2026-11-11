@@ -4,6 +4,7 @@ This repository imports real source milestones rather than inventing a historica
 
 | Line | Versions preserved | Status |
 | --- | --- | --- |
+| Own MP3 loader | 1.0.0 | Own generated carrier and wrappers; new CMU run pending. Supersedes legacy-carrier packages. |
 | Manager | 0.1, engineering 0.2 / 0.2.1, 0.3, 0.3.1, 0.3.2 | Historical candidates. 0.3.1 and 0.3.2 have reported hardware startup failures. |
 | Retrofit | 0.6.2, 0.7, 0.7.1, 0.8 | Significant visual milestones. 0.6.2 preserves the accepted selection treatment; 0.8 adds equipment-driven categories. |
 | Engine check | 0.2 | A consistent vehicle report exists for RAM-copy engine operations; raw report is private. |

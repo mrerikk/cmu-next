@@ -42,3 +42,22 @@ This builds three ARM tools, regenerates their pins, reconstructs the module fro
 ## Firmware-copy research
 
 `src/engine/init-lab.py --source <local-rootfs> --lab <new-directory>` creates a marked independent copy from separately provided regular files. No firmware fixture is shipped. Historical fixture-dependent test scripts and private host paths are not a portable test suite and are not advertised as such.
+
+## Own MP3 loaders
+
+Check the committed project-authored carrier and four wrappers without optional packages:
+
+```sh
+python3 tools/build-loaders.py --check
+python3 -m unittest discover -s tests -v
+python3 tools/build-loaders.py --out build/loaders
+```
+
+To independently regenerate the carrier from five seconds of zero PCM, use Python 3.10+ and the pinned optional build-only encoder:
+
+```sh
+python3 -m pip install -r requirements-loader.txt
+python3 tools/build-loaders.py --out build/loaders-from-pcm --regenerate-audio
+```
+
+No legacy audio file is read, downloaded, or used as a template. The optional encoder is not included in USB packages. The runtime title payload intentionally retains the local CMU entry point; this work does not remove the underlying firmware vulnerability. New loader bytes still require an actual CMU test.

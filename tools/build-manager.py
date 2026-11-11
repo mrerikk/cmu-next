@@ -30,7 +30,7 @@ if args.firmware_index:
  (package/'dispatch.sh').write_text(fill((source/'dispatch.sh').read_text()));pins['dispatch-sha']=sha(package/'dispatch.sh')
  (package/'check.sh').write_text(fill((source/'check.sh').read_text()));pins['check-sha']=sha(package/'check.sh')
  (package/'start.sh').write_text(fill((source/'start.sh').read_text()))
- (usb/'js').mkdir();shutil.copyfile(out/'run.js',usb/'js/run.js');shutil.copytree(root/'src/loaders',usb/'mp3')
+ (usb/'js').mkdir();shutil.copyfile(out/'run.js',usb/'js/run.js');(usb/'mp3').mkdir();[shutil.copyfile(p,usb/'mp3'/p.name) for p in sorted((root/'src/loaders').glob('*.mp3'))]
  (out/'build-pins.json').write_text(json.dumps(pins,indent=2)+'\n')
  print('Built historical manager 0.3.2 candidate with known startup limitation:',usb)
 else:print('Built tools and UI at',out,'; no firmware or vehicle state accessed')

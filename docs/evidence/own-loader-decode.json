@@ -1,0 +1,48 @@
+{
+  "decoder": "ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers",
+  "input": "project-authored zero PCM; own ID3 generator",
+  "cases": [
+    {
+      "file": "assets/audio/silence.mp3",
+      "decoded_pcm_bytes": 82944,
+      "sample_frames": 41472,
+      "duration_seconds": 5.184,
+      "peak_pcm": 0,
+      "all_zero": true
+    },
+    {
+      "file": "src/loaders/01_sda1.mp3",
+      "decoded_pcm_bytes": 82944,
+      "sample_frames": 41472,
+      "duration_seconds": 5.184,
+      "peak_pcm": 0,
+      "all_zero": true
+    },
+    {
+      "file": "src/loaders/02_sdb1.mp3",
+      "decoded_pcm_bytes": 82944,
+      "sample_frames": 41472,
+      "duration_seconds": 5.184,
+      "peak_pcm": 0,
+      "all_zero": true
+    },
+    {
+      "file": "src/loaders/03_sdc1.mp3",
+      "decoded_pcm_bytes": 82944,
+      "sample_frames": 41472,
+      "duration_seconds": 5.184,
+      "peak_pcm": 0,
+      "all_zero": true
+    },
+    {
+      "file": "src/loaders/04_sdd1.mp3",
+      "decoded_pcm_bytes": 82944,
+      "sample_frames": 41472,
+      "duration_seconds": 5.184,
+      "peak_pcm": 0,
+      "all_zero": true
+    }
+  ],
+  "native_cmu_verified": false,
+  "note": "AudioToolbox did not accept this low-rate MPEG profile on the host. Independent FFmpeg decoding passed; this does not establish CMU execution."
+}

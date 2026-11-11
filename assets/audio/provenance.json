@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "origin": "five seconds of project-authored zero PCM samples; no third-party recording",
+  "input_pcm": {
+    "format": "s16le",
+    "sample_rate_hz": 8000,
+    "channels": 1,
+    "sample_frames": 40000,
+    "sha256": "f8c784aa6b57396e7c5e094c34d079d8252473e46e2f60593a921dbebf941fcc"
+  },
+  "encoder": {
+    "package": "lameenc",
+    "version": "1.9.0",
+    "license": "LGPL-3.0-or-later",
+    "bundled_with_project": false
+  },
+  "audio": {
+    "mpeg_version": "2.5",
+    "layer": 3,
+    "sample_rate_hz": 8000,
+    "channels": 1,
+    "bitrate_kbps": 8,
+    "frames": 72,
+    "decoded_frame_duration_seconds": 5.184,
+    "sha256": "c861d3dd91df1b01753cdbc226c3a0cede6185a19492e1583e3aefcdfcb38286",
+    "bytes": 5184
+  },
+  "loaders": [
+    {
+      "file": "01_sda1.mp3",
+      "usb_partition": "sda1",
+      "sha256": "0d4ed17f7a4c1d9991dab58dca0a5ad319f07325155ea0ef74b54b243f43a0d2",
+      "bytes": 5459
+    },
+    {
+      "file": "02_sdb1.mp3",
+      "usb_partition": "sdb1",
+      "sha256": "7ee069acec80f9f954e52dd5a842296f6512ef428667d3b1e70724dfa0747c5f",
+      "bytes": 5459
+    },
+    {
+      "file": "03_sdc1.mp3",
+      "usb_partition": "sdc1",
+      "sha256": "fe84309da3f121df2f519d4e0211d822ee87676254f0b82da1ea9d332e1f9f94",
+      "bytes": 5459
+    },
+    {
+      "file": "04_sdd1.mp3",
+      "usb_partition": "sdd1",
+      "sha256": "cd6069b7dd0d9d9fb8c40bb1cd75af353b80637277a68c5c1ed9de8c9fef5322",
+      "bytes": 5459
+    }
+  ],
+  "entry_point": "ID3 title HTML rendering on owner-authorized Connect 1 CMU",
+  "network_downloads": false,
+  "native_cmu_verified": false
+}

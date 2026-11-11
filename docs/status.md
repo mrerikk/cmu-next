@@ -2,6 +2,7 @@
 
 | Area | Evidence | Remaining work |
 | --- | --- | --- |
+| Own MP3 loader 1.0.0 | Project-authored zero-PCM carrier, ID3 generator, host structural checks and independent decoding. | Test the new loader bytes on the CMU. |
 | Design / preview | Temporary retrofit 0.8 and host component tests exist. | Actual Opera rendering and equipment regression. |
 | Copy installation / rollback | Host integration and a consistent Engine Check 0.2 vehicle report for a RAM copy. | Permanent storage semantics, bounded writes, boot/recovery integration. |
 | Manager 0.3.1 | Vehicle reported ready, but panel stayed offline; expected port was not observed. | Actual failure cause still unconfirmed. |

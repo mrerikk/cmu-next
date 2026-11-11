@@ -1,0 +1,2 @@
+# Optional: needed only to regenerate audio from zero PCM.
+lameenc==1.9.0

@@ -11,6 +11,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check sources and publication boundaries
         run: python3 tools/check-repository.py
+      - name: Validate project-authored MP3 loaders
+        run: |
+          python3 tools/build-loaders.py --check
+          python3 -m unittest discover -s tests -v
       - name: Compile host tools
         run: python3 tools/build-manager.py --host
       - name: Reconstruct preserved visual runtimes
