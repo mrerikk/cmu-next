@@ -9,7 +9,7 @@ Test vehicle: **Mazda Roadster ND, model year 2016, Japanese market (Japan)**. N
 | Copy installation / rollback | Portable host transaction/recovery regressions; current 82-target module installed and exactly rolled back on an independent input-file copy; earlier Engine Check 0.2 vehicle report for a RAM copy. | Permanent storage semantics, bounded writes, boot/recovery integration. |
 | Manager 0.3.1 | Vehicle reported ready, but panel stayed offline; expected port was not observed. | Actual failure cause still unconfirmed. |
 | Manager 0.3.2 | 83 host checks recorded; vehicle first startup failed. A process-group-leader detach failure is reproduced on the host. | Read vehicle startup diagnostics, implement robust daemon lifetime, verify on CMU. |
-| Manager 0.3.3 candidate | Fork-before-setsid launch; actual child PID; five real-process host regressions pass. | Build and test the candidate on CMU; native root cause and UI connection remain unconfirmed. |
+| Manager 0.3.3 candidate | Fork-before-setsid launch; actual child PID; five launch regressions and four real HTTP/journal/engine workflow regressions pass. | Build and test the candidate on CMU; native root cause and UI connection remain unconfirmed. |
 | Visual module on vehicle | Earlier visual feedback exists; latest 0.8 complete equipment coverage is not proven. | Controller, native dialogs, camera, projection and all available settings. |
 | Apps / new speedometer | Planned. | Runtime and new speedometer are not implemented. |
 | Complex multimedia | Preview/reference work only. | Native radio/player/application redesign remains separate. |

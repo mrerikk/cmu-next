@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-11",
+  "candidate": "0.3.3",
+  "test_module": "tests/test_manager_workflow.py",
+  "test_methods": 4,
+  "real_components": [
+    "loopback HTTP service",
+    "job journal",
+    "dispatcher action branches",
+    "copy transaction coordinator",
+    "native file helper"
+  ],
+  "synthetic_components": [
+    "firmware inputs and module payload",
+    "mount table observation",
+    "uptime observation",
+    "USB write-preparation helper",
+    "vehicle preflight collector"
+  ],
+  "checks": [
+    "checkpoint/install/duplicate/rollback/restore/report cycle",
+    "interrupted install blocks mutations until explicit recovery",
+    "service restart preserves accepted request identity",
+    "invalid token and conflicting request-key reuse refused",
+    "report/preflight attachment digest matches",
+    "connection token absent from exported report"
+  ],
+  "native_cmu_verified": false,
+  "browser_ui_verified": false,
+  "persistent_storage_verified": false
+}

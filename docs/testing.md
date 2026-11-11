@@ -35,3 +35,14 @@ python3 -m unittest discover -s tests -v
 The suite builds local C helpers and uses synthetic regular-file firmware fixtures, isolated temporary directories and loopback connections. No OEM firmware, CMU access or third-party Python dependencies are needed. It covers MP3 structure, manager launch/session lifetime, module plan/apply/idempotence/restore, interrupted install and rollback recovery, and refusal of altered backups/payloads/targets or symlink targets. The eight interruption boundaries terminate the coordinator process; they do not simulate storage power loss.
 
 The separate `docs/evidence/visual-module-copy-0.3.3.json` records a host run of the actual 82-target visual module against an independent copy of its two existing firmware inputs. All installed hashes and modes matched; rollback restored file contents and metadata plus the original directory set. Source input hashes and metadata remained unchanged. This was not a full firmware image, native execution, persistent installation or a power-loss test.
+
+## Manager backend workflow regression
+
+`tests/test_manager_workflow.py` runs the real HTTP service, job journal, dispatcher action branches, copy transaction coordinator and native file helper. It submits authenticated requests, polls durable job records and checks the resulting files. Covered workflows are:
+
+- Checkpoint → install → duplicate request → rollback → restore → export report plus preflight attachment, with digest verification and no connection-token disclosure.
+- Interrupted installation → failed job → new mutations refused → explicit recovery → original file bytes and metadata restored.
+- Service restart → same request key resolves to the original job and transaction, without a second installation.
+- Incorrect connection token or reuse of a request key for another action cannot mutate the copy.
+
+The fixture explicitly replaces CMU mount/uptime observations, the USB write-preparation helper and the read-only vehicle preflight collector with host fixtures. The module and four original inputs are synthetic; no OEM content is shipped in the test. This verifies backend orchestration, not native USB mounts, actual CMU preflight, Opera rendering, vehicle controls, persistent storage or the browser UI. The distinction must be preserved when reporting results.
