@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-11",
+  "fixture": "synthetic regular-file firmware; no OEM content",
+  "test_module": "tests/test_engine_transactions.py",
+  "test_methods": 7,
+  "install_interruption_points": [
+    "prepared",
+    "before-publish:1",
+    "after-publish:1",
+    "before-publish:2",
+    "after-publish:2"
+  ],
+  "restore_interruption_points": [
+    "after-restore:2",
+    "before-restore:1",
+    "after-restore:1"
+  ],
+  "source_inputs_unchanged_checked_after_each_test": true,
+  "native_cmu_verified": false,
+  "storage_power_loss_verified": false
+}

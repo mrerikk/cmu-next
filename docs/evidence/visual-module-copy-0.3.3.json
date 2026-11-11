@@ -1,0 +1,19 @@
+{
+  "component": "connect2-layout",
+  "version": "0.8",
+  "coordinator": "0.2",
+  "manager_candidate": "0.3.3",
+  "scope": "host rehearsal on an independent regular-file copy of module inputs; not a full firmware image",
+  "target_files": 82,
+  "copied_original_files": 2,
+  "module_manifest_sha256": "6da2ac66abd5b51aa7bc76e53e007b051f74b5c35cde15d69026eb11533fa94b",
+  "plan": "install connect2-layout 82",
+  "apply": "installed t000001 connect2-layout 82",
+  "repeat": "already-installed t000001",
+  "restore": "restored t000001",
+  "all_installed_hashes_and_modes_match": true,
+  "rollback_exact_for_file_bytes_mode_uid_gid_mtime_and_directory_set": true,
+  "original_firmware_inputs_unchanged": true,
+  "native_cmu_verified": false,
+  "power_loss_verified": false
+}
