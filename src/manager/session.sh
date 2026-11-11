@@ -8,7 +8,7 @@ export PATH
 work=$1;base=$2;control=$3
 io=$work/cmu-io
 "$io" lock-check "$work/bootstrap.lock" >/dev/null
-[ "$(cat "$work/bootstrap-version")" = cmu-manager-bootstrap-032 ] || exit 2
+[ "$(cat "$work/bootstrap-version")" = cmu-manager-bootstrap-033 ] || exit 2
 [ "$(cat "$work/package-path")" = "$base" ] || exit 2
 if "$io" lock-run "$work/service.lock" /bin/sh -c ':' >/dev/null 2>&1; then
  # Prevent the HTTP process and its journal descendants from retaining the bootstrap lock.
@@ -18,13 +18,14 @@ if "$io" lock-run "$work/service.lock" /bin/sh -c ':' >/dev/null 2>&1; then
  (
   eval "exec $fd>&-"
   unset CMU_IO_LOCK_FD
-  exec "$work/cmu-manager" "$work" "$base" 9970 900
- ) < /dev/null >> "$work/service.log" 2>&1 &
- pid=$!
- printf '%s\n' "$pid" > "$work/service.pid"
+  exec "$work/cmu-manager" --launch "$work" "$base" 9970 900
+ ) < /dev/null >> "$work/service.log" 2>&1
  i=0
  while [ "$i" -lt 10 ];do
-  if [ ! -L "$work/client.js" ] && [ -f "$work/client.js" ] && grep -q "process:$pid}" "$work/client.js" && kill -0 "$pid" 2>/dev/null;then break;fi
+  pid=
+  if [ ! -L "$work/service.pid" ] && [ -f "$work/service.pid" ];then pid=$(cat "$work/service.pid");fi
+  case "$pid" in ''|*[!0-9]*) pid=0;; esac
+  if [ "$pid" -gt 1 ] && [ ! -L "$work/client.js" ] && [ -f "$work/client.js" ] && grep -q "process:$pid}" "$work/client.js" && kill -0 "$pid" 2>/dev/null;then break;fi
   sleep 1;i=$((i+1))
  done
  if [ "$i" -ge 10 ]; then
@@ -39,10 +40,10 @@ else
 fi
 if [ ! -e "$control" ] && [ ! -L "$control" ];then
  mkdir "$control";chown "$(id -u):$(id -g)" "$control";chmod 700 "$control"
- printf 'cmu-manager-control-032\n' > "$control/marker"
+ printf 'cmu-manager-control-033\n' > "$control/marker"
  printf '%s\n' "$work" > "$control/work-path.txt"
 else
- [ ! -L "$control" ] && [ -d "$control" ] && [ "$(cat "$control/marker")" = cmu-manager-control-032 ] && [ "$(cat "$control/work-path.txt")" = "$work" ] || exit 2
+ [ ! -L "$control" ] && [ -d "$control" ] && [ "$(cat "$control/marker")" = cmu-manager-control-033 ] && [ "$(cat "$control/work-path.txt")" = "$work" ] || exit 2
 fi
 [ ! -L "$control/client.next" ] && [ ! -L "$control/client.js" ] || exit 2
 [ ! -e "$control/client.next" ] || { echo 'stop: uncommitted control staging retained';exit 2; }

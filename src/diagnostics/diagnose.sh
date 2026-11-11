@@ -11,7 +11,7 @@ for work in /tmp/cmu-manager.*;do
  [ "$(stat -c '%a %u %g' "$work")" = "700 $(id -u) $(id -g)" ] || continue
  plain "$work/marker" && [ "$(cat "$work/marker")" = cmu-manager-ram-01 ] || continue
  plain "$work/bootstrap-version" || continue
- case "$(cat "$work/bootstrap-version")" in cmu-manager-bootstrap-03|cmu-manager-bootstrap-032) ;; *) continue;; esac
+ case "$(cat "$work/bootstrap-version")" in cmu-manager-bootstrap-03|cmu-manager-bootstrap-032|cmu-manager-bootstrap-033) ;; *) continue;; esac
  plain "$work/service.log" || continue
  if [ -z "$selected" ] || [ "$work/service.log" -nt "$selected/service.log" ];then selected=$work;fi
 done

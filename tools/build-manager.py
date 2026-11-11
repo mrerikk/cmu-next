@@ -1,4 +1,4 @@
-"""Build native tools; optionally assemble the historical 0.3.2 USB candidate."""
+"""Build native tools; optionally assemble the 0.3.3 USB candidate."""
 from pathlib import Path
 import argparse,subprocess,hashlib,json,shutil,importlib.util
 root=Path(__file__).resolve().parents[1];source=root/'src/manager';engine=root/'src/engine'
@@ -31,6 +31,7 @@ if args.firmware_index:
  (package/'check.sh').write_text(fill((source/'check.sh').read_text()));pins['check-sha']=sha(package/'check.sh')
  (package/'start.sh').write_text(fill((source/'start.sh').read_text()))
  (usb/'js').mkdir();shutil.copyfile(out/'run.js',usb/'js/run.js');(usb/'mp3').mkdir();[shutil.copyfile(p,usb/'mp3'/p.name) for p in sorted((root/'src/loaders').glob('*.mp3'))]
+ shutil.copyfile(root/'src/diagnostics/diagnose.sh',package/'diagnose.sh')
  (out/'build-pins.json').write_text(json.dumps(pins,indent=2)+'\n')
- print('Built historical manager 0.3.2 candidate with known startup limitation:',usb)
+ print('Built manager 0.3.3 candidate; native CMU validation pending:',usb)
 else:print('Built tools and UI at',out,'; no firmware or vehicle state accessed')

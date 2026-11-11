@@ -1,0 +1,17 @@
+{
+  "version": "0.3.3",
+  "date": "2026-11-11",
+  "host": "Darwin",
+  "scope": "real host processes and isolated temporary workspaces; no vehicle execution",
+  "tests": {
+    "process_group_leader_launch": "passed",
+    "session_leader_launch": "passed",
+    "terminal_group_exit_authenticated_service": "passed",
+    "session_publication_and_resume_same_pid": "passed",
+    "symlink_pid_target_unchanged": "passed"
+  },
+  "suite_total": 13,
+  "suite_passed": 13,
+  "native_cmu_verified": false,
+  "persistent_installation": false
+}

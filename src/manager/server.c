@@ -403,6 +403,16 @@ int main(int argc,char**argv){int server,fd,port,lockfd,opt=1;
  if(argc==4&&!strcmp(argv[1],"--check")){signal(SIGPIPE,SIG_IGN);
         return check_service(argv[2],argv[3]);
         }
+ /* Fork before setsid: a newly forked child cannot be a process-group leader.
+  * The launcher exits; readiness is still authenticated by session.sh. */
+ if(argc>=2&&!strcmp(argv[1],"--launch")){
+        pid_t child;
+        if(argc!=5&&argc!=6)return 2;
+        child=fork();
+        if(child<0){perror("manager fork");return 2;}
+        if(child>0)return 0;
+        argc--;argv++;
+        }
  /* A terminal-group exit must not terminate this independent temporary service. */
  if(getsid(0)!=getpid()&&setsid()<0){perror("manager detach");
         return 2;
@@ -464,6 +474,19 @@ int main(int argc,char**argv){int server,fd,port,lockfd,opt=1;
     sigaction(SIGINT,&sa,NULL);
     signal(SIGPIPE,SIG_IGN);
     signal(SIGHUP,SIG_IGN);
+ /* Publish the actual service PID, never the short-lived launcher's PID. */
+ (void)pathjoin(path,sizeof(path),workdir,"service.pid");
+    fd=open(path,O_WRONLY|O_CREAT|O_NOFOLLOW|O_NONBLOCK,0600);
+    if(fd<0)return 2;
+    {struct stat st;
+        char pidtext[40];
+        int len=snprintf(pidtext,sizeof(pidtext),"%ld\n",(long)getpid());
+        if(fstat(fd,&st)||!S_ISREG(st.st_mode)||st.st_nlink!=1||st.st_uid!=geteuid()||
+           (st.st_mode&0777)!=0600||ftruncate(fd,0)||write(fd,pidtext,(size_t)len)!=len||fsync(fd)){
+            close(fd);return 2;
+            }
+        }
+    close(fd);
  (void)pathjoin(path,sizeof(path),workdir,"client.js");
     (void)pathjoin(temp,sizeof(temp),workdir,"client.next");
     if(lstat(temp,&(struct stat){0})==0){if(!plain(temp,0)||unlink(temp))return 2;

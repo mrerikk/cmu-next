@@ -29,9 +29,9 @@ python3 tools/materialize-module.py --firmware-index /path/to/index.html --out b
 
 The script requires the recorded original digest, inserts only the project bootstrap, verifies the resulting digest and all 82 module payloads, and writes into a new directory. It never edits the input. Its output includes an OEM-derived file and remains ignored by Git.
 
-## Historical manager candidate
+## Manager startup candidate 0.3.3
 
-Manager 0.3.2 has a known startup failure and is preserved for engineering work, not recommended as a stable installer. To reconstruct its complete USB candidate locally:
+Current sources build candidate 0.3.3 with a fork-before-setsid launcher. It addresses a reproduced 0.3.2 host failure but remains unverified on CMU. Historical 0.3.2 sources remain in history. To reconstruct the complete USB candidate locally:
 
 ```sh
 python3 tools/build-manager.py --arm --zig /path/to/zig --firmware-index /path/to/index.html
