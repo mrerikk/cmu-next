@@ -13,4 +13,4 @@ Run `python3 tools/check-repository.py` and the relevant component checks before
 
 ## Licensing
 
-Project-authored code and documentation use PolyForm Noncommercial 1.0.0. Contributions must be compatible with these terms; retain third-party notices and identify any material you cannot license on that basis. Commercial reuse requires separate permission from the owner.
+Project-authored code and documentation use GNU GPL v3 or later (GPL-3.0-or-later). Contributions must be compatible with these terms; retain third-party notices and identify any material you cannot license on that basis. Commercial reuse is permitted under GPL; contributions must not add a noncommercial restriction to covered code.

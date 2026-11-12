@@ -86,4 +86,6 @@ python3 tools/build-manager.py --host
 
 No OEM firmware is downloaded by these commands. The public source import excludes private vehicle logs, backups, complete firmware and the OEM index.html. A local, hash-verified OEM index can be supplied to reconstruct the module payload; see the build guide.
 
-Project-authored code and documentation use [PolyForm Noncommercial 1.0.0](license.md). Commercial use requires separate permission from the owner. This is a source-available project, not an OSI-approved open-source distribution. Third-party materials retain their own terms. All project documentation is in English. Existing runtime UI strings are retained in their original language to avoid changing behavior during the source import. New project paths use lowercase names. This is an independent project and is not affiliated with Mazda.
+Project-authored code and documentation use [GNU GPL v3 or later (GPL-3.0-or-later)](license.md). Commercial use and redistribution are permitted under GPL; see [licensing and the grant for earlier versions](docs/licensing.md). Third-party materials retain their own terms. All project documentation is in English. Existing runtime UI strings are retained in their original language to avoid changing behavior during the source import. New project paths use lowercase names. This is an independent project and is not affiliated with Mazda.
+
+See [release and download policy](docs/releases.md) for versioned packages, validation labels and historical GPL reissues.

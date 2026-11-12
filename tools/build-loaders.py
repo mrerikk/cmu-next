@@ -1,6 +1,6 @@
 """Build project-authored ID3 loaders around a locally synthesized silent stream.
 
-SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
+SPDX-License-Identifier: GPL-3.0-or-later
 The generator never reads a legacy MP3, downloads a carrier, or runs its payload.
 """
 from pathlib import Path

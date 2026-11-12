@@ -6,7 +6,7 @@
 - **Loader carrier:** current loader 1.0.0 audio is synthesized locally from zero PCM samples, not copied from a third-party silence recording. The previous public snapshot used a legacy carrier with third-party metadata; its redistribution terms were not established, and it is superseded by the new loader packages. `lameenc` 1.9.0 (LGPL-3.0-or-later) is an optional build-only encoder; neither it nor a linked encoder library is bundled in the USB payloads. See `src/loaders/readme.md` and `assets/audio/provenance.json`.
 - **Reference material:** Mazda Connect 2 official owner's manual and user-provided visual references informed the retrofit. Reference screenshots themselves are excluded from the source import.
 
-The owner selected PolyForm Noncommercial 1.0.0 for project-authored code and documentation. Commercial use requires separate permission. The license text is preserved unchanged from the official PolyForm 1.0.0 source; the required copyright notice is in `notice.md`. This does not relicense the font, trademarks, or other third-party material. Review the respective asset terms before distributing a combined binary package.
+The owner selected GNU GPL v3 or later (GPL-3.0-or-later) for project-authored code and documentation. Commercial use and redistribution are permitted under GPL. The unmodified GPLv3 text is in `license.md`; project copyright and the grant covering earlier versions are in `notice.md`. This does not relicense the font, trademarks, or other third-party material. Review the respective asset terms before distributing a combined binary package.
 
 ## Generated scripts and owner-authored graphics
 

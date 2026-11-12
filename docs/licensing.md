@@ -1,11 +1,19 @@
 # Licensing
 
-The owner requires noncommercial distribution of the project-authored code. The selected license is **PolyForm Noncommercial 1.0.0**, not MIT or GPL.
+Project-authored cmu-next code, documentation and owner-authored graphics use **GNU GPL version 3 or any later version (GPL-3.0-or-later)**, to the extent the licensor has authority to grant those rights. The complete, unmodified GPLv3 text is in `license.md`; the project grant and copyright notice are in `notice.md`.
 
-Noncommercial personal research, experimentation and hobby modification are permitted under the license. Commercial use, including commercial sale, paid installation services and commercial product bundling, requires separate permission from mrerikk unless a use is already expressly permitted by the license. Keep the license and required notice with redistributed copies.
+You may use, study, modify and redistribute covered material, including commercially, subject to GPL. When conveying a modified covered work, preserve applicable notices, identify changes and provide the corresponding source and other required materials in the manner GPL requires. Do not add a noncommercial restriction to GPL-covered material. This summary does not replace the license.
 
-The exact license definitions, institutional permissions and statutory exceptions govern. This summary does not replace the license text. This project is source-available; it is not described as OSI-approved open source because commercial uses are restricted.
+## Earlier versions
 
-The license applies only to material the project authors can license. The Source Sans font remains SIL OFL, musl and Zig retain upstream terms, and owner-authored theme graphics use the project license; any separately supplied OEM material retains its respective rights. No third-party work is relicensed merely by being included in the same repository.
+On **2026-11-12**, the owner also grants GPL-3.0-or-later for project-authored material in **all previously published cmu-next versions and commits**, to the extent the owner can license that material. Recipients may rely on this grant even when an older snapshot contains the former PolyForm Noncommercial notice. Permissions already received under the earlier terms are not revoked.
 
-For commercial permission, contact the repository owner through the GitHub profile linked in the required notice. No public contact email or private vehicle information is included.
+Earlier Git commits, tags and original publication dates are retained as historical records. GPL reissues are identified as new packaging, not backdated original releases. The effective grant applies to the earlier project material; it is not a claim that GPL was the original license.
+
+## Separate rights
+
+Source Sans 3 retains SIL OFL, musl/Zig and optional build tools retain their upstream terms. Existing third-party licenses are not replaced by this grant. Any incorporated GPL component still needs its own author notices, source and compatibility review; changing our license does not automatically clear every MZD-AIO tweak or dependency.
+
+OEM firmware/application material, trademarks and the legacy carrier with unconfirmed audio rights are not relicensed by cmu-next. Current MP3 loader 1.0.0 uses project-authored zero-PCM audio and ID3 generation; GPL reissues use those files in place of the superseded legacy carrier. Local test bundles containing a reconstructed OEM index remain distinct from public source releases.
+
+For questions about provenance or this grant, contact the repository owner through the GitHub profile. Do not post credentials, private vehicle reports or firmware images in public issues.

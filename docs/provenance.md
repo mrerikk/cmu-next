@@ -14,7 +14,7 @@ The current source tree identifies these JavaScript adapters as cmu-next develop
 
 ## Rights boundaries
 
-PolyForm Noncommercial 1.0.0 applies only to project-authored material to the extent the contributors hold licensable rights. It does not override upstream licenses or grant rights to any separately supplied Mazda/Johnson Controls material, trademarks, or third-party fonts. An asset redrawn from a reference is not automatically cleared for redistribution.
+GNU GPL v3 or later (GPL-3.0-or-later) applies only to project-authored material to the extent the contributors hold licensable rights. It does not override upstream licenses or grant rights to any separately supplied Mazda/Johnson Controls material, trademarks, or third-party fonts. An asset redrawn from a reference is not automatically cleared for redistribution.
 
 Source Sans 3 keeps its SIL OFL notice. Optional encoders and compiler/runtime dependencies keep their upstream terms; a build-tool license and an output file license are separate questions. Any distributed linked executable needs its own dependency review.
 
@@ -29,7 +29,7 @@ Visual references, similarity to an existing interface, and ownership of origina
 - Firmware target, component version, checks performed, hardware observations and unresolved failures must be stated separately. Host tests are not vehicle validation. Loader 1.0.0 still needs a CMU test; manager startup remains unresolved.
 - Software is experimental and supplied as-is to the extent allowed by law. No statement promises immunity from liability, universal compatibility, successful recovery, or unchanged vehicle warranty.
 - Do not distribute complete firmware, OEM application sources, navigation data, personal vehicle reports, backups, tokens, credentials or downloaded reference screenshots without the necessary rights and privacy review.
-- Include the license, required notice and applicable third-party notices with source and USB distributions. Commercial permissions from the project owner cover only rights that owner can grant; the exact PolyForm permissions and statutory exceptions still govern.
+- Include GPL and applicable author/third-party notices with distributions, and provide corresponding source as required by GPL. The grant covers only rights the licensors can grant; it does not relicense unrelated third-party material.
 - Questions about rights or abuse can be raised through a sanitized repository issue; never attach private logs or credentials.
 
 ## Historical publication

@@ -13,4 +13,4 @@ The project's own generator is `tools/build-loaders.py`. It builds the four ID3v
 
 The carrier and wrapper container passed host structural checks and independent decoding. **These new loader bytes have not been tested on the actual CMU.** The previous legacy loaders working in a vehicle does not establish this new version's compatibility.
 
-Project-authored loader code and assets use PolyForm Noncommercial 1.0.0. LAME/lameenc is a separately licensed build tool, is not copied into USB packages, and is not relicensed by this project.
+Project-authored loader code and assets use GNU GPL v3 or later (GPL-3.0-or-later). LAME/lameenc is a separately licensed build tool, is not copied into USB packages, and is not relicensed by this project.
