@@ -1,0 +1,38 @@
+name: Versioned releases
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/release-plan.json]
+permissions:
+  contents: read
+concurrency:
+  group: versioned-releases
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/check-repository.py
+      - run: python3 tools/build-loaders.py --check
+      - run: python3 -m unittest discover -s tests -v
+  publish:
+    needs: check
+    if: github.repository == 'mrerikk/cmu-next' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Package, validate and publish component releases
+        run: python3 tools/publish-releases.py
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: release-publication-record
+          path: dist/releases/publication.json
