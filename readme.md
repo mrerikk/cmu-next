@@ -4,6 +4,12 @@ A Mazda Connect 2-inspired interface retrofit and modular tooling project for **
 
 **Development snapshot — not a production-ready permanent installer.** The current manager line has an unresolved startup problem on the test CMU. Host tests do not establish hardware compatibility. Start with [current status](docs/status.md) and [version history](docs/versions.md).
 
+## Downloads
+
+[All releases and version history](https://github.com/mrerikk/cmu-next/releases) · [Retrofit 0.8 — temporary USB package](https://github.com/mrerikk/cmu-next/releases/tag/retrofit-0.8) · [Manager 0.3.4 — source candidate](https://github.com/mrerikk/cmu-next/releases/tag/manager-0.3.4)
+
+Each release includes English notes, validation status, source and SHA-256 checksums. Current packages are engineering prereleases. GPL reissues use our own MP3 loader; its new bytes still require a CMU run. Public manager releases are source-only and require a separately supplied OEM index for a local test bundle.
+
 ## Interface preview
 
 ![cmu-next home screen — browser design preview](design/preview-home.png)
