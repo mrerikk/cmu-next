@@ -37,6 +37,9 @@ class SshTransport(unittest.TestCase):
   self.assertIn('firmware-version-sha256',probe);self.assertIn('no files changed',diagnose);self.assertIn('/tmp/mnt/sdb1/cmu-manager/check.sh',check)
   for body in [probe,diagnose,check]:
    self.assertNotIn('start.sh',body);self.assertNotIn('authorized_keys',body);self.assertNotIn('remount',body)
+ def test_explicit_manager_start_uses_selected_package_and_requires_root(self):
+  body=ssh.remote_script('start-manager','sdc1');self.assertIn('/tmp/mnt/sdc1/cmu-manager/start.sh',body);self.assertIn('id -u',body)
+  self.assertEqual(ssh.command(self.prepare(),'start-manager')[-2:],['cmu-test','sh -s'])
  def test_installed_openssh_can_parse_generated_config_without_connecting(self):
   if not shutil.which('ssh'):self.skipTest('OpenSSH client unavailable')
   state=self.prepare();p=subprocess.run(['ssh','-G','-F',str(state/'config'),'cmu-test'],capture_output=True,text=True)

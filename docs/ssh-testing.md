@@ -1,8 +1,29 @@
 # CMU testing over an existing SSH connection
 
-SSH over Wi-Fi is a transport for native tests and report collection. It can replace the repeated USB-keyboard terminal bootstrap once the owner has confirmed working access. The current tools prepare and inspect a connection; they do not enable SSH, install keys, start the manager or run an unattended installation suite.
+SSH over Wi-Fi is a transport for native tests and report collection. It can replace the repeated USB-keyboard terminal bootstrap once the owner has confirmed working access. The laptop tools prepare and inspect a connection and can explicitly start the prepared USB manager after authentication. A separate device-side helper can inspect or start the existing stock SSH daemon. They do not install keys or run an unattended installation suite.
 
 Test vehicle: Mazda Roadster ND, model year 2016, Japanese market. Other Connect 1 vehicles are untested. Firmware under investigation: 74.00.324A EU. **No live SSH connection to this CMU has yet been verified.** Availability of SSH on this installed firmware is an observation to collect, not an assumption based on a generic firmware guide.
+
+## Documented default credentials
+
+MZD-AIO documents **username `cmu`, password `jci`** after its SSH_Bringback or autorun/recovery procedure. Firmware before 56.00.513 used username `root`; some AIO installations additionally have `jci` / `jci`. These are public historical defaults, not credentials verified for this particular 74.00.324A installation. Source: [MZD-AIO FAQ](https://github.com/Trevelopment/mazdatweaks/blob/master/AIO-FAQ.md?plain=1), [maintainer SSH notes](https://github.com/Trevelopment/mazdatweaks/blob/master/ProTipsDraft.md).
+
+**Replace the standard password after your first successful login**, using `passwd` interactively on the device with its supported account tools. Do not put the replacement password in scripts, issues or documentation. This project does not silently change the password or assume that a stock password works when password authentication is disabled. Verify the replacement in a second session before closing the working session; persistence across reboots and firmware updates requires a separate device-specific check.
+
+## Inspect or start the stock SSH server
+
+`src/ssh/start-ssh.sh` is a device-side helper, not the laptop transport. Copy it to a flash drive, keeping its lowercase name, and invoke it from the already working CMU root terminal (substitute the actual USB partition):
+
+```sh
+sh /tmp/mnt/sda1/start-ssh.sh check
+sh /tmp/mnt/sda1/start-ssh.sh start
+```
+
+It reports configured ports, selected public authentication policy and UID-0 login names. When starting, it validates the existing configuration and host keys with stock sshd, avoids starting over an occupied configured port and checks for a resulting listener. A listener alone does not prove that it is sshd, that Wi-Fi can reach it, or that login works. It leaves passwords, keys, configuration, firewall and boot scripts unchanged. It has no project fifteen-minute timer; stock process lifetime applies and reboot follows stock startup policy.
+
+The inspected local firmware copy specifies **port 36000**, `PasswordAuthentication no` and a native network startup script that invokes `/usr/sbin/sshd`. This suggests SSH may already start natively; it does not establish the current device state. The earlier attempt on port 22 did not test the configured 36000 endpoint. Read the live helper output before choosing the port. If password authentication remains disabled, the public default password cannot authenticate; an already configured key or a separately reviewed access setup is required. Starting a daemon does not reset an account password or bypass its policy.
+
+For offline inspection only, a second argument can point to a firmware copy. The helper refuses to start any executable from a copy. No firmware copy or real device credentials are included in the public package.
 
 ## Connection prerequisites
 
@@ -15,7 +36,7 @@ An OpenSSH client and Python 3 are required on the laptop. No additional softwar
 From the repository root, substitute the actual address and known login. `192.0.2.10` and `cmu` below are documentation examples, not discovered device settings or a claim about the correct account.
 
 ```sh
-python3 tools/cmu-ssh.py prepare --host 192.0.2.10 --user cmu
+python3 tools/cmu-ssh.py prepare --host 192.0.2.10 --user cmu --port 36000
 python3 tools/cmu-ssh.py connect
 ```
 
@@ -38,6 +59,15 @@ python3 tools/cmu-ssh.py check --partition sda1
 - `check` invokes the already prepared USB package's own `check.sh`. Use the actual USB partition. This is an explicit execution of the owner's existing package, not a generic arbitrary-command runner. The root/private-workspace checks of that package still apply.
 
 `check` needs a prepared manager package and an already running session. `probe` does not. An SSH connection with a non-root UID does not establish permission to run root-only tests. A SHA-256 command being unavailable is reported as unavailable, not as a firmware mismatch.
+
+## Start the prepared manager after connecting
+
+```sh
+python3 tools/cmu-ssh.py start-manager --partition sda1
+python3 tools/cmu-ssh.py check --partition sda1
+```
+
+`start-manager` explicitly invokes the existing package's `start.sh` through the trusted, authenticated connection and requires UID 0. It does not upload a package, enable SSH or change live firmware. Use the complete current manager USB package; its root and private-workspace checks still apply. Startup and UI connection remain separate native observations.
 
 ## Reach the loopback manager through a tunnel
 

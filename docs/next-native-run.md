@@ -18,7 +18,7 @@ The test bundle contains a locally reconstructed OEM-derived index and is suppli
 
 For SSH, verify that the laptop and CMU are currently on the same reachable network. Record the address shown by CMU, the known login and a trusted host-key fingerprint. Use the [SSH preparation guide](ssh-testing.md). The previous iPhone-hotspot attempt did not reach an SSH listener; an ARP entry by itself does not identify the CMU or establish a connection. Do not reuse an old address without checking it.
 
-If SSH is unavailable, use the existing USB-keyboard and native-terminal procedure. An SSH login with insufficient privileges cannot replace the root terminal used by this package. No SSH server enablement, network reconfiguration or legacy algorithm relaxation is part of this run.
+If SSH is unavailable, use the existing USB-keyboard and native-terminal procedure. An SSH login with insufficient privileges cannot replace the root terminal used by this package. The optional stock-daemon helper and the documented historical default credentials are described in the SSH guide. Inspect the actual configuration first; port 36000 occurs in the local firmware copy. Network reconfiguration and legacy algorithm changes are not part of this run.
 
 ## 2. Start a fresh candidate session
 
@@ -33,6 +33,8 @@ Using the root terminal or an already verified authorized root SSH session, run 
 ```sh
 sh /tmp/mnt/sda1/cmu-manager/start.sh
 ```
+
+After a verified root SSH login, the laptop equivalent is `python3 tools/cmu-ssh.py start-manager --partition sda1`, followed by `python3 tools/cmu-ssh.py check --partition sda1`.
 
 Substitute the actual partition letter. The supplied script requires the canonical `/tmp/mnt/sd[a-d]1` package path. It validates the package and creates a private memory-backed workspace. It does not install persistent startup.
 

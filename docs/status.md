@@ -21,3 +21,5 @@ A blank service.log from 0.3.1 cannot establish its termination cause because th
 The current operator sequence is [next native run: manager 0.3.4](next-native-run.md). The old 0.3.2 recommendation is superseded. The attempted Wi-Fi/SSH connection did not establish native access; connection helpers remain unverified on CMU.
 
 Host evidence summaries are retained in `docs/evidence`. Original raw vehicle reports and personal workstation paths are excluded. Historical tests are not represented as new tests of this publication.
+
+SSH tools 0.2 provides a stock-daemon check/start helper and an explicit authenticated manager start command. Offline SSH checks pass (15). The inspected firmware copy uses port 36000 and disables password authentication; the public historical cmu/jci default is documented with its limitations. No native SSH connection or daemon-start test has been verified.

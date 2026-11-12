@@ -77,23 +77,24 @@ def command(state,action,local_port=19970):
   if not 1024<=local_port<=65535:raise ValueError('invalid local port')
   return args+['-N','-L','127.0.0.1:'+str(local_port)+':127.0.0.1:9970','cmu-test']
  if action=='disconnect':return args+['-O','exit','cmu-test']
- if action in ['probe','diagnose','check']:return args+['-T','cmu-test','sh -s']
+ if action in ['probe','diagnose','check','start-manager']:return args+['-T','cmu-test','sh -s']
  raise ValueError('unknown connection action')
 
 def remote_script(action,partition='sda1'):
  if not re.fullmatch(r'sd[a-d]1',partition):raise ValueError('invalid USB partition')
  if action=='probe':return (ROOT/'src/ssh/probe.sh').read_text()
  if action=='diagnose':return (ROOT/'src/diagnostics/diagnose.sh').read_text()
+ if action=='start-manager':return 'set -eu\n[ "$(id -u)" = 0 ] || exit 2\np=/tmp/mnt/'+partition+'/cmu-manager/start.sh\n[ -f "$p" ] && [ ! -L "$p" ] || exit 2\nexec sh "$p"\n'
  if action=='check':return 'set -eu\np=/tmp/mnt/'+partition+'/cmu-manager/check.sh\n[ -f "$p" ] && [ ! -L "$p" ] || exit 2\nexec sh "$p"\n'
  raise ValueError('no remote script for this action')
 
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--state',default='build/ssh/roadster')
- sub=p.add_subparsers(dest='action',required=True);init=sub.add_parser('prepare');init.add_argument('--host',required=True);init.add_argument('--user',required=True);init.add_argument('--port',type=int,default=22)
- for name in ['connect','probe','diagnose','check','tunnel','disconnect']:
+ sub=p.add_subparsers(dest='action',required=True);init=sub.add_parser('prepare');init.add_argument('--host',required=True);init.add_argument('--user',required=True);init.add_argument('--port',type=int,required=True)
+ for name in ['connect','probe','diagnose','check','start-manager','tunnel','disconnect']:
   a=sub.add_parser(name)
   if name=='tunnel':a.add_argument('--local-port',type=int,default=19970)
-  if name=='check':a.add_argument('--partition',choices=['sda1','sdb1','sdc1','sdd1'],default='sda1')
+  if name in ['check','start-manager']:a.add_argument('--partition',choices=['sda1','sdb1','sdc1','sdd1'],default='sda1')
  args=p.parse_args()
  try:
   if args.action=='prepare':
@@ -102,7 +103,7 @@ def main():
    print('First login in your own terminal (verify the CMU host-key fingerprint):')
    print(shlex.join(command(state,'connect')));return 0
   state,_=load_state(args.state);cmd=command(state,args.action,getattr(args,'local_port',19970))
-  if args.action in ['probe','diagnose','check']:
+  if args.action in ['probe','diagnose','check','start-manager']:
    result=subprocess.run(cmd,input=remote_script(args.action,getattr(args,'partition','sda1')),text=True,timeout=45)
   else:
    if args.action=='tunnel':print('Local tunnel: 127.0.0.1:'+str(args.local_port)+' -> CMU 127.0.0.1:9970; Ctrl-C closes this tunnel.',flush=True)
