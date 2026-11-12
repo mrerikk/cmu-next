@@ -15,8 +15,8 @@ root=$(CDPATH= cd -P "$root" && pwd)
 prefix=${root%/}
 config=$prefix/etc/ssh/sshd_config
 [ -f "$config" ] && [ ! -L "$config" ] || { echo 'error: stock /etc/ssh/sshd_config unavailable'; exit 2; }
-[ -x "$prefix/usr/sbin/sshd" ] || { echo 'error: stock sshd unavailable'; exit 2; }
-echo 'cmu-ssh-service=0.1'
+[ -f "$prefix/usr/sbin/sshd" ] || { echo 'error: stock sshd unavailable'; exit 2; }
+echo 'cmu-ssh-service=0.1.1'
 echo 'policy=existing-configuration-and-credentials-unchanged'
 # Report only public policy fields, never private host keys, password hashes or authorized_keys.
 awk '!/^[ \t]*#/ {k=tolower($1); if(k=="port"||k=="listenaddress"||k=="passwordauthentication"||k=="pubkeyauthentication"||k=="permitrootlogin"||k=="permitemptypasswords") print "stock-policy: " $0}' "$config"
@@ -33,6 +33,7 @@ if [ "$root" != / ]; then
  echo 'inspection=copy-only; live listener not inspected'
  exit 0
 fi
+[ -x /usr/sbin/sshd ] || { echo 'error: live sshd is not executable'; exit 2; }
 [ "$(uname -s)" = Linux ] && [ "$(id -u)" = 0 ] || { echo 'error: live check/start requires the CMU root terminal'; exit 2; }
 [ -d /jci ] || { echo 'error: CMU layout unavailable'; exit 2; }
 command -v netstat >/dev/null || { echo 'error: netstat unavailable; listener status unknown'; exit 2; }

@@ -18,6 +18,9 @@ class SshService(unittest.TestCase):
   self.assertIn('configured-port=36000',p.stdout);self.assertIn('root-login-name=cmu',p.stdout)
   self.assertIn('PasswordAuthentication no',p.stdout);self.assertNotIn('SECRET_HASH',p.stdout);self.assertNotIn('unsafe-execution',p.stdout)
   self.assertEqual(before,self.config.read_bytes())
+ def test_inspection_accepts_nonexecutable_copied_binary(self):
+  (self.fs/'usr/sbin/sshd').chmod(0o600);p=self.run_service();self.assertEqual(p.returncode,0,p.stderr)
+  self.assertIn('configured-port=36000',p.stdout);self.assertNotEqual(self.run_service('start').returncode,0)
  def test_cannot_start_a_firmware_copy(self):
   p=self.run_service('start');self.assertNotEqual(p.returncode,0);self.assertNotIn('unsafe-execution',p.stdout)
  def test_missing_config_is_an_error_not_a_successful_enablement(self):

@@ -23,6 +23,8 @@ It reports configured ports, selected public authentication policy and UID-0 log
 
 The inspected local firmware copy specifies **port 36000**, `PasswordAuthentication no` and a native network startup script that invokes `/usr/sbin/sshd`. This suggests SSH may already start natively; it does not establish the current device state. The earlier attempt on port 22 did not test the configured 36000 endpoint. Read the live helper output before choosing the port. If password authentication remains disabled, the public default password cannot authenticate; an already configured key or a separately reviewed access setup is required. Starting a daemon does not reset an account password or bypass its policy.
 
+Service helper 0.1.1 also accepts nonexecutable copied daemon files for inspection; live execution still requires the installed binary to be executable.
+
 For offline inspection only, a second argument can point to a firmware copy. The helper refuses to start any executable from a copy. No firmware copy or real device credentials are included in the public package.
 
 ## Connection prerequisites
