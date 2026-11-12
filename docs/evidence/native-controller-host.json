@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-12",
+  "component": "ssh-tools-0.3",
+  "test_context": "host-only",
+  "native_ssh_verified": false,
+  "native_hardware_verified": false,
+  "tests": [
+    "tests/test_native_controller.py",
+    "tests/test_manager_workflow.py"
+  ],
+  "controller_cycle": "real loopback HTTP service, journal, dispatcher and copy engine; synthetic firmware, mounts, uptime, USB preparation and preflight",
+  "assertions": [
+    "fresh RAM-only session required",
+    "checkpoint, install, duplicate request identity, rollback, restore and report",
+    "file bytes, modes, ownership and nanosecond timestamps return to baseline",
+    "previous journal and checkpoints refused",
+    "busy, recovery, live/unmarked and short-window sessions refused",
+    "lost mutation acknowledgement stops without retry or subsequent installation",
+    "public summary does not contain the service token"
+  ],
+  "remaining": [
+    "actual SSH session reader and forwarding on CMU",
+    "native startup and UI connection",
+    "real preflight and paired reports",
+    "controller input, camera and phone projection",
+    "persistent storage, live installation and power-loss recovery"
+  ]
+}

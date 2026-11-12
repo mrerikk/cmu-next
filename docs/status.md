@@ -23,3 +23,5 @@ The current operator sequence is [next native run: manager 0.3.4](next-native-ru
 Host evidence summaries are retained in `docs/evidence`. Original raw vehicle reports and personal workstation paths are excluded. Historical tests are not represented as new tests of this publication.
 
 SSH tools 0.2 provides a stock-daemon check/start helper and an explicit authenticated manager start command. Offline SSH checks pass (15). The inspected firmware copy uses port 36000 and disables password authentication; the public historical cmu/jci default is documented with its limitations. No native SSH connection or daemon-start test has been verified.
+
+SSH tools 0.3 adds an owner-invoked manager smoke controller: authenticated health, explicit fresh RAM-copy checkpoint/install/duplicate/rollback/restore/report cycle, and bounded private summaries. The real host HTTP/engine cycle and refusal tests pass. No native SSH orchestration, live installation or hardware integration is claimed.

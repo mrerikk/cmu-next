@@ -117,19 +117,23 @@ def publish(tag, title, notes, assets):
 if __name__ == '__main__':
     OUT.mkdir(parents=True, exist_ok=False)
     record = []
-    if PLAN['batch'] in ['ssh-tools-0.2', 'ssh-tools-0.2.1']:
+    if PLAN['batch'] in ['ssh-tools-0.2', 'ssh-tools-0.2.1', 'ssh-tools-0.3']:
         version = PLAN['batch'].removeprefix('ssh-tools-')
         helper_version = PLAN.get('helper_version', '0.1')
         source = archive('cmu-next-source-ssh-tools-' + version + '-gpl.zip', tracked_source())
         entries = notices()
         entries['start-ssh.sh'] = (ROOT / 'src/ssh/start-ssh.sh').read_bytes()
         entries['readme.md'] = (ROOT / 'docs/ssh-testing.md').read_bytes()
-        helper = archive('cmu-ssh-service-' + helper_version + '-usb.zip', entries)
+        helper_name = 'cmu-ssh-tools-' + version + '-usb.zip' if version == '0.3' else 'cmu-ssh-service-' + helper_version + '-usb.zip'
+        helper = archive(helper_name, entries)
         sums = OUT / 'sha256sums.txt'
         sums.write_text(''.join(digest(p) + '  ' + p.name + '\n' for p in [source, helper]))
         notes = ('## Changes\n- Add a device-side check/start helper for the existing stock OpenSSH daemon. Copy start-ssh.sh to the USB root and invoke it from the working CMU root terminal.\n- Document public historical cmu/jci defaults, their firmware limits and a request to change the password after first successful login.\n- Require an explicit SSH port; the inspected firmware copy uses 36000, with password authentication disabled.\n- Add an explicit authenticated laptop command to start the prepared USB manager.\n\n## Downloads\nThe helper USB ZIP contains start-ssh.sh and notices. The source ZIP contains the laptop tools, complete corresponding source, tests and English instructions under docs/ssh-testing.md. SHA-256 checksums are attached.\n\n## Validation and limits\nSixteen offline SSH checks pass. No native SSH login has been verified. The helper preserves existing accounts, keys, SSH policy, firewall and boot configuration; it does not reset passwords or bypass disabled authentication. No project fifteen-minute timer applies to the stock daemon. The manager still needs its own complete USB package and native validation. Testing targets Mazda Roadster ND 2016 Japan with 74.00.324A EU only; other Connect 1 cars are untested.')
         notes += '\n\n0.2.1 fixes offline inspection of copied sshd files whose executable mode was not retained; the live executable check and copy execution refusal remain enforced.'
-        publish(PLAN['batch'], 'SSH tools ' + version + ' — stock-service helper and manager bootstrap', notes, [source, helper, sums])
+        if version == '0.3':
+            notes += '\n\n## New owner-invoked manager controller\nAdd tools/cmu-native-test.py: default authenticated health inspection and an explicit --exercise-ram-copy mode for the fresh-session checkpoint/install/duplicate/rollback/restore/report workflow. No uncertain mutation retries; tokens stay in memory and summaries omit secrets. The controller passes a real host HTTP/engine copy cycle plus five refusal/ambiguous-ack tests. Actual SSH orchestration and vehicle UI/hardware checks remain pending. Laptop tools and complete corresponding source are in the source ZIP; the small USB ZIP contains the stock-service helper and instructions.'
+        title = 'SSH tools ' + version + (' — RAM-copy smoke controller' if version == '0.3' else ' — stock-service helper and manager bootstrap')
+        publish(PLAN['batch'], title, notes, [source, helper, sums])
         raise SystemExit(0)
     current = archive(SOURCE_NAME, tracked_source())
     archive('cmu-next-source-snapshot-2026-11-11-gpl.zip', tracked_source('f0710e27793ef38fbf667f57ef566a9db9ea2996'))

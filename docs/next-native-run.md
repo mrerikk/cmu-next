@@ -72,3 +72,7 @@ Record these outcomes together: MP3 window, startup result, actual panel connect
 ## What this closes, and what it does not
 
 A successful run would provide native evidence for the temporary manager and RAM-copy actions on this test car. It would not prove persistent storage, a permanent installer, boot recovery, the complete visual retrofit, other equipment/vehicles, the custom application runtime/speedometer or native multimedia replacements. Keep the original six-stage roadmap and verify those separately.
+
+## Optional laptop automation
+
+Once SSH authentication works, the owner-invoked `tools/cmu-native-test.py` can perform health inspection or the explicit fresh-session RAM-copy smoke cycle. See [the controller procedure](ssh-testing.md#manager-smoke-controller-ssh-tools-03). Its local HTTP regression passes; native SSH orchestration and the separate on-screen/hardware observations remain pending.

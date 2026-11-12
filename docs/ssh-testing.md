@@ -1,6 +1,6 @@
 # CMU testing over an existing SSH connection
 
-SSH over Wi-Fi is a transport for native tests and report collection. It can replace the repeated USB-keyboard terminal bootstrap once the owner has confirmed working access. The laptop tools prepare and inspect a connection and can explicitly start the prepared USB manager after authentication. A separate device-side helper can inspect or start the existing stock SSH daemon. They do not install keys or run an unattended installation suite.
+SSH over Wi-Fi is a transport for native tests and report collection. It can replace the repeated USB-keyboard terminal bootstrap once the owner has confirmed working access. The laptop tools prepare and inspect a connection and can explicitly start the prepared USB manager after authentication. A separate device-side helper can inspect or start the existing stock SSH daemon. They do not install keys. The owner-invoked RAM-copy smoke controller below is prepared locally; its SSH orchestration still needs a vehicle run.
 
 Test vehicle: Mazda Roadster ND, model year 2016, Japanese market. Other Connect 1 vehicles are untested. Firmware under investigation: 74.00.324A EU. **No live SSH connection to this CMU has yet been verified.** Availability of SSH on this installed firmware is an observation to collect, not an assumption based on a generic firmware guide.
 
@@ -102,3 +102,27 @@ The first two observations are pending vehicle availability. These connection he
 `tests/test_ssh_transport.py` checks private connection files, input validation, host-key and authentication options, loopback-only forwarding, preservation of existing known-host records and real OpenSSH configuration parsing with `ssh -G`. It never connects to the example address. These checks do not establish that the CMU's Dropbear/OpenSSH implementation accepts the connection.
 
 References: [OpenSSH client options](https://man.openbsd.org/ssh), [connection sharing and host-key configuration](https://man.openbsd.org/ssh_config).
+
+## Manager smoke controller (SSH tools 0.3)
+
+After preparing and verifying the SSH connection, the controller can start the existing USB manager and check its authenticated loopback service:
+
+```sh
+python3 tools/cmu-native-test.py --start-manager --partition sda1 --out build/native-health.json
+```
+
+This default mode performs no API installation actions. The output parent must already exist and each run needs a new output filename. The summary is created with private permissions and never contains a password, manager token, request key, raw job log, IP address or host-key record. Do not assume other raw device reports are safe to publish.
+
+For the explicit copy-only test, begin with a fresh CMU boot and the complete manager 0.3.4 USB package. The service must have at least thirteen minutes left to accept actions:
+
+```sh
+python3 tools/cmu-native-test.py --start-manager --partition sda1 --exercise-ram-copy --out build/native-copy-test.json
+```
+
+The selected package defaults to `connect2-layout`. The controller verifies root-owned private control/workspace markers for manager 0.3.4 and a memory-backed `/tmp`, reads the session token into memory through the trusted SSH connection, and creates an owned loopback-only tunnel. It then checks RAM-only API mode, an idle journal without previous work/checkpoint, and the selected package in the catalog.
+
+The exercise creates the four-input checkpoint, installs the module into the marked RAM copy, confirms that repeating the accepted request key returns the same job, rolls back that transaction, verifies checkpoint restoration through the dispatcher and exports the existing paired report to USB. It does not change the running stock theme, target live `/jci`, inject a crash, change SSH policy or establish physical power-loss recovery. API receipts are observations; the host regression additionally compares original file bytes, permissions, ownership and timestamps after the cycle.
+
+A transport failure or timeout stops the controller. An accepted job might still finish; inspect its journal before another command. The controller neither retries an uncertain installation nor automatically recovers or undoes unknown work. It closes only the tunnel process it owns; the manager's existing fifteen-minute policy and accepted-job draining remain in effect.
+
+Host evidence: the same controller completes a real local HTTP/journal/engine cycle on synthetic firmware inputs. Refusal tests cover live/unmarked targets, old/busy/recovery sessions, existing checkpoints and lost acknowledgements. The SSH session-reader and actual vehicle transport/rendering still require native verification. `native_hardware_validated: false` deliberately avoids implying that a successful service test proves camera, CarPlay, controller input or other hardware integration.

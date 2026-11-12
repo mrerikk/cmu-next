@@ -37,6 +37,8 @@ All entries above are prereleases. The original snapshot and loader releases ret
 
 SSH tools 0.2 adds the stock SSH service helper, explicit port selection and authenticated manager bootstrap. See [SSH tools 0.2](https://github.com/mrerikk/cmu-next/releases/tag/ssh-tools-0.2). Native validation is pending.
 
+[SSH tools 0.3](https://github.com/mrerikk/cmu-next/releases/tag/ssh-tools-0.3) adds the owner-invoked manager smoke controller and its host-only evidence. Vehicle SSH orchestration remains pending.
+
 ## Maintainer workflow
 
 The `Versioned releases` GitHub Actions workflow validates source, reconstructs preserved runtimes and publishes the explicit batch described in `.github/release-plan.json`. It runs when that plan changes on `main`, or when manually dispatched. Routine source commits do not create meaningless releases. Only the publication job receives repository contents write permission; the check job remains read-only.

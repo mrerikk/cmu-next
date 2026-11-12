@@ -1,5 +1,6 @@
 """Real HTTP/journal/engine workflow on a synthetic copy, with explicit host-only device fixtures."""
 from pathlib import Path
+import importlib.util
 import hashlib, http.client, json, os, shutil, signal, socket, subprocess, sys, tempfile, time, unittest
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -82,6 +83,12 @@ class ManagerWorkflow(unittest.TestCase):
   self.success('report');dest=self.pack.parent/'cmu-manager-report-1';self.assertTrue((dest/'report.txt').exists());self.assertTrue((dest/'preflight.txt').exists())
   report=(dest/'report.txt').read_text();self.assertIn('report-collected=yes',report);self.assertIn('manager-version=0.3.4',report);self.assertIn('execution-context=synthetic-host-fixture',report)
   self.assertNotIn(self.token,report);self.assertIn(sha(dest/'preflight.txt'),report)
+ def test_native_controller_exercises_real_http_copy_and_preserves_original_files(self):
+  spec=importlib.util.spec_from_file_location('native_test',ROOT/'tools/cmu-native-test.py');driver=importlib.util.module_from_spec(spec);spec.loader.exec_module(driver)
+  api=driver.Api(self.port,self.token);report=driver.exercise(api,'synthetic-theme',min_seconds=0,job_timeout=12)
+  self.assertIn('complete-no-live-firmware-write-requested',report['steps']);self.assertNotIn(self.token,json.dumps(report))
+  self.assertEqual(files(self.root),self.original)
+  with self.assertRaises(driver.Refused):driver.exercise(api,'synthetic-theme',min_seconds=0)
  def test_failed_install_requires_recovery_then_restores_originals(self):
   (self.work/'fault').write_text('after-publish:1')
   job,key,_=self.submit('install','synthetic-theme');result=self.wait_job(job)
